@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_unefa_asignatura_asistente,unefa.asignatura,model_unefa_asignatura,unefa_configuracion.group_unefa_asistente,1,0,0,0
+access_unefa_pensum_asistente,unefa.pensum,model_unefa_pensum,unefa_configuracion.group_unefa_asistente,1,0,0,0
+access_unefa_semestre_asistente,unefa.semestre,model_unefa_semestre,unefa_configuracion.group_unefa_asistente,1,0,0,0

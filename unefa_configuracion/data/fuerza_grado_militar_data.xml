@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        
+<!--
+    Componentes militares de la Fuerza Armada Nacional Bolivariana
+-->
+        
+    <record id="fuerza_EJERCITO" model="unefa.fuerza_militar">
+        <field name="fuerza">EJERCITO</field>
+    </record>
+    
+    <record id="fuerza_AVIACION" model="unefa.fuerza_militar">
+        <field name="fuerza">AVIACIÓN</field>
+    </record>
+    
+    <record id="fuerza_GUARDIA_NACIONAL" model="unefa.fuerza_militar">
+        <field name="fuerza">GUARDIA NACIONAL</field>
+    </record>
+    
+    <record id="fuerza_ARMADA" model="unefa.fuerza_militar">
+        <field name="fuerza">ARMADA</field>
+    </record>
+<!--
+                GRADOS MILITARES
+-->
+    <record id="grado_GENERAL_EN_JEFE" model="unefa.grado_militar">
+        <field name="grado">GENERAL EN JEFE</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),ref('fuerza_AVIACION'),ref('fuerza_GUARDIA_NACIONAL')])]" />
+    </record>
+    
+    <record id="grado_MAYOR_GENERAL" model="unefa.grado_militar">
+        <field name="grado">MAYOR GENERAL</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),ref('fuerza_AVIACION'),ref('fuerza_GUARDIA_NACIONAL')])]" />
+    </record>
+
+    <record id="grado_GENERAL_DIVISION" model="unefa.grado_militar">
+        <field name="grado">GENERAL DE DIVISIÓN</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),ref('fuerza_AVIACION'),ref('fuerza_GUARDIA_NACIONAL')])]" />
+    </record>
+    <record id="grado_GENERAL_BRIGADA" model="unefa.grado_militar">
+        <field name="grado">GENERAL DE BRIGADA</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),ref('fuerza_AVIACION'),ref('fuerza_GUARDIA_NACIONAL')])]" />
+    </record>
+
+    <record id="grado_CORONEL" model="unefa.grado_militar">
+        <field name="grado">CORONEL</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),ref('fuerza_AVIACION'),ref('fuerza_GUARDIA_NACIONAL')])]" />
+    </record>
+
+    <record id="grado_TENIENTE_CORONEL" model="unefa.grado_militar">
+        <field name="grado">TENIENTE CORONEL</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),ref('fuerza_AVIACION'),ref('fuerza_GUARDIA_NACIONAL')])]" />
+    </record>
+
+    <record id="grado_MAYOR" model="unefa.grado_militar">
+        <field name="grado">MAYOR</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),ref('fuerza_AVIACION'),ref('fuerza_GUARDIA_NACIONAL')])]" />
+    </record>
+
+    <record id="grado_CAPITAN" model="unefa.grado_militar">
+        <field name="grado">CAPITÁN</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),ref('fuerza_AVIACION'),ref('fuerza_GUARDIA_NACIONAL')])]" />
+    </record>
+
+    <record id="grado_PRIMER_TENIENTE" model="unefa.grado_militar">
+        <field name="grado">PRIMER TENIENTE</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),ref('fuerza_AVIACION'),ref('fuerza_GUARDIA_NACIONAL')])]" />
+    </record>
+
+    <record id="grado_TENIENTE" model="unefa.grado_militar">
+        <field name="grado">TENIENTE</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),ref('fuerza_AVIACION'),ref('fuerza_GUARDIA_NACIONAL')])]" />
+    </record>
+
+    <record id="grado_SARGENTO_SUPERVISOR" model="unefa.grado_militar">
+        <field name="grado">SARGENTO SUPERVISOR</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),
+                                               ref('fuerza_AVIACION'),
+                                               ref('fuerza_GUARDIA_NACIONAL'),
+                                               ref('fuerza_ARMADA')])]" />
+    </record>
+    
+    <record id="grado_SARGENTO_AYUDANTE" model="unefa.grado_militar">
+        <field name="grado">SARGENTO AYUDANTE</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),
+                                               ref('fuerza_AVIACION'),
+                                               ref('fuerza_GUARDIA_NACIONAL'),
+                                               ref('fuerza_ARMADA')])]" />
+    </record>
+    <record id="grado_SARGENTO_MAYOR_PRIMERA" model="unefa.grado_militar">
+        <field name="grado">SARGENTO MAYOR DE PRIMERA</field>
+        <field name="fuerza_id" ref="fuerza_EJERCITO"/>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),
+                                               ref('fuerza_AVIACION'),
+                                               ref('fuerza_GUARDIA_NACIONAL'),
+                                               ref('fuerza_ARMADA')])]" />
+    </record>
+    
+    <record id="grado_SARGENTO_MAYOR_SEGUNDA" model="unefa.grado_militar">
+        <field name="grado">SARGENTO MAYOR DE SEGUNDA</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),
+                                               ref('fuerza_AVIACION'),
+                                               ref('fuerza_GUARDIA_NACIONAL'),
+                                               ref('fuerza_ARMADA')])]" />
+    </record>
+    
+    <record id="grado_SARGENTO MAYOR_TERCERA" model="unefa.grado_militar">
+        <field name="grado">SARGENTO MAYOR DE TERCERA</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),
+                                               ref('fuerza_AVIACION'),
+                                               ref('fuerza_GUARDIA_NACIONAL'),
+                                               ref('fuerza_ARMADA')])]" />
+    </record>
+
+    <record id="grado_SARGENTO_PRIMERO" model="unefa.grado_militar">
+        <field name="grado">SARGENTO PRIMERO</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),
+                                               ref('fuerza_AVIACION'),
+                                               ref('fuerza_GUARDIA_NACIONAL'),
+                                               ref('fuerza_ARMADA')])]" />
+    </record>
+    
+    <record id="grado_SARGENTO_SEGUNDO" model="unefa.grado_militar">
+        <field name="grado">SARGENTO SEGUNDO</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_EJERCITO'),
+                                               ref('fuerza_AVIACION'),
+                                               ref('fuerza_GUARDIA_NACIONAL'),
+                                               ref('fuerza_ARMADA')])]" />
+    </record>
+
+<!--
+                FUERZA ARMADA
+-->
+
+    <record id="grado_ALMIRANTE_JEFE" model="unefa.grado_militar">
+        <field name="grado">ALMIRANTE EN JEFE</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_ARMADA')])]" />
+    </record>
+    
+    <record id="grado_ALMIRANTE" model="unefa.grado_militar">
+        <field name="grado">ALMIRANTE</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_ARMADA')])]" />
+    </record>
+    
+    <record id="grado_VICEALMIRANTE" model="unefa.grado_militar">
+        <field name="grado">VICEALMIRANTE</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_ARMADA')])]" />
+    </record>
+    
+    <record id="grado_CONTRALMIRANTE" model="unefa.grado_militar">
+        <field name="grado">CONTRALMIRANTE</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_ARMADA')])]" />
+    </record>
+    
+    <record id="grado_CAPITAN_NAVIO" model="unefa.grado_militar">
+        <field name="grado">CAPITÁN DE NAVÍO</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_ARMADA')])]" />
+    </record>
+    
+    <record id="grado_CAPITAN_FRAGATA" model="unefa.grado_militar">
+        <field name="grado">CAPITÁN DE FRAGATA</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_ARMADA')])]" />
+    </record>
+    
+    <record id="grado_CAPITAN_CORBETA" model="unefa.grado_militar">
+        <field name="grado">CAPITÁN DE CORBETA</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_ARMADA')])]" />
+    </record>
+    
+    <record id="grado_TENIENTE_NAVIO" model="unefa.grado_militar">
+        <field name="grado">TENIENTE DE NAVÍO</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_ARMADA')])]" />
+    </record>
+    
+    <record id="grado_TENIENTE_FRAGATA" model="unefa.grado_militar">
+        <field name="grado">TENIENTE DE FRAGATA</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_ARMADA')])]" />
+    </record>
+    
+    <record id="grado_ALFEREZ_NAVIO" model="unefa.grado_militar">
+        <field name="grado">ALFÉREZ DE NAVÍO</field>
+        <field name="fuerza_id" eval="[(6, 0, [ref('fuerza_ARMADA')])]" />
+    </record>
+
+</data>
+</openerp>

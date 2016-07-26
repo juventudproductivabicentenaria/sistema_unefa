@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+<!--
+    Áreas de conocimiento de las carreras ofertadas en la UNEFA Núcleo caracas
+-->
+    <record id="ar_cto_ing_arq_tec" model="unefa.area_conocimiento">
+        <field name="area_conocimiento">INGENIERÍA, ARQUITECTURA Y TECNOLOGÍA</field>
+    </record>
+    
+    <record id="ar_cto_cnc_agr_mar" model="unefa.area_conocimiento">
+        <field name="area_conocimiento">CIENCIAS DEL AGRO Y EL MAR</field>
+    </record>
+    
+    <record id="ar_cto_cnc_salud" model="unefa.area_conocimiento">
+        <field name="area_conocimiento">CIENCIAS DE LA SALUD</field>
+    </record>
+    
+    <record id="ar_cto_cnc_educacion" model="unefa.area_conocimiento">
+        <field name="area_conocimiento">CIENCIAS DE LA EDUCACIÓN</field>
+    </record>
+    
+    <record id="ar_cto_cnc_sociales" model="unefa.area_conocimiento">
+        <field name="area_conocimiento">CIENCIAS SOCIALES</field>
+    </record>
+    
+    
+<!--
+    Carreras ofertadas eb la UNEFA Núcleo Caracas
+-->
+    
+    <record id="carrera_ING_ELE" model="unefa.carrera">
+        <field name="nombre">INGENIERÍA ELÉCTRICA</field>
+        <field name="codigo">ING-ELE</field>
+        <field name="area_conocimiento_id" ref="ar_cto_ing_arq_tec"/>
+        <field name="tipo">larga</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas'),ref('unefa_nucleo_aragua')])]" />  
+    </record>
+
+
+    <record id="carrera_ING_MEC" model="unefa.carrera">
+        <field name="nombre">INGENIERÍA MECÁNICA</field>
+        <field name="codigo">ING-MEC</field>
+        <field name="area_conocimiento_id" ref="ar_cto_ing_arq_tec"/>
+        <field name="tipo">larga</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas'),ref('unefa_nucleo_aragua')])]" />  
+    </record>
+
+    <record id="carrera_ING_TEL" model="unefa.carrera">
+        <field name="nombre">INGENIERÍA DE TELECOMUNICACIONES</field>
+        <field name="codigo">ING-TEL</field>
+        <field name="area_conocimiento_id" ref="ar_cto_ing_arq_tec"/>
+        <field name="tipo">larga</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas'),ref('unefa_nucleo_aragua')])]" />  
+    </record>
+
+    <record id="carrera_ADM_DST_GEST" model="unefa.carrera">
+        <field name="nombre">Licenciatura en Administración de Desastres y Gestión de Riesgos</field>
+        <field name="codigo">ADM-DST-GEST</field>
+        <field name="area_conocimiento_id" ref="ar_cto_cnc_sociales"/>
+        <field name="tipo">larga</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_configuracion.unefa_nucleo_caracas')])]" />  
+    </record>
+
+    <record id="carrera_ADM_DST" model="unefa.carrera">
+        <field name="nombre">Licenciatura en Administración y Gestión Municipal</field>
+        <field name="codigo">ADM-GEST_MUN</field>
+        <field name="area_conocimiento_id" ref="ar_cto_cnc_sociales"/>
+        <field name="tipo">larga</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas')])]" />  
+    </record>
+
+    <record id="carrera_ADM_ECO_SOC" model="unefa.carrera">
+        <field name="nombre">Licenciatura en Economía Social</field>
+        <field name="codigo">ADM-ECO-SOC</field>
+        <field name="area_conocimiento_id" ref="ar_cto_cnc_sociales"/>
+        <field name="tipo">larga</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas')])]" />  
+    </record>
+    
+    <record id="carrera_ADM_EDU_INT" model="unefa.carrera">
+        <field name="nombre">Licenciatura en Educación Integral</field>
+        <field name="codigo">ADM-EDU-INT</field>
+        <field name="area_conocimiento_id" ref="ar_cto_cnc_educacion"/>
+        <field name="tipo">larga</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas')])]" />  
+    </record>
+
+    <record id="carrera_ADM_LIC_ENF" model="unefa.carrera">
+        <field name="nombre">Licenciatura en Enfermería (Ampliación - Hospital Militar)</field>
+        <field name="codigo">ADM-LIC-ENF</field>
+        <field name="area_conocimiento_id" ref="ar_cto_cnc_salud"/>
+        <field name="tipo">larga</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas')])]" />  
+    </record>
+
+    <record id="carrera_LIC_CON_PUB" model="unefa.carrera">
+        <field name="nombre">Licenciatura en Contaduría Pública</field>
+        <field name="codigo">LIC-CON-PUB</field>
+        <field name="area_conocimiento_id" ref="ar_cto_cnc_sociales"/>
+        <field name="tipo">larga</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas')])]" />  
+    </record>
+
+    <record id="carrera_LIC_LIC_UTR" model="unefa.carrera">
+        <field name="nombre">Licenciatura en Turismo</field>
+        <field name="codigo">LIC-UTR</field>
+        <field name="area_conocimiento_id" ref="ar_cto_cnc_sociales"/>
+        <field name="tipo">larga</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas')])]" />  
+    </record>
+
+    <record id="carrera_TSU_ANA_SIS" model="unefa.carrera">
+        <field name="nombre">T.S.U. en Análisis y Diseño de Sistemas</field>
+        <field name="codigo">TSU-ANA-SIS</field>
+        <field name="area_conocimiento_id" ref="ar_cto_ing_arq_tec"/>
+        <field name="tipo">corta</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas')])]" />  
+    </record>
+
+    <record id="carrera_TSU_COM_ELE" model="unefa.carrera">
+        <field name="nombre">T.S.U. en Comunicaciones y Electrónica</field>
+        <field name="codigo">TSU-COM-ELE</field>
+        <field name="area_conocimiento_id" ref="ar_cto_ing_arq_tec"/>
+        <field name="tipo">corta</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas')])]" />  
+    </record>
+
+    <record id="carrera_TSU_ENF" model="unefa.carrera">
+        <field name="nombre">T.S.U. en Enfermería</field>
+        <field name="codigo">TSU-ENF</field>
+        <field name="area_conocimiento_id" ref="ar_cto_cnc_salud"/>
+        <field name="tipo">corta</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas')])]" />  
+    </record>
+    
+    <record id="carrera_TSU_HOT" model="unefa.carrera">
+        <field name="nombre">T.S.U. en Hotelería</field>
+        <field name="codigo">TSU-HOT</field>
+        <field name="area_conocimiento_id" ref="ar_cto_cnc_sociales"/>
+        <field name="tipo">corta</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas')])]" />  
+    </record>
+    
+    <record id="carrera_TSU_MEC_DEN" model="unefa.carrera">
+        <field name="nombre">T.S.U. en Mecánica Dental</field>
+        <field name="codigo">TSU-MEC-DEN</field>
+        <field name="area_conocimiento_id" ref="ar_cto_cnc_salud"/>
+        <field name="tipo">corta</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas')])]" />  
+    </record>
+
+    <record id="carrera_TSU_TUR" model="unefa.carrera">
+        <field name="nombre">T.S.U. en Turismo</field>
+        <field name="codigo">TSU-TUR</field>
+        <field name="area_conocimiento_id" ref="ar_cto_cnc_sociales"/>
+        <field name="tipo">corta</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas')])]" />  
+    </record>
+    
+    <record id="carrera_ING_SIS" model="unefa.carrera">
+        <field name="nombre">INGENIERÍA DE SISTEMAS</field>
+        <field name="codigo">ING-SIS</field>
+        <field name="area_conocimiento_id" ref="ar_cto_ing_arq_tec"/>
+        <field name="tipo">larga</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas'),ref('unefa_nucleo_aragua')])]" />
+    </record>
+
+    <record id="carrera_ING_CIV" model="unefa.carrera">
+        <field name="nombre">INGENIERÍA CIVIL</field>
+        <field name="codigo">ING-CIV</field>
+        <field name="area_conocimiento_id" ref="ar_cto_ing_arq_tec"/>
+        <field name="tipo">larga</field>
+        <field name="state">activo</field>
+        <field name="nucleo_ids" eval="[(6, 0, [ref('unefa_nucleo_caracas'),ref('unefa_nucleo_aragua')])]" />  
+    </record>
+
+    </data>
+</openerp>
+

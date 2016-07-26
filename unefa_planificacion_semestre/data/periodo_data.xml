@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        
+<!--
+                PERÍODOS ACADÉMICOS
+-->
+        <record id="periodo_academico_2015_2" model="unefa.conf.periodo_academico">
+            <field name="periodo_academico">2015-2</field>
+            <field name="fecha_inicio">2015-06-15</field>
+            <field name="fecha_fin">2015-12-08</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="periodo_academico_2016_1" model="unefa.conf.periodo_academico">
+            <field name="periodo_academico">2016-1</field>
+            <field name="fecha_inicio">2016-02-01</field>
+            <field name="fecha_fin">2016-06-15</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="periodo_academico_2016_2" model="unefa.conf.periodo_academico">
+            <field name="periodo_academico">2016-2</field>
+            <field name="fecha_inicio">2016-07-01</field>
+            <field name="fecha_fin">2016-12-09</field>
+            <field name="state">activo</field>
+        </record>
+        
+
+    </data>
+</openerp>

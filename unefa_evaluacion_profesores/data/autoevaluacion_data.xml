@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        
+        <record id="asisto_puntual" model="unefa.items_asis_puntualidad">
+            <field name="item_evaluacion">Asisto puntualmente a las actividades académicas.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="fomento_ceremonial" model="unefa.items_asis_puntualidad">
+            <field name="item_evaluacion">Fomento el cumplimiento del ceremonial del aula.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="concluyo_hora" model="unefa.items_asis_puntualidad">
+            <field name="item_evaluacion">Concluyo las clases a la hora establecida.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="realizo_planif" model="unefa.items_planificacion_registro_control">
+            <field name="item_evaluacion">Realizo la planificación de las actividades académicas de acuerdo con los contenidos programáticos.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="cumplo_planif" model="unefa.items_planificacion_registro_control">
+            <field name="item_evaluacion">Cumplo con la planificación de actividades académicas entregada a la coordinación de carrera.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="realizo_discu" model="unefa.items_planificacion_registro_control">
+            <field name="item_evaluacion">Realizo la discusión y firma del acta del contrato de aprendizaje -del plan de evaluación-, con los estudiantes al iniciar el periodo académico.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="registro_asist" model="unefa.items_planificacion_registro_control">
+            <field name="item_evaluacion">Registro el control de asistencia de los estudiantes.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="actualizo_regis" model="unefa.items_planificacion_registro_control">
+            <field name="item_evaluacion">Mantengo actualizado el registro diario de clases.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="trans_valores" model="unefa.items_interaccion_docente_estudiante">
+            <field name="item_evaluacion">Transmito valores de respeto, honestidad y disciplina.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="acti_cordial" model="unefa.items_interaccion_docente_estudiante">
+            <field name="item_evaluacion">Mantengo una actitud cordial y respetuosa hacia los estudiantes.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="buena_dispo" model="unefa.items_interaccion_docente_estudiante">
+            <field name="item_evaluacion">Muestro buena disposición ante las preguntas realizadas por los estudiantes.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="genero_oportu" model="unefa.items_interaccion_docente_estudiante">
+            <field name="item_evaluacion">Genero oportunidades para interactuar en asesorías o aclarar dudas.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="ordeno_conte" model="unefa.items_praxis_academica">
+            <field name="item_evaluacion">Ordeno y sistematizo el contenido de las clases.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="vocabu_expli" model="unefa.items_praxis_academica">
+            <field name="item_evaluacion">Utilizo un vocabulario explícito y técnico de acuerdo con los contenidos de la asignatura.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="relaciono_conte" model="unefa.items_praxis_academica">
+            <field name="item_evaluacion">Relaciono los contenidos de la asignatura con la carrera, utilizando ejemplos o experiencias.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="estimulo_invest" model="unefa.items_praxis_academica">
+            <field name="item_evaluacion">Estimulo a los estudiantes a investigar contenidos inherentes a la asignatura.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="continu_contenidos" model="unefa.items_estrategia_ensenanza">
+            <field name="item_evaluacion">Establezco continuidad con los contenidos vistos en las clases anteriores.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="enuncio_conte" model="unefa.items_estrategia_ensenanza">
+            <field name="item_evaluacion">Enuncio el contenido de los objetivos, explicando claramente las actividades a realizar durante las clases.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="fomento_interes" model="unefa.items_estrategia_ensenanza">
+            <field name="item_evaluacion">Fomento el interés de los estudiantes en los objetivos a desarrollar en clases.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="imple_diversas" model="unefa.items_estrategia_ensenanza">
+            <field name="item_evaluacion">Implemento diversas actividades que faciliten la comprensión de los objetivos propuestos.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="propicio_parti" model="unefa.items_estrategia_ensenanza">
+            <field name="item_evaluacion">Propicio la participación de los alumnos en clases.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="verifico_tema" model="unefa.items_estrategia_ensenanza">
+            <field name="item_evaluacion">Verifico si los estudiantes comprenden la temática desarrollada en las clases.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="destaco_ideas" model="unefa.items_estrategia_ensenanza">
+            <field name="item_evaluacion">Destaco y refuerzo las ideas principales de los contenidos desarrollados.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="utilizo_diver" model="unefa.items_recur_didacticos">
+            <field name="item_evaluacion">Utilizo diversos recursos para la enseñanza y materiales de apoyo que faciliten los aprendizajes.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="materiales_apoyo" model="unefa.items_recur_didacticos">
+            <field name="item_evaluacion">Los materiales de apoyo utilizados están acorde con los objetivos a alcanzar en la asignatura.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="criterios_ponde" model="unefa.items_eval_aprendizaje">
+            <field name="item_evaluacion">Doy a conocer a los estudiantes los instrumentos, criterios y ponderaciones que se utilizarán para realizar las evaluaciones durante el período académico.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="difer_tecnicas" model="unefa.items_eval_aprendizaje">
+            <field name="item_evaluacion">Utilizo diferentes técnicas de evaluación.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="entrego_resul" model="unefa.items_eval_aprendizaje">
+            <field name="item_evaluacion">Entrego los resultados de las evaluaciones dentro del lapso de cada corte.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="result_eval" model="unefa.items_eval_aprendizaje">
+            <field name="item_evaluacion">Los resultados de las evaluaciones son revisados y discutidos con los estudiantes.</field>
+            <field name="activo">True</field>
+        </record>
+
+    </data>
+</openerp>

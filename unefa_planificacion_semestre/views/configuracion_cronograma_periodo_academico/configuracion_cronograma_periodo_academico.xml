@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_unefa_conf_periodo_academico_form">
+            <field name="name">unefa_conf_periodo_academico.form</field>
+            <field name="model">unefa.conf.periodo_academico</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Período Académico">
+                    <header>
+                        <button name="activar_periodo" states="activo,inactivo" string ="Activar"  type="object" sequence="110" groups="base.group_system,unefa_configuracion.group_unefa_coordinador"/>
+                        <button name="desactivar_periodo" states="activo,inactivo" string ="Desactivar"  type="object" sequence="110" groups="base.group_system,unefa_configuracion.group_unefa_coordinador"/>
+                        <field name="state" widget="statusbar" statusbar_visible="activo,inactivo" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="periodo_academico" data-inputmask="'mask': '2099-9'"/>
+                            </group>
+                             <group>
+                                 <field name="fecha_inicio" />
+                                 <field name="fecha_fin" on_change = "validar_fecha_periodo(fecha_inicio,fecha_fin)"/>
+                                 
+                             </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+                        
+        <record model="ir.ui.view" id="view_unefa_conf_periodo_academico_tree">
+            <field name="name">unefa_conf_periodo_academico.tree</field>
+            <field name="model">unefa.conf.periodo_academico</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml" >
+                <tree string="Período Académico" colors="green:state=='activo';red:state=='inactivo';">
+                    <field name="periodo_academico"/>
+                    <field name="fecha_inicio"/>
+                    <field name="fecha_fin"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+                    
+        <record model="ir.actions.act_window" id="action_unefa_conf_periodo_academico">
+            <field name="name">Período Académico</field>
+            <field name="res_model">unefa.conf.periodo_academico</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+             
+        
+<!--
+        vista for para configurar las actividades
+-->
+
+        <record model="ir.ui.view" id="view_unefa_cronograma_actividades_form">
+            <field name="name">unefa_cronograma_actividades.form</field>
+            <field name="model">unefa.cronograma_actividades</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Actividades para el Cronograma Académico">
+                    <sheet>
+                        <group>
+                            <field name="actividad" />
+                            <field name="activo" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!--
+        vista tree para configurar las actividades 
+-->
+    
+        <record model="ir.ui.view" id="view_unefa_cronograma_actividades_tree">
+            <field name="name">unefa.cronograma_actividades.tree</field>
+            <field name="model">unefa.cronograma_actividades</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Actividades para el Cronograma Académico">
+                    <field name="actividad" />
+                    <field name="activo" />
+                </tree>
+            </field>
+        </record>
+
+<!--
+        action para configurar las actividades de inscripción
+-->
+        
+        <record model="ir.actions.act_window" id="action_unefa_cronograma_actividades">
+            <field name="name">Actividades para el Cronograma Académico</field>
+            <field name="res_model">unefa.cronograma_actividades</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        
+        
+        
+
+        
+        
+        <menuitem name="Cronograma Académico" id="menu_activ_inscrip" parent="unefa_configuracion.unefa_menu_configuracion" sequence="70"/>
+        <menuitem name="Actividades" id="inicio_actividades_inscripcion" parent="menu_activ_inscrip" action="action_unefa_cronograma_actividades" sequence="10"/>
+        
+        <menuitem name="Período académico" id="periodo_academico_id" parent="unefa_configuracion.unefa_menu_configuracion" sequence="60"/>
+        <menuitem name="Período académico" id="periodo_academico_id2" parent="periodo_academico_id" action="action_unefa_conf_periodo_academico" sequence="10"/>
+        
+        
+    </data>
+</openerp>

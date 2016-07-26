@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<report id="report_acta_notas_recuperacion"
+			string="Actas notas recuperación"
+			model="unefa.gestion_semestre"
+			report_type="qweb-pdf"
+			file="unefa_gestion_semestre.actas_nota_recuperacion"
+            name="unefa_gestion_semestre.actas_nota_recuperacion"
+            menu="True"/>
+        
+        
+        <record id="paperformat_acta_recuperacion" model="report.paperformat">
+            <field name="name">Acta de recuperación</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">25</field>
+            <field name="margin_bottom">25</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_spacing">15</field>
+        </record>
+        
+        <record id="report_acta_notas_recuperacion" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="paperformat_acta_recuperacion"/>
+        </record>    
+        
+	</data>
+</openerp>

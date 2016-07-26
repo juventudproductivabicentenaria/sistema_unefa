@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+	
+<template id="unefa_configuracion.lista_generales_estudiantes_qweb">
+    <style type="text/css">.fondoho{background-color: rgb(208, 236, 248);}</style>
+    <t t-call="unefa_usuarios.header_documentos_unefa"/>
+        <div class="page">
+            <table class="table table-condensed table-bordered table-striped mt32" colspan="12">
+                <thead>
+                    <tr>
+                        <th style="text-align:center; font-size: 10px; border: 1px solid black" colspan="1" class="fondoho">N°</th>
+                        <th style="text-align:center; font-size: 10px; border: 1px solid black" colspan="2" class="fondoho">CEDULA</th>
+                        <th style="text-align:center; font-size: 10px; border: 1px solid black" colspan="4" class="fondoho">APELLIDOS Y NOMBRES</th>
+                        <th style="text-align:center; font-size: 10px; border: 1px solid black" colspan="3" class="fondoho">CORREO ELECTRÓNICO</th>
+                        <th style="text-align:center; font-size: 10px; border: 1px solid black" colspan="2" class="fondoho">TELEFONO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-set="cont" t-value="1" />
+                    <t t-foreach="data['estudiante_data']" t-as="estudiante">
+                        <tr class="active" >
+                            <td style="text-align:left; font-size: 10px; border: 1px solid black" colspan="1"><t t-esc="cont"/></td>
+                            <td style="text-align:left; font-size: 10px; border: 1px solid black" colspan="2"><t t-esc="estudiante['cedula']"/></td>
+                            <td style="text-align:left; font-size: 10px; border: 1px solid black" colspan="4"><t t-esc="estudiante['nombre_completo']"/></td>
+                            <td style="text-align:left; font-size: 10px; border: 1px solid black" colspan="3"><t t-esc="estudiante['login']"/></td>
+                            <td style="text-align:left; font-size: 10px; border: 1px solid black" colspan="2"><t t-esc="estudiante['telefono']"/></td>
+                        </tr>
+                    <t t-set="cont" t-value="cont+1" />
+                    </t>
+                </tbody>
+            </table>
+        </div>
+</template>
+
+
+
+
+
+</data>
+</openerp>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="unefa_inscripcion_coordinador_asistente" model="ir.rule">
+            <field name="name">Inscripciones que puede ver el coordinador y el asistente</field>
+            <field name="model_id" ref="model_unefa_inscripcion_asignatura"/>
+            <field name="domain_force">[('carrera_id','=',user.carrera_id.id),('user_id.regimen','=',user.coordinacion_id.regimen)]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='True'/>
+            <field name="perm_create" eval='True'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('unefa_configuracion.group_unefa_coordinador')),
+                                        (4,ref('unefa_configuracion.group_unefa_asistente'))]"/>
+        </record>
+        
+        <record id="unefa_inscripcion_estudiante" model="ir.rule">
+            <field name="name">Inscripciones que puede ver el Estudiante</field>
+            <field name="model_id" ref="model_unefa_inscripcion_asignatura"/>
+            <field name="domain_force">[('user_id.user_id','=',user.id)]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='True'/>
+            <field name="perm_create" eval='True'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('unefa_configuracion.group_unefa_estudiantes'))]"/>
+        </record>
+        
+        [('id','in',[id_p.id for id_p in user.carrera_id.pensum_ids]),('state','=','activo')]
+        
+        
+    </data>
+</openerp>

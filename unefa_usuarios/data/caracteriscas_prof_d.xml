@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+    
+<!--
+            CARACTERÍSTICAS DEL PROFESOR
+                    CONDICIÓN
+-->
+    
+    <record id="condicion_profesor_ORDINARIO" model="unefa.condicion_profesor">
+        <field name="condicion">ORDINARIO</field>
+    </record>
+    
+    <record id="condicion_profesor_CONTRATADO" model="unefa.condicion_profesor">
+        <field name="condicion">CONTRATADO</field>
+    </record>
+    
+<!--
+            CARACTERÍSTICAS DEL PROFESOR
+                    DEDICACIÓN
+-->
+
+    <record id="dedicacion_profesor_TIEMPO_VARIABLE" model="unefa.dedicacion_profesor">
+        <field name="dedicacion">TIEMPO CONVENCIONAL</field>
+        <field name="cant_horas">12</field>
+    </record>
+    
+    <record id="dedicacion_profesor_MEDIO_TIEMPO" model="unefa.dedicacion_profesor">
+        <field name="dedicacion">MEDIO TIEMPO</field>
+        <field name="cant_horas">18</field>
+    </record>
+    
+    <record id="dedicacion_profesor_TIEMPO_EXCLUSIVO" model="unefa.dedicacion_profesor">
+        <field name="dedicacion">TIEMPO COMPLETO</field>
+        <field name="cant_horas">30</field>
+    </record>
+    
+    <record id="dedicacion_profesor_DEDICACION_EXCLUSIVA" model="unefa.dedicacion_profesor">
+        <field name="dedicacion">DEDICACIÓN EXCLUSIVA</field>
+        <field name="cant_horas">36</field>
+    </record>
+    
+<!--
+            CARACTERÍSTICAS DEL PROFESOR
+                    CATEGORÍA
+-->
+    
+    <record id="categoria_profesor_AUXILIAR_DOCENTE" model="unefa.categoria_profesor">
+        <field name="categoria">AUXILIAR DOCENTE</field>
+    </record>
+    
+    <record id="categoria_profesor_DOCENTE_INSTRUCTOR" model="unefa.categoria_profesor">
+        <field name="categoria">DOCENTE INSTRUCTOR</field>
+    </record>
+    
+    <record id="categoria_profesor_DOCENTE_ASISTENTE" model="unefa.categoria_profesor">
+        <field name="categoria">DOCENTE ASISTENTE</field>
+    </record>
+    
+    <record id="categoria_profesor_DOCENTE_AGREGADO" model="unefa.categoria_profesor">
+        <field name="categoria">DOCENTE AGREGADO</field>
+    </record>
+    
+    <record id="categoria_profesor_DOCENTE_ASISTENTE" model="unefa.categoria_profesor">
+        <field name="categoria">DOCENTE ASOCIADO</field>
+    </record>
+    
+    <record id="categoria_profesor_DOCENTE_TITULAR" model="unefa.categoria_profesor">
+        <field name="categoria">DOCENTE TITULAR</field>
+    </record>
+    
+    </data>
+</openerp>

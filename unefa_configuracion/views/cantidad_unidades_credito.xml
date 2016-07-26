@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <openerp>
+     <data>
+    <record model="ir.ui.view" id="view_unefa_cantidad_unidades_credito_form">
+        <field name="name">unefa_cantidades_credito.form</field>
+        <field name="model">unefa.cantidad_unidades_credito</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Unidades de crédito">
+                <sheet>
+                    <group col = "4">
+                        <field name="carrera_id" />
+                        <field name="turno" />
+                        <field name="cantidad_uc" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_unefa_cantidad_credito_tree">
+        <field name="name">unefa_cantidades_credito.tree</field>
+        <field name="model">unefa.cantidad_unidades_credito</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Unidades de crédito">
+                <field name="carrera_id" />
+                <field name="turno" />
+                <field name="cantidad_uc"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="action_unefa_cantidades_credito">
+        <field name="name">Unidades de crédito</field>
+        <field name="res_model">unefa.cantidad_unidades_credito</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+
+    
+    <menuitem name="Cantidad unidades de crédito" id="menu_antidad_unidad_credito" parent="unefa_menu_configuracion"  sequence="63" groups="base.group_system"/>
+    <menuitem name="Unidades de crédito" id="cantidad_creditos_id" parent="menu_antidad_unidad_credito" action="action_unefa_cantidades_credito" sequence="10" groups="base.group_system"/>
+
+    </data>
+</openerp>

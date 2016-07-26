@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="usuarios_unefa_coordinador_coordinador" model="ir.rule">
+            <field name="name">Usuarios que puede ver el coordinador</field>
+            <field name="model_id" ref="model_unefa_usuario_coordinador"/>
+            <field name="domain_force">[('user_id','in',[user.id]),]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='False'/>
+            <field name="perm_create" eval='False'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('unefa_configuracion.group_unefa_coordinador'))]"/>
+        </record>
+        <record id="usuarios_unefa_coordinador_asistente" model="ir.rule">
+            <field name="name">Usuarios que puede ver el coordinador</field>
+            <field name="model_id" ref="model_unefa_usuario_asistente"/>
+            <field name="domain_force">[('coordinacion_id','=',user.coordinacion_id.id)]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='True'/>
+            <field name="perm_create" eval='True'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('unefa_configuracion.group_unefa_coordinador'))]"/>
+        </record>
+        <record id="usuarios_unefa_coordinador_estudiante" model="ir.rule">
+            <field name="name">Usuarios que puede ver el coordinador</field>
+            <field name="model_id" ref="model_unefa_usuario_estudiante"/>
+            <field name="domain_force">[('carrera_id','=',user.coordinacion_id.carrera_id.id),('regimen','=',user.coordinacion_id.regimen)]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='True'/>
+            <field name="perm_create" eval='True'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('unefa_configuracion.group_unefa_coordinador'))]"/>
+        </record>
+        <record id="usuarios_unefa_coordinador_profesor" model="ir.rule">
+            <field name="name">Usuarios que puede ver el coordinador</field>
+            <field name="model_id" ref="model_unefa_usuario_profesor"/>
+            <field name="domain_force">[('carrera_id','=',user.coordinacion_id.carrera_id.id),('regimen','=',user.coordinacion_id.regimen)]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='True'/>
+            <field name="perm_create" eval='True'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('unefa_configuracion.group_unefa_coordinador'))]"/>
+        </record>
+        
+<!--
+        <record id="usuarios_unefa_coordinador_users" model="ir.rule">
+            <field name="name">Usuarios que puede ver el coordinador</field>
+            <field name="model_id" ref="model_res_users"/>
+            <field name="domain_force">[('carrera_id','=',user.coordinacion_id.carrera_id.id),('regimen','=',user.coordinacion_id.regimen)]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='True'/>
+            <field name="perm_create" eval='True'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('unefa_configuracion.group_unefa_coordinador')),
+                                        (4,ref('unefa_configuracion.group_unefa_asistente'))]"/>
+        </record>
+-->
+        
+        <record id="usuarios_unefa_asistente_asistente" model="ir.rule">
+            <field name="name">Usuarios que puede ver el Asistente de la Coordinación</field>
+            <field name="model_id" ref="model_unefa_usuario_asistente"/>
+            <field name="domain_force">[('user_id','in',[user.id])]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='False'/>
+            <field name="perm_create" eval='False'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('unefa_configuracion.group_unefa_asistente'))]"/>
+        </record>
+        <record id="usuarios_unefa_asistente_estudiante" model="ir.rule">
+            <field name="name">Usuarios que puede ver el Asistente de la Coordinación</field>
+            <field name="model_id" ref="model_unefa_usuario_estudiante"/>
+            <field name="domain_force">[('carrera_id','=',user.coordinacion_id.carrera_id.id),('regimen','=',user.coordinacion_id.regimen)]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='True'/>
+            <field name="perm_create" eval='True'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('unefa_configuracion.group_unefa_asistente'))]"/>
+        </record>
+        <record id="usuarios_unefa_asistente_profesor" model="ir.rule">
+            <field name="name">Usuarios que puede ver el Asistente de la coordinación</field>
+            <field name="model_id" ref="model_unefa_usuario_profesor"/>
+            <field name="domain_force">[('carrera_id','=',user.coordinacion_id.carrera_id.id),('regimen','=',user.coordinacion_id.regimen)]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='True'/>
+            <field name="perm_create" eval='True'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('unefa_configuracion.group_unefa_asistente'))]"/>
+        </record>
+        <record id="usuarios_unefa_estudiante_estudiante" model="ir.rule">
+            <field name="name">Usuarios que puede ver el Estudiante</field>
+            <field name="model_id" ref="model_unefa_usuario_estudiante"/>
+            <field name="domain_force">[('user_id','in',[user.id])]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='False'/>
+            <field name="perm_create" eval='False'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('unefa_configuracion.group_unefa_estudiantes'))]"/>
+        </record>
+        <record id="usuarios_unefa_profesor_profesor" model="ir.rule">
+            <field name="name">Usuarios que puede ver el profesor</field>
+            <field name="model_id" ref="model_unefa_usuario_profesor"/>
+            <field name="domain_force">[('user_id','in',[user.id])]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='False'/>
+            <field name="perm_create" eval='False'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('unefa_configuracion.group_unefa_profesores'))]"/>
+        </record>
+        
+
+ </data>
+</openerp>

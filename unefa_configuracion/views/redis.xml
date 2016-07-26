@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <openerp>
+     <data>
+    <!--REGISTRO DE REDIS-->
+    <record model="ir.ui.view" id="view_unefa_redi_form">
+        <field name="name">unefa_redi.form</field>
+        <field name="model">unefa.redi</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Dirección de Redis">
+                <sheet>
+                <group>
+                <field name="name"/>
+                <field name="codigo"/>
+                <field name="active"/>
+                </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_unefa_redi_tree">
+        <field name="name">unefa_redi.tree</field>
+        <field name="model">unefa.redi</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Dirección de Redis">
+                <field name="name"/>
+                <field name="codigo"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="action_unefa_redi">
+        <field name="name">REDIS</field>
+        <field name="res_model">unefa.redi</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+
+    
+    <menuitem name="Redis" id="menu_res_redi" parent="unefa_menu_direccion_configuracion" action="action_unefa_redi" sequence="5" groups="base.group_system"/>
+
+    </data>
+</openerp>

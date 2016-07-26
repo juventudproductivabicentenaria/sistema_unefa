@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+<!--
+        <menuitem name="nucleo" id="menu_nucleo"  action="action_unefa_nucleo" parent="menu_inicio" sequence="10"/>
+-->
+        <menuitem name="SIGECOORD" id="unefa_menu_principal_gestion" sequence="10"/>
+<!--
+        <menuitem name="Inicio" id="unefa_menu_inicio_gestion"  parent="unefa_menu_principal_gestion" sequence="20"/>
+-->
+        <menuitem name="Configuración" id="unefa_menu_configuracion" parent="unefa_menu_principal_gestion"  sequence="110" groups="base.group_system"/>
+        <menuitem name="Carrera" id="unefa_menu_carrera_configuracion" parent="unefa_menu_configuracion" sequence="10" groups="base.group_system"/>
+        <menuitem name="Coordinación" id="unefa_menu_coordinacion_configuracion" parent="unefa_menu_configuracion" sequence="20" groups="base.group_system"/>
+<!--
+        <menuitem name="Pisos y Aulas" id="unefa_menu_pisos_aulas_configuracion" parent="unefa_menu_configuracion" sequence="30" groups="base.group_system"/>
+-->
+        <menuitem name="Fuerza y Grado Militar" id="unefa_menu_fuerza_grado_militar_configuracion" parent="unefa_menu_configuracion" sequence="40" groups="base.group_system"/>
+        <menuitem name="Dirección" id="unefa_menu_direccion_configuracion" parent="unefa_menu_configuracion"  sequence="50" groups="base.group_system"/>
+        <menuitem name="Asignaturas" id="unefa_asignatura_configuracion" parent="unefa_menu_configuracion"  sequence="60" groups="base.group_system"/>
+        
+    </data>
+</openerp>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="1">
+	  
+<!--
+    <record id="main_company" model="res.company">
+		<field name="name">UNIVERSIDAD NACIONAL EXPERIMENTAL POLITÉCNICA
+DE LA FUERZA ARMADA NACIONAL</field>
+		<field name="rif">G-12345445-8</field>
+        <field name="logo" type="base64" file="unefa_configuracion/static/img/EscudoUNEFANUEVO.jpg"/>
+		<field name="estado_id" ref="geo_est_DTO"/>
+		<field name="municipio_id" ref="geo_mun_MIR_CHA"/>
+		<field name="parroquia_id" ref="geo_par_MIR_CHA_CAC"/>
+		<field name="sector">Chuao</field>
+		<field name="calle_avenida">Av. La Estancia, con Av. Caracas y Calle Holanda</field>
+		<field name="casa_apto">Edif. UNEFA, Frente al Edif. Banaven, Cubo Negro</field>
+        <field name="rml_header1">Excelencia Educativa Abierta al Pueblo</field>
+		<field name="website">http://www.unefa.edu.ve</field>
+		<field name="phone">02129082100</field>
+		<field name="fax">02129935062</field>
+		<field name="email">decano@cip.unefa.edu.ve</field>
+	</record>
+-->
+    
+    <record id="unefa_nucleo_caracas" model="unefa.nucleo">
+		<field name="nombre">Núcleo Caracas</field>
+		<field name="decano">TCNEL (AV) ANTONIO ALCANTARINI MICACCHIONI</field>
+		<field name="unidad_academica">SOC. Raibelys López</field>
+		<field name="tipo_sede">nucleo</field>
+        <field name="redi_id" ref="geo_redi_ZC"/>
+        <field name="region_id" ref="rgn_dfs_int_ZC"/>
+        <field name="telefono">02129082100</field>
+        <field name="estado_id" ref="geo_est_DTO"/>
+		<field name="municipio_id" ref="geo_mun_MIR_CHA"/>
+		<field name="parroquia_id" ref="geo_par_MIR_CHA_CAC"/>
+		<field name="direccion">Av. La Estancia, con Av. Caracas y Calle Holanda, Frente al Edif. Banaven, Cubo Negro, Chuao, Caracas.</field>
+	</record>
+    
+    <record id="unefa_nucleo_aragua" model="unefa.nucleo">
+		<field name="nombre">Núcleo Aragua</field>
+		<field name="decano">Coronel Miguel Ángel Castillo Flores</field>
+		<field name="unidad_academica">Lic. Mavil Hidalgo</field>
+		<field name="tipo_sede">nucleo</field>
+        <field name="redi_id" ref="geo_redi_ZC"/>
+        <field name="region_id" ref="rgn_dfs_int_ZC"/>
+        <field name="telefono">0243-5546421</field>
+        <field name="estado_id" ref="geo_est_ARA"/>
+		<field name="municipio_id" ref="geo_mun_ARA_GIR"/>
+		<field name="parroquia_id" ref="geo_par_ARA_GIR_UJG"/>
+		<field name="direccion">Carretera Vieja Maracay - Mariara, frente a la base aérea "Mariscal Sucre", Maracay.</field>
+	</record>
+    
+	</data>
+</openerp>

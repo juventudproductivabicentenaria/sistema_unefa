@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        
+
+        <record id="cronograma_actividades_preinsc" model="unefa.cronograma_actividades">
+            <field name="actividad">PREINSCRIPCIÓN</field>
+            <field name="activo">True</field>
+        </record>
+        
+        <record id="cronograma_actividades_insc" model="unefa.cronograma_actividades">
+            <field name="actividad">INSCRIPCIÓN</field>
+            <field name="activo">True</field>
+        </record>
+        
+        <record id="cronograma_actividades_contrato_aprendisaje" model="unefa.cronograma_actividades">
+            <field name="actividad">CONTRATO DE APRENDIZAJE</field>
+            <field name="activo">True</field>
+        </record>
+        
+        <record id="cronograma_actividades_primer_cohorte" model="unefa.cronograma_actividades">
+            <field name="actividad">PRIMER COHORTE</field>
+            <field name="activo">True</field>
+        </record>
+        
+        <record id="cronograma_actividades_segundo_cohorte" model="unefa.cronograma_actividades">
+            <field name="actividad">SEGUNDO COHORTE</field>
+            <field name="activo">True</field>
+        </record>
+        
+        <record id="cronograma_actividades_tercer_cohorte" model="unefa.cronograma_actividades">
+            <field name="actividad">TERCER COHORTE</field>
+            <field name="activo">True</field>
+        </record>
+        
+        <record id="cronograma_actividades_cuarto_cohorte" model="unefa.cronograma_actividades">
+            <field name="actividad">CUARTO COHORTE</field>
+            <field name="activo">True</field>
+        </record>
+        
+    </data>
+</openerp>

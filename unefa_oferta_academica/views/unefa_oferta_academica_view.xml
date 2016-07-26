@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+<!--
+        vista form para la oferta académica
+-->
+        
+        <record model="ir.ui.view" id="view_unefa_oferta_academica_form">
+            <field name="name">unefa.oferta_academica.form</field>
+            <field name="model">unefa.oferta_academica</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Oferta académica">
+                    <header>
+                        <button name="aprobar_oferta_academica" states="ejecucion" string = "Aprobar" type="object"/>
+                        <button name="ejecucion_oferta_academica" states="borrador" string = "Ejecutar" type="object"/>
+                        <button name="descargar_oferta_academica" states="borrador,ejecucion,aprobado" string = "Descargar Oferta Academica" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="borrador,ejecucion,aprobado" />
+                    </header>
+                    <sheet>
+                        <header>
+                            <h2 style="color:#7C7BAD"><center>Oferta Académica</center></h2>
+                        </header><br/>  
+                        <group col="4" colums="4">
+                            <field name="carrera_id" on_change="filtrar_coordinacion_oferta_academica()" widget="selection"/>
+                            <field name="create_date" string="Fecha" attrs="{'readonly': [('state','in',('aprobado','borrador','ejecucion'))]}"/>
+                            <field name="turno" />
+                            <field name="regimen" />
+                            <field name="modalidad_id" widget="selection"/>
+                            <field name="periodo_id" domain="[('state','=','activo')]" widget="selection"/>
+                        </group>
+                        <notebook>
+                            <page string="Pensum">
+                                <field name="pensum_ids">
+                                </field>
+                            </page>
+                        </notebook>
+                        <field name="observaciones" class="oe_inline" placeholder = "Observaciones..."/>
+                    </sheet>
+                    <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread" readonly="1" />
+                </div>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_oferta_academica_tree">
+        <field name="name">unefa.oferta_academica.tree</field>
+        <field name="model">unefa.oferta_academica</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Oferta Académica">
+                <field name="state" widget="statusbar" invisible = "1"/>
+                <field name="carrera_id" />
+                <field name="periodo_id" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+            
+        <record model="ir.actions.act_window" id="action_unefa_oferta_academica">
+            <field name="name">Oferta Académica</field>
+            <field name="res_model">unefa.oferta_academica</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        
+<!--
+        vista form y tree para los pensum a ofertar en un periódo académico
+-->
+        
+        <record model="ir.ui.view" id="view_unefa_pensum_oferta_academica_form">
+            <field name="name">unefa_pensum_oferta_academica.form</field>
+            <field name="model">unefa.pensum_oferta_academica</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Pensum a ofertar">
+                    <header>
+                        <field name="state" widget="statusbar" invisible = "1"/>
+                    </header>
+                    <sheet>
+                        <group col="4" colums="4">
+                            <field name="pensum_id" widget="selection" domain="[('carrera_id','=',parent.carrera_id),('turno','=',parent.turno),('state','=','activo')]"  on_change="cargar_semestre(pensum_id)"/>
+                        </group>
+                        <notebook>
+                            <page string="Semestres">
+                                <field name="semestres_ids">
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_pensum_oferta_academica_tree">
+        <field name="name">unefa_pensum_oferta_academica.tree</field>
+        <field name="model">unefa.pensum_oferta_academica</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Pensum a ofertar">
+                <field name="pensum_id" widget="selection" domain="[('carrera_id','=',parent.carrera_id),('turno','=',parent.turno),('state','=','activo')]"/>
+                <field name="state" invisible = "1"/>
+            </tree>
+        </field>
+    </record>
+    
+<!--
+    vista form y tree para los semestres a ofertar
+-->
+    
+    <record model="ir.ui.view" id="view_unefa_oferta_academica_semestre_form">
+        <field name="name">unefa_oferta_academica_semestre.form</field>
+        <field name="model">unefa.oferta_academica_semestre</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Semestre a ofertar">
+                <header>
+                    <field name="state" widget="statusbar" invisible = "1"/>
+                </header>
+                <sheet>
+                    <group col="4" colums="4">
+                        <field name="semestre_id" on_change="validar_existencia_pensum(parent.pensum_id,semestre_id)" domain="[('pensum_id','=',parent.pensum_id)]" widget="selection"/>
+                        <field name="tipo_estudiante_id" widget="selection"/>
+                    </group>
+                    <notebook>
+                        <page string="Secciones">
+                            <field name="state" invisible="1"/>
+                            <field name="secciones_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_unefa_oferta_academica_semestre_tree">
+        <field name="name">unefa_oferta_academica_semestre.tree</field>
+        <field name="model">unefa.oferta_academica_semestre</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Semestres">
+                <field name="state" widget="statusbar" invisible = "1"/>
+                <field name="semestre_id" />
+            </tree>
+        </field>
+    </record>
+    
+<!--
+    vista form y tree para secciones ofertadas
+-->
+    
+    
+    <record model="ir.ui.view" id="view_unefa_oferta_academica_seccion_form">
+        <field name="name">unefa_oferta_academica_seccion_form</field>
+        <field name="model">unefa.oferta_academica_seccion</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Secciones">
+                <header>
+                    <field name="state" widget="statusbar" invisible = "1"/>
+                </header>
+                <sheet>
+                    <group col="4" colums="4">
+                        <field name="seccion" style="width: 40%%"/>
+                    </group>
+                    <notebook>
+                        <page string="Asignaturas">
+                            <field name="asignaturas_ids" context="{'default_semestre_id':parent.semestre_id,}"
+                                    on_change="asinatura_default(parent.semestre_id)">
+                                <tree string="Asignaturas" editable="botton">
+                                    <field name="state" invisible="1" />
+                                    <field name="asignatura_id" domain="[('semestres_ids','=',default_semestre_id)]" widget="selection"/>
+                                    <field name="matricula"/>
+                                    <field name="profesor_id" widget="selection" domain="[('materias_ids','=',asignatura_id),('is_profesor','=',True)]"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    
+    <record model="ir.ui.view" id="view_unefa_oferta_academica_seccion_tree">
+        <field name="name">unefa_oferta_academica_seccion.tree</field>
+        <field name="model">unefa.oferta_academica_seccion</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Secciones">
+                <field name="state" widget="statusbar" invisible = "1"/>
+                <field name="seccion" />
+            </tree>
+        </field>
+    </record>
+    
+<!--
+    vista form y tree de la modalidad
+-->
+    
+    <record model="ir.ui.view" id="view_unefa_modalidad_form">
+        <field name="name">unefa.modalidad.form</field>
+        <field name="model">unefa.modalidad</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Modalidad">
+                <sheet>
+                    <group>
+                        <field name="modalidad" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    
+    <record model="ir.ui.view" id="view_unefa_modalidad_tree">
+        <field name="name">unefa-modalidad.tree</field>
+        <field name="model">unefa.modalidad</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Modalidad">
+                <field name="modalidad" />
+            </tree>
+        </field>
+    </record>
+        
+    <record model="ir.actions.act_window" id="action_unefa_modalidad">
+        <field name="name">Modalidad</field>
+        <field name="res_model">unefa.modalidad</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+<!--
+    vista form y tree del tipo de estudiante
+-->
+    
+    <record model="ir.ui.view" id="view_unefa_tipo_estudiante_form">
+        <field name="name">unefa.tipo_estudiante.form</field>
+        <field name="model">unefa.tipo_estudiante</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Tipo de Estudiante">
+                <sheet>
+                    <group>
+                        <field name="tipo_estudiante" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    
+    <record model="ir.ui.view" id="view_unefa_tipo_estudiante_tree">
+        <field name="name">unefa.tipo_estudiante.tree</field>
+        <field name="model">unefa.tipo_estudiante</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Tipo de Estudiante">
+                <field name="tipo_estudiante" />
+            </tree>
+        </field>
+    </record>
+        
+    <record model="ir.actions.act_window" id="action_unefa_tipo_estudiante">
+        <field name="name">Tipo de Estudiante</field>
+        <field name="res_model">unefa.tipo_estudiante</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        
+        <menuitem name="Gestión oferta académica" id="gestion_oferta_academica_id" parent="unefa_configuracion.unefa_menu_principal_gestion" sequence="135" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente,unefa_configuracion.group_unefa_profesores,unefa_configuracion.group_unefa_estudiantes"/>
+        <menuitem name="Gestión oferta académica" id="gestion_oferta_academica_id_desplegable" parent="gestion_oferta_academica_id"  groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+        <menuitem name="Oferta académica" id="oferta_academica_id" parent="gestion_oferta_academica_id_desplegable" action="action_unefa_oferta_academica" sequence="15" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+        
+        <menuitem name="Modalidad" id="modalidad_id" parent="unefa_configuracion.unefa_menu_configuracion" sequence="42" />
+        <menuitem name="Modalidad" id="modalidad_id2" parent="modalidad_id" action="action_unefa_modalidad" sequence="5"/>
+        
+        <menuitem name="Tipo de estudiante" id="tipo_estudiante_id" parent="unefa_configuracion.unefa_menu_configuracion" sequence="45"/>
+        <menuitem name="Tipo de estudiante" id="tipo_estudiante_id2" parent="tipo_estudiante_id" action="action_unefa_tipo_estudiante" sequence="5"/>
+    </data>
+</openerp>

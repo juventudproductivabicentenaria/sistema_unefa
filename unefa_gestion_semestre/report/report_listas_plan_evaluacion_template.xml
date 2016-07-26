@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <template id="unefa_gestion_semestre.plan_evaluacion_qweb">
+        
+         <div class="page">
+             <t t-call="unefa_usuarios.header_documentos_unefa"/>
+             
+             <h5 style="text-align: center">PLAN DE EVALUACIÓN</h5><br/>
+             <t t-foreach="data['gestion_semestre_data']" t-as="gestion">
+                <div style="text-align: left" class="col-xs-12">
+                    <div class="col-xs-3" style="font-size: 10px">
+                        <strong>CARRERA: </strong> <t t-esc="gestion['carrera_id']['nombre']"/>
+                    </div>
+                    <div class="col-xs-3" style="font-size: 10px">
+                        <strong>ASIGNATURA: </strong> <t t-esc="gestion['asignatura_id']['asignatura']"/>
+                    </div>
+                    <div class="col-xs-3" style="font-size: 10px">
+                        <strong>CODIGO: </strong><t t-esc="gestion['asignatura_id']['codigo_asignatura']"/>
+                    </div>
+                    <div class="col-xs-3" style="font-size: 10px"><strong>REGÍMEN:</strong>
+                        <t t-if="gestion['turno'] == 'nocturno'">
+                            NOCTURNO
+                        </t>
+                        <t t-if="gestion['turno'] == 'diurno'">
+                            DIURNO
+                        </t>
+                    </div>
+                </div>
+                <div style="text-align: left" class="col-xs-12">
+                    <div class="col-xs-3" style="font-size: 10px">
+                        <strong>SEMESTRE: </strong><t t-esc="gestion['seccion_id']['oferta_semestre_id']['semestre_id']['semestre']"/>
+                    </div>
+                    <div class="col-xs-3" style="font-size: 10px">
+                        <strong>SECCIÓN: </strong><t t-esc="gestion['seccion_id']['seccion']"/>
+                    </div>
+                    <div class="col-xs-3" style="font-size: 10px">
+                        <strong>AULA: </strong><t t-esc="data['horario_seccion_data']['aula_id']['numero']"/>
+                    </div>
+                    <div class="col-xs-3" style="font-size: 10px">
+                        <strong>PERÍODO: </strong><t t-esc="gestion['periodo_id']['periodo_academico']"/>
+                    </div>
+                </div>
+                <div style="text-align: left" class="col-xs-12">
+                    <div class="col-xs-3" style="font-size: 10px">
+                        <strong>PROFESOR (A): </strong><t t-esc="gestion['profesor_id']['nombre_completo']"/> <strong>CEDULA: </strong><t t-esc="gestion['profesor_id']['cedula']"/>
+                    </div>
+                    <div class="col-xs-3" style="font-size: 10px">
+                        <strong>Horas Semanales: </strong><t t-esc="gestion['asignatura_id']['total_horas']"/>
+                    </div>
+                    <div class="col-xs-3" style="font-size: 10px">
+                        <strong>COORDINADOR (A) : </strong><t t-esc="data['coordinador_data']['nombre_completo']"/>
+                    </div>
+                    <div class="col-xs-3" style="font-size: 10px">
+                        <strong>ESTUDIANTES INSCRITOS: </strong><t t-esc="data['estudiante']"/> 
+                    </div>
+                </div>
+                <p style="color: white">Plan de Evaluación</p>
+                <table colspan="12" class="table table-condensed table-bordered" style="border: 1px solid black" >
+                    <thead>
+                        <tr>
+                            <th colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>COHORTE</strong></th>
+                            <th colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>FECHA</strong></th>
+                            <th colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>SEMANA</strong></th>
+                            <th colspan="3" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>ACTIVIDAD EVALUATIVA</strong></th>
+                            <th colspan="3" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>CONTENIDO</strong></th>
+                            <th colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>PONDERACIÓN</strong></th>
+                            <th colspan="2" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>OBSERVACIONES</strong></th>
+                        </tr>
+                    </thead>
+                    <body>
+                        <t t-foreach="data['gestion_semestre_data']['plan_evaluacion_ids']" t-as="plan">
+                            <tr>
+                                <td colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="plan['cohorte']"/></td>
+                                <td colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="plan['fecha_evaluacion']"/></td>
+                                <td colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="plan['semana_evaluacion']"/></td>
+                                <td colspan="3" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="plan['actividad_evaluativa']"/></td>
+                                <td colspan="3" class="" style="border: 1px solid black;color: black;font-size: 10px">
+                                    <t t-foreach="plan['contenido_ids']" t-as="contenido">
+                                        <t t-esc="contenido['unidad']"/><br/>
+                                    </t>
+                                </td>
+                                <td colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="plan['ponderacion']"/></td>
+                                <td colspan="2" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="plan['observaciones']"/></td>
+                            </tr>
+                        </t>
+                    </body>
+                </table>
+                
+            </t>
+        </div>
+    </template>
+</data>
+</openerp>

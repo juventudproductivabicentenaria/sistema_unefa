@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        
+        <record id="asiste_puntual" model="unefa.items_competencia_profesional">
+            <field name="item_evaluacion">Asiste puntualmente a clases.</field>
+            <field name="activo">True</field>
+        </record>
+       <record id="concluye_clase" model="unefa.items_competencia_profesional">
+            <field name="item_evaluacion">Concluye la clase a la hora establecida.</field>
+            <field name="activo">True</field>
+        </record>
+       <record id="expre_voz_clara" model="unefa.items_competencia_profesional">
+            <field name="item_evaluacion">Se expresa en voz clara (entonacion y pronunciacion adecuada).</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="explic_claridad" model="unefa.items_competencia_profesional">
+            <field name="item_evaluacion">Explica con claridad los contenidos de la asignatura.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="respond_certeza" model="unefa.items_competencia_profesional">
+            <field name="item_evaluacion">Responde con certeza, seguridad y precisión las preguntas formuladas por los estudiantes.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="obser_planif" model="unefa.items_competencia_profesional">
+            <field name="item_evaluacion">Se observa planificación por parte de profesor en el desarrollo de sus clases.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="existe_clima_respeto" model="unefa.items_interaccion_docente_estudiante_2">
+            <field name="item_evaluacion">Existe un clima de respeto, comunicacion y cordialidad con los estudiantes.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="promueve_colab" model="unefa.items_interaccion_docente_estudiante_2">
+            <field name="item_evaluacion">Promueve la colaboración entre los estudiantes, a traves de las actividades planificadas</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="estimul_interes" model="unefa.items_interaccion_docente_estudiante_2">
+            <field name="item_evaluacion">Estímula el interes y la atención de los estudiantes por los contenidos de la asignatura.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="muestra_disposicion" model="unefa.items_interaccion_docente_estudiante_2">
+            <field name="item_evaluacion">Muestra buena disposición ante las preguntas formuladas por los estudiantes.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="establec_continuidad" model="unefa.items_estrategia_ensenanza_2">
+            <field name="item_evaluacion">Establece continuidad con los contenidos vistos en clases anteriores.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="destaca_refuerza" model="unefa.items_estrategia_ensenanza_2">
+            <field name="item_evaluacion">Destaca y refuerza las ideas principales de los contenidos.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="verific_durante" model="unefa.items_estrategia_ensenanza_2">
+            <field name="item_evaluacion">Verifica durante las clases si los estudiantes comprenden lo explicado.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="propicia_estudent" model="unefa.items_estrategia_ensenanza_2">
+            <field name="item_evaluacion">Propicia que los estudiantes identifiquen sus progresos y dificultades.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="reorienta_estrateg" model="unefa.items_estrategia_ensenanza_2">
+            <field name="item_evaluacion">Propicia las estrategias de enseñanza, de acuerdo con los resultados obtenidos en evaluaciones realizadas.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="utiliza_recursos" model="unefa.items_recursos">
+            <field name="item_evaluacion">Utiliza según recursos instruccionales (pizzarrón, retroproyecto, rotafolio, laptop, video beam, internet, gráficos, láminas, transparencias, mapas, diapositivas, peliculas, fotografías, grabaciones, guías, problemarios, lecturas, carteleras, entre otras).</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="materiales_instrucc" model="unefa.items_recursos">
+            <field name="item_evaluacion">Los materiales instruccionales (problemarios, guías, mapas, material digitalizado ubicado en paginas web o blog, entre otros) son pertinentes para alcanzar los objetivos de la asignatura.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="estimu_materiales" model="unefa.items_recursos">
+            <field name="item_evaluacion">Estímula en los estudiantes el uso de materiales instruccionales.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="recomienda_bibliog" model="unefa.items_recursos">
+            <field name="item_evaluacion">Recomienda bibliografía acorde con la asignatura.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="conocer_evaluac" model="unefa.items_aprendizajes_2">
+            <field name="item_evaluacion">Da a conocer el plan de evaluación a los estudiantes, al inicio del semestre.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="ejecut_discus" model="unefa.items_aprendizajes_2">
+            <field name="item_evaluacion">Se ejecutó la discusión y firma de acta de acuerdos del plan de evaluación entre los estudiantes y el profesor de la asignatura.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="utiliz_diferent" model="unefa.items_aprendizajes_2">
+            <field name="item_evaluacion">utiliza diferentes ténicas de evaluacion (pruebas, proyectos, talleres, ensayos, resumenes, trabajos escritos, entre otros).</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="cont_evaluados" model="unefa.items_aprendizajes_2">
+            <field name="item_evaluacion">Los contenidos evaluados se corresponden con los explicados.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="entrega_resultados" model="unefa.items_aprendizajes_2">
+            <field name="item_evaluacion">Entrega el resultado de las evaluaciones, en una lapso máximo de dos (2) semanas despues de su aplicación.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="resultados_evaluados" model="unefa.items_aprendizajes_2">
+            <field name="item_evaluacion">Los resultados de las evaluaciones son revisados y analizados conjuntamente con los estudiantes.</field>
+            <field name="activo">True</field>
+        </record>
+        
+    </data>
+</openerp>

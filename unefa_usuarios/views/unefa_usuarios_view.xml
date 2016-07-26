@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <openerp>
+        <data>
+            
+            
+<!--
+    vista form y tree para el registro de estudiantes
+-->
+    
+            <record id="view_users_form_estudiante_unefa" model="ir.ui.view">
+                    <field name="name">view_users_form_estudiante_unefa_form</field>
+                    <field name="model">unefa.usuario_estudiante</field>
+                    <field name="arch" type="xml">
+                        <form string="Estudiantes UNEFA">
+                            <header>
+                                <button name="crear_ficha_estudiante" string="Ficha Estudiante"  type="object" class="oe_highlight" groups="base.group_system,unefa_configuracion.group_unefa_coordinador"/>
+                                <button name="descargar_historial_notas" string="Historial de notas"  type="object" class="oe_highlight" groups="base.group_system,unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_estudiantes"/>
+                            </header>
+                            <sheet>
+                                <header>
+                                    <h2 style="color:#7C7BAD"><center>Estudiante</center></h2>
+                                </header><br/>
+                                <field name="id" invisible="1"/>
+                                <div class="oe_right oe_button_box">
+                                    <button string="Cambiar Contraseña" type="action" name="%(base.change_password_wizard_action)d"
+                                        class="oe_link" help="Cambiar Contraseña."/>
+                                    <br/>
+                                    <br/>
+                                        <label for="fecha_ingreso" class="oe_edit_only"/>
+                                        <field name="fecha_ingreso" />
+                                </div>
+                                <field name="image" widget='image' class="oe_avatar oe_left" options='{"preview_image": "image_medium"}'/>
+                                <div class="oe_title">
+                                    <div>
+                                    <div class="col-md-6">
+                                        <label for="name" string="Primer Nombre" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="name" style="width: 100%%"/></h1>
+                                        <label for="primer_apellido" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="primer_apellido" style="width: 100%%"/></h1>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="segundo_nombre" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="segundo_nombre" style="width: 100%%"/></h1>
+                                        <label for="segundo_apellido" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="segundo_apellido" style="width: 100%%"/></h1>
+                                    </div>
+                                    </div>
+                                    <field name="email" invisible="1"/>
+                                    <label for="login" class="oe_edit_only" string="Correo Electrónico" placeholder="nombre@email.com"/>
+                                    <h2><field name="login" string="Correo Electrónico"  placeholder="nombre@email.com" on_change="on_change_login(login)"/></h2>
+                                    <group>
+                                        <field name="active" string="Activo"/>
+                                        <field name="is_comandante_curso" />
+                                    </group>
+                                </div>
+                                <notebook colspan="4">
+                                    <page string="Datos Personales">
+                                        <group colspan="4" col="4" String="Datos Personales">
+                                            <field name="cedula" data-inputmask="'mask': '99999999'"/>
+                                            <field name="nacionalidad"/>
+                                            <field name="estado_civil"/>
+                                            <field name="fecha_nacimiento" on_change="validar_fecha_nacimiento(fecha_nacimiento)"/>
+                                            <field name="sexo"/>
+                                            <field name="condicion"/>
+                                            <field name="fuerza_id" on_change="cp_limpiar_campos('grado_id')" attrs="{'invisible': [('condicion','!=','militar')],'required': [('condicion','=','militar')]}" widget="selection" />
+                                            <field name="grado_id" attrs="{'invisible': [('condicion','!=','militar')],'required': [('condicion','=','militar')]}" domain="[('fuerza_id','in',fuerza_id)]" widget="selection"/>
+                                            <field name="telefono" placeholder="Por ejemplo 0212-1234567" data-inputmask="'mask': '9999-9999999'"/>
+                                            <field name="telefono_local" placeholder="Por ejemplo 0212-1234567" data-inputmask="'mask': '9999-9999999'"/>
+                                            
+                                        </group>
+                                        <group col="4">
+                                            <group String="Datos Académicos">
+                                                <field name="carrera_id" on_change="filtrar_carreras_regimen()" widget="selection" readonly="True"/>
+                                                <field name="regimen"  readonly="True"/>
+                                                <field name="pensum_id" widget="selection" domain="[('state','=','activo')]"/>
+                                            </group>
+                                            <group String="Dirección de Habitación">
+                                                <field name="estado_id" on_change="cp_limpiar_campos('municipio_id')" widget="selection"/>
+                                                <field name="municipio_id" on_change="cp_limpiar_campos('parroquia_id')" domain="[('estado_id','=',[estado_id])]" widget="selection"/>
+                                                <field name="parroquia_id" domain="[('municipio_id','=',[municipio_id])]" widget="selection"/>
+                                                <field name="sector"/>
+                                                <field name="calle_avenida"/>
+                                                <field name="casa_apto"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="Permisos de Acceso">
+                                        <group col="4">
+                                            <field name="groups_id" string="Grupos" options="{'no_create':True}" on_change="rol_usuario_default('Estudiante')" domain="[('name','=','Estudiantes')]"/>
+                                        </group>
+                                    </page>
+                                </notebook>
+                            </sheet>
+                        </form>
+                    </field>
+                </record>
+                
+                <record id="view_usuario_estudiante_unefa" model="ir.ui.view">
+                    <field name="name">res.users.tree</field>
+                    <field name="model">unefa.usuario_estudiante</field>
+                    <field name="arch" type="xml">
+                        <tree string="Registro de Estudiantes">
+                            <field name="nombre_completo" string="Nombre Completo"/>
+                            <field name="cedula"/>
+                            <field name="login" string="Correo Electrónico" placeholder="nombre@email.com"/>
+                            <field name="login_date" string="Ultima Conexión"/>
+                        </tree>
+                    </field>
+                </record>
+                
+            
+                <record model="ir.actions.act_window" id="action_usuarios_estudiante_unefa">
+                    <field name="name">Registro de Estudiantes</field>
+                    <field name="res_model">unefa.usuario_estudiante</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="help" type="html">
+                    <p class="oe_view_nocontent_create">
+                        Aquí se registran los estudiantes.
+                    </p>
+                    </field>
+                </record>
+               
+                
+<!--
+    vista form y tree para los usuarios profesores
+-->
+           
+            <record id="view_users_form_profesores_unefa" model="ir.ui.view">
+                    <field name="name">view_users_form_profesores_unefa_form</field>
+                    <field name="model">unefa.usuario_profesor</field>
+                    <field name="arch" type="xml">
+                        <form string="Profesores UNEFA">
+                            <header>
+                                <button name="crear_ficha_profesores" string="Ficha Profesor"  type="object" class="oe_highlight" groups="base.group_system,unefa_configuracion.group_unefa_coordinador"/>
+                            </header>
+                            <sheet>
+                                <header>
+                                    <h2 style="color:#7C7BAD"><center>Profesor</center></h2>
+                                </header><br/>
+                                <field name="id" invisible="1"/>
+                                <div class="oe_right oe_button_box">
+                                    <button string="Cambiar Contraseña" type="action" name="%(base.change_password_wizard_action)d"
+                                        class="oe_link" help="Cambiar Contraseña."/>
+                                    <br/>
+                                    <br/>
+                                        <label for="fecha_ingreso" class="oe_edit_only"/>
+                                        <field name="fecha_ingreso"/>
+                                </div>
+                                <field name="image" widget='image' class="oe_avatar oe_left" options='{"preview_image": "image_medium"}'/>
+                                <div class="oe_title">
+                                    <div>
+                                    <div class="col-md-6">
+                                        <label for="name" string="Primer Nombre" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="name" style="width: 100%%"/></h1>
+                                        <label for="primer_apellido" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="primer_apellido" style="width: 100%%"/></h1>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="segundo_nombre" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="segundo_nombre" style="width: 100%%"/></h1>
+                                        <label for="segundo_apellido" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="segundo_apellido" style="width: 100%%"/></h1>
+                                    </div>
+                                    </div>
+                                    <field name="email" invisible="1"/>
+                                    <label for="login" class="oe_edit_only" string="Correo Electrónico" placeholder="nombre@email.com"/>
+                                    <h2><field name="login" string="Correo Electrónico" placeholder="nombre@email.com" on_change="on_change_login(login)"/></h2>
+                                    <group>
+                                        <field name="active" string="Activo"/>
+                                    </group>
+                                </div>
+                                <notebook colspan="4">
+                                    <page string="Datos Personales">
+                                        <group colspan="4" col="4" String="Datos Personales">
+                                            <field name="cedula" data-inputmask="'mask': '99999999'"/>
+                                            <field name="nacionalidad"/>
+                                            <field name="estado_civil"/>
+                                            <field name="fecha_nacimiento" on_change="validar_fecha_nacimiento(fecha_nacimiento)"/>
+                                            <field name="sexo"/>
+                                            <field name="condicion"/>
+                                            <field name="fuerza_id" on_change="cp_limpiar_campos('grado_id')" attrs="{'invisible': [('condicion','!=','militar')],'required': [('condicion','=','militar')]}" widget="selection"/>
+                                            <field name="grado_id" attrs="{'invisible': [('condicion','!=','militar')],'required': [('condicion','=','militar')]}" widget="selection" domain="[('fuerza_id','in',fuerza_id)]"/>
+                                            <field name="telefono" placeholder="Por ejemplo 0212-1234567" data-inputmask="'mask': '9999-9999999'"/>
+                                            <field name="telefono_local" placeholder="Por ejemplo 0212-1234567" data-inputmask="'mask': '9999-9999999'"/>
+                                        </group>
+                                        <group col="4">
+                                         <group String="Datos Académicos">
+                                            <field name="carrera_id" on_change="filtrar_carreras_regimen()" widget="selection" readonly="True" />
+                                            <field name="regimen"  readonly="True"/>
+                                            <field name="condicion_id" widget="selection"/>
+                                            <field name="dedicacion_id" widget="selection"/>
+                                            <field name="categoria_id" widget="selection"/>
+                                        </group>
+                                        <group String="Dirección de Habitación">
+                                            <field name="estado_id" on_change="cp_limpiar_campos('municipio_id')" widget="selection"/>
+                                            <field name="municipio_id" on_change="cp_limpiar_campos('parroquia_id')" domain="[('estado_id','=',[estado_id])]" widget="selection"/>
+                                            <field name="parroquia_id" domain="[('municipio_id','=',[municipio_id])]" widget="selection"/>
+                                            <field name="sector"/>
+                                            <field name="calle_avenida"/>
+                                            <field name="casa_apto"/>
+                                        </group>
+                                        </group>
+                                    </page>
+                                    <page string="Permisos de Acceso">
+                                        <group col="4">
+                                            <field name="groups_id" string="Grupos" options="{'no_create':True}" on_change="rol_usuario_default('Profesor')" domain="[('name','=','Profesor')]"/>
+                                        </group>
+                                    </page>
+                                </notebook>
+                                <notebook>
+                                    <page string="Asignaturas">
+                                        <field name="materias_ids" domain="[('carrera_ids','=',carrera_id)]"/>
+                                    </page>
+                                </notebook>
+                            </sheet>
+                        </form>
+                    </field>
+                </record>
+                
+                
+                
+                <record id="view_usuario_profesores_unefa" model="ir.ui.view">
+                    <field name="name">res.users.tree</field>
+                    <field name="model">unefa.usuario_profesor</field>
+                    <field name="arch" type="xml">
+                        <tree string="Registro de Profesores">
+                            <field name="nombre_completo" string="Nombre Completo"/>
+                            <field name="cedula"/>
+                            <field name="login" string="Correo Electrónico" placeholder="nombre@email.com"/>
+                            <field name="login_date" string="Ultima Conexión"/>
+                        </tree>
+                    </field>
+                </record>
+                
+                <record model="ir.actions.act_window" id="action_usuarios_profesores_unefa">
+                    <field name="name">Registro de Profesores</field>
+                    <field name="res_model">unefa.usuario_profesor</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="help" type="html">
+                    <p class="oe_view_nocontent_create">
+                        Aquí se registran los profesores.
+                    </p>
+                    </field>
+                </record>
+           
+           
+<!--
+           vista form y tree para el registro de coordinadores
+-->
+           
+
+                <record id="view_users_form_coordinador_unefa" model="ir.ui.view">
+                    <field name="name">view_users_form_coordinador_unefa_form</field>
+                    <field name="model">unefa.usuario_coordinador</field>
+                    <field name="arch" type="xml">
+                        <form string="Coordinadores UNEFA">
+                            <sheet>
+                                <header>
+                                    <h2 style="color:#7C7BAD"><center>Coordinador</center></h2>
+                                </header><br/>
+                                <field name="id" invisible="1"/>
+                                <div class="oe_right oe_button_box">
+                                    <button string="Cambiar Contraseña" type="action" name="%(base.change_password_wizard_action)d"
+                                        class="oe_link" help="Cambiar Contraseña."/>
+                                    <br/>
+                                    <br/>
+                                        <label for="fecha_ingreso" class="oe_edit_only"/>
+                                        <field name="fecha_ingreso"/>
+                                </div>
+                                <field name="image" widget='image' class="oe_avatar oe_left" options='{"preview_image": "image_medium"}'/>
+                                <div class="oe_title">
+                                    <div>
+                                    <div class="col-md-6">
+                                        <label for="name" string="Primer Nombre" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="name" style="width: 100%%"/></h1>
+                                        <label for="primer_apellido" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="primer_apellido" style="width: 100%%"/></h1>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="segundo_nombre" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="segundo_nombre" style="width: 100%%"/></h1>
+                                        <label for="segundo_apellido" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="segundo_apellido" style="width: 100%%"/></h1>
+                                    </div>
+                                    </div>
+                                    <field name="email" invisible="1"/>
+                                    <label for="login" class="oe_edit_only" string="Correo Electronico"/>
+                                    <h2><field name="login" string="Correo Electrónico" placeholder="nombre@email.com" on_change="on_change_login(login)"/></h2>
+                                    <group>
+                                        <field name="active" string="Activo"/>
+                                        <field name="is_profesor" string="Profesor"/>
+                                    </group>
+                                </div>
+                                <notebook colspan="4">
+                                    <page string="Datos Personales">
+                                        <group colspan="4" col="4" String="Datos Personales">
+                                            <field name="cedula" data-inputmask="'mask': '99999999'"/>
+                                            <field name="nacionalidad"/>
+                                            <field name="estado_civil"/>
+                                            <field name="fecha_nacimiento" on_change="validar_fecha_nacimiento(fecha_nacimiento)"/>
+                                            <field name="sexo"/>
+                                            <field name="condicion"/>
+                                            <field name="fuerza_id" on_change="cp_limpiar_campos('grado_id')" attrs="{'invisible': [('condicion','!=','militar')],'required': [('condicion','=','militar')]}" widget="selection"/>
+                                            <field name="grado_id" attrs="{'invisible': [('condicion','!=','militar')],'required': [('condicion','=','militar')]}" widget="selection" domain="[('fuerza_id','in',fuerza_id)]"/>
+                                            <field name="telefono" placeholder="Por ejemplo 0212-1234567" data-inputmask="'mask': '9999-9999999'"/>
+                                            <field name="telefono_local" placeholder="Por ejemplo 0212-1234567" data-inputmask="'mask': '9999-9999999'"/>
+                                        </group>
+                                        <group col="4">
+                                         <group String="Datos Académicos">
+                                             <field name="coordinacion_id" on_change="carrera_default(coordinacion_id)" widget="selection" domain="[('state','=','activo')]"/>
+                                             <field name="condicion_id" widget="selection" attrs="{'invisible': [('is_profesor','!=',True)],'required': [('is_profesor','=',True)]}"/>
+                                             <field name="dedicacion_id" widget="selection" attrs="{'invisible': [('is_profesor','!=',True)],'required': [('is_profesor','=',True)]}"/>
+                                             <field name="categoria_id" widget="selection" attrs="{'invisible': [('is_profesor','!=',True)],'required': [('is_profesor','=',True)]}"/>
+                                             <field name="carrera_id" invisible="1"/>
+                                        </group>
+                                        <group String="Dirección de Habitación">
+                                            <field name="estado_id" on_change="cp_limpiar_campos('municipio_id')" widget="selection"/>
+                                            <field name="municipio_id" on_change="cp_limpiar_campos('parroquia_id')" domain="[('estado_id','=',[estado_id])]" widget="selection"/>
+                                            <field name="parroquia_id" domain="[('municipio_id','=',[municipio_id])]" widget="selection"/>
+                                            <field name="sector"/>
+                                            <field name="calle_avenida"/>
+                                            <field name="casa_apto"/>
+                                        </group>
+                                        </group>
+                                    </page>
+                                    <page string="Permisos de Acceso">
+                                        <group col="4">
+                                            <field name="groups_id" string="Grupos" options="{'no_create':True}" on_change="rol_usuario_default('Coordinador')" domain="[('name','in',['Coordinador','Profesor'])]"/>
+                                        </group>
+                                    </page>
+                                </notebook>
+                                <notebook attrs="{'invisible': [('is_profesor','!=',True)]}" domain="[('carrera_ids','=',carrera_id)]">
+                                    <page string="Asignaturas">
+                                        <field name="materias_ids"/>
+                                    </page>
+                                </notebook>
+                            </sheet>
+                        </form>
+                    </field>
+                </record>
+                
+                <record id="view_usuario_coordinador_unefa" model="ir.ui.view">
+                    <field name="name">res.users.tree</field>
+                    <field name="model">unefa.usuario_coordinador</field>
+                    <field name="arch" type="xml">
+                        <tree string="Registro de Coordinadores">
+                            <field name="nombre_completo" string="Nombre Completo"/>
+                            <field name="cedula"/>
+                            <field name="login" string="Correo Electrónico" placeholder="nombre@email.com" />
+                            <field name="login_date" string="Ultima Conexión" />
+                        </tree>
+                    </field>
+                </record>
+                
+                <record model="ir.actions.act_window" id="action_usuarios_coordinadores_unefa">
+                    <field name="name">Registro de Coordinadores</field>
+                    <field name="res_model">unefa.usuario_coordinador</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="help" type="html">
+                        <p class="oe_view_nocontent_create">
+                            Aquí se registran los coordinadores.
+                        </p>
+                    </field>
+                </record>
+           
+
+<!--
+            vista form y tree para registro de asistentes
+-->
+
+
+                <record id="view_users_form_asistente_unefa" model="ir.ui.view">
+                    <field name="name">view_users_form_asistente_unefa_form</field>
+                    <field name="model">unefa.usuario_asistente</field>
+                    <field name="arch" type="xml">
+                        <form string="Profesor Adjunto a Coordinaciones UNEFA">
+                            <sheet>
+                                <header>
+                                    <h2 style="color:#7C7BAD"><center>Profesor Adjunto</center></h2>
+                                </header><br/>
+                                        <field name="id" invisible="1"/>
+                                <div class="oe_right oe_button_box">
+                                    <button string="Cambiar Contraseña" type="action" name="%(base.change_password_wizard_action)d"
+                                        class="oe_link" help="Cambiar Contraseña."/>
+                                    <br/>
+                                    <br/>
+                                        <label for="fecha_ingreso" class="oe_edit_only"/>
+                                        <field name="fecha_ingreso"/>
+                                    
+                                </div>
+                                <field name="image" widget='image' class="oe_avatar oe_left" options='{"preview_image": "image_medium"}'/>
+                                
+                                <div class="oe_title">
+                                    <div>
+                                    <div class="col-md-6">
+                                        <label for="name" string="Primer Nombre" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="name" style="width: 100%%"/></h1>
+                                        <label for="primer_apellido" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="primer_apellido" style="width: 100%%"/></h1>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="segundo_nombre" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="segundo_nombre" style="width: 100%%"/></h1>
+                                        <label for="segundo_apellido" class="oe_edit_only" style="width: 25%%"/>
+                                        <h1><field name="segundo_apellido" style="width: 100%%"/></h1>
+                                    </div>
+                                    </div>
+                                    <field name="email" invisible="1"/>
+                                    <label for="login" class="oe_edit_only" string="Correo Electrónico"/>
+                                    <h2><field name="login" string="Correo Electrónico" placeholder="nombre@email.com" on_change="on_change_login(login)"/></h2>
+                                    <group>
+                                        <field name="active" string="Activo"/>
+                                        <field name="is_profesor" string="Profesor"/>
+                                    </group>
+                                </div>
+                                <notebook colspan="4">
+                                    <page string="Datos Personales">
+                                        <group colspan="4" col="4" String="Datos Personales">
+                                            <field name="cedula" data-inputmask="'mask': '99999999'"/>
+                                            <field name="nacionalidad"/>
+                                            <field name="estado_civil"/>
+                                            <field name="fecha_nacimiento" on_change="validar_fecha_nacimiento(fecha_nacimiento)"/>
+                                            <field name="sexo"/>
+                                            <field name="condicion"/>
+                                            <field name="fuerza_id" on_change="cp_limpiar_campos('grado_id')" attrs="{'invisible': [('condicion','!=','militar')],'required': [('condicion','=','militar')]}" widget="selection"/>
+                                            <field name="grado_id" attrs="{'invisible': [('condicion','!=','militar')],'required': [('condicion','=','militar')]}" domain="[('fuerza_id','in',fuerza_id)]" widget="selection"/>
+                                            <field name="telefono" placeholder="Por ejemplo 0212-1234567" data-inputmask="'mask': '9999-9999999'"/>
+                                            <field name="telefono_local" placeholder="Por ejemplo 0212-1234567" data-inputmask="'mask': '9999-9999999'"/>
+                                        </group>
+                                        <group col="4">
+                                         <group String="Datos Académicos">
+                                            <field name="coordinacion_id" widget="selection" on_change="coordinacion_default()" domain="[('state','=','activo')]" readonly="True"/>
+                                            <field name="carrera_id" invisible="1"/>
+                                            <field name="condicion_id" widget="selection" attrs="{'invisible': [('is_profesor','!=',True)],'required': [('is_profesor','=',True)]}"/>
+                                            <field name="dedicacion_id" widget="selection" attrs="{'invisible': [('is_profesor','!=',True)],'required': [('is_profesor','=',True)]}"/>
+                                            <field name="categoria_id" widget="selection" attrs="{'invisible': [('is_profesor','!=',True)],'required': [('is_profesor','=',True)]}"/>
+                                        </group>
+                                        <group String="Dirección de Habitación">
+                                            <field name="estado_id" on_change="cp_limpiar_campos('municipio_id')" widget="selection"/>
+                                            <field name="municipio_id" on_change="cp_limpiar_campos('parroquia_id')" domain="[('estado_id','=',[estado_id])]" widget="selection"/>
+                                            <field name="parroquia_id" domain="[('municipio_id','=',[municipio_id])]" widget="selection"/>
+                                            <field name="sector"/>
+                                            <field name="calle_avenida"/>
+                                            <field name="casa_apto"/>
+                                        </group>
+                                        </group>
+                                    </page>
+                                    <page string="Permisos de Acceso">
+                                        <group col="4">
+                                            <field name="groups_id" string="Grupos" options="{'no_create':True}" on_change="rol_usuario_default('Profesor Adjunto')" domain="[('name','in',['Profesor Adjunto','Profesor'])]"/>
+                                        </group>
+                                    </page>
+                                </notebook> 
+                                <notebook attrs="{'invisible': [('is_profesor','!=',True)],'required': [('is_profesor','=',True)]}">
+                                    <page string="Asignaturas">
+                                        <field name="materias_ids"  domain="[('carrera_ids','=',carrera_id)]"/>
+                                    </page>
+                                </notebook>
+                            </sheet>
+                        </form>
+                    </field>
+                </record>
+                
+                <record id="view_usuario_asistente_unefa" model="ir.ui.view">
+                    <field name="name">res.users.tree</field>
+                    <field name="model">unefa.usuario_asistente</field>
+                    <field name="arch" type="xml">
+                        <tree string="Profesor Adjunto">
+                            <field name="nombre_completo" string="Nombre Completo"/>
+                            <field name="cedula"/>
+                            <field name="login" string="Correo Electrónico" placeholder="nombre@email.com"/>
+                            <field name="login_date" string="Ultima Conexión"/>
+                        </tree>
+                    </field>
+                </record>
+                
+                <record model="ir.actions.act_window" id="action_usuarios_asistentes_unefa">
+                    <field name="name">Profesor Adjunto</field>
+                    <field name="res_model">unefa.usuario_asistente</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="help" type="html">
+                    <p class="oe_view_nocontent_create">
+                        Aquí se registran los profesores adjuntos a las Coordinaciones.
+                    </p>
+                    </field>
+                </record>
+                
+    <!--
+            vista form y tree para el registro de la condición del profesor
+    -->
+            
+            <record model="ir.ui.view" id="view_unefa_condicion_profesor_form">
+                <field name="name">unefa_condicion_profesor.form</field>
+                <field name="model">unefa.condicion_profesor</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Condición del Profesor">
+                        <sheet>
+                            <group>
+                                <field name="condicion" />
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+            
+            
+            <record model="ir.ui.view" id="view_unefa_condicion_profesor_tree">
+                <field name="name">unefa_condicion_profesor.tree</field>
+                <field name="model">unefa.condicion_profesor</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="Condición del Profesor">
+                        <field name="condicion" />
+                    </tree>
+                </field>
+            </record>
+                
+            <record model="ir.actions.act_window" id="action_unefa_condicion_profesor">
+                <field name="name">Condición del Profesor</field>
+                <field name="res_model">unefa.condicion_profesor</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+                <field name="help" type="html">
+                    <p class="oe_view_nocontent_create">
+                        Aquí se registran la Condición del profesor.
+                    </p>
+                </field>
+            </record>
+                
+    <!--
+            vista form y tree para el registro de la dedicación del profesor
+    -->
+            
+            <record model="ir.ui.view" id="view_unefa_dedicacion_profesor_form">
+                <field name="name">unefa_dedicacion_profesor.form</field>
+                <field name="model">unefa.dedicacion_profesor</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Dedicación del Profesor">
+                        <sheet>
+                            <group>
+                                <field name="dedicacion" />
+                                <field name="cant_horas" />
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+            
+            
+            <record model="ir.ui.view" id="view_unefa_dedicacion_profesor_tree">
+                <field name="name">unefa_dedicacion_profesor.tree</field>
+                <field name="model">unefa.dedicacion_profesor</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="Dedicación del Profesor">
+                        <field name="dedicacion" />
+                        <field name="cant_horas" />
+                    </tree>
+                </field>
+            </record>
+                
+            <record model="ir.actions.act_window" id="action_unefa_dedicacion_profesor">
+                <field name="name">Dedicación del Profesor</field>
+                <field name="res_model">unefa.dedicacion_profesor</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+                <field name="help" type="html">
+                    <p class="oe_view_nocontent_create">
+                        Aquí se registran la Dedicación del profesor.
+                    </p>
+                </field>
+            </record>
+                
+                
+    <!--
+            vista form y tree para el registro de la categoría del profesor
+    -->
+            
+            <record model="ir.ui.view" id="view_unefa_categoria_profesor_form">
+                <field name="name">unefa_categoria_profesor.form</field>
+                <field name="model">unefa.categoria_profesor</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Categoría del Profesor">
+                        <sheet>
+                            <group>
+                                <field name="categoria" />
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+            
+            
+            <record model="ir.ui.view" id="view_unefa_categoria_profesor_tree">
+                <field name="name">unefa_categoria_profesor.tree</field>
+                <field name="model">unefa.categoria_profesor</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="Categoría del Profesor">
+                        <field name="categoria" />
+                    </tree>
+                </field>
+            </record>
+                
+            <record model="ir.actions.act_window" id="action_unefa_categoria_profesor">
+                <field name="name">Categoría del Profesor</field>
+                <field name="res_model">unefa.categoria_profesor</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+                <field name="help" type="html">
+                    <p class="oe_view_nocontent_create">
+                        Aquí se registran la Categoría del profesor.
+                    </p>
+                </field>
+            </record>
+                
+        
+        
+<!--
+           menus para el registro de usuarios
+-->
+           
+            
+             <menuitem name="Usuarios" id="menu_unefa_usuarios_inicio" parent="unefa_configuracion.unefa_menu_principal_gestion" sequence="10" groups="base.group_system,unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_profesores,unefa_configuracion.group_unefa_asistente"/>
+             <menuitem name="Usuarios" id="menu_unefa_usuarios_desplegar" parent="menu_unefa_usuarios_inicio" sequence="10" groups="base.group_system,unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_profesores,unefa_configuracion.group_unefa_asistente"/>
+            
+             <menuitem name="Registro Estudiante" id="menu_unefa_estudiantes" parent="menu_unefa_usuarios_desplegar" action="action_usuarios_estudiante_unefa" sequence="30" groups="base.group_system,unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_estudiantes,unefa_configuracion.group_unefa_asistente"/>
+             <menuitem name="Registro Profesor" id="menu_unefa_profesores" parent="menu_unefa_usuarios_desplegar" action="action_usuarios_profesores_unefa" sequence="40" groups="base.group_system,unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_profesores,unefa_configuracion.group_unefa_asistente"/>
+            
+             <menuitem name="Registro Coordinador" id="menu_unefa_coordinador" parent="menu_unefa_usuarios_desplegar" action="action_usuarios_coordinadores_unefa" sequence="10" groups="base.group_system,unefa_configuracion.group_unefa_coordinador"/>
+             <menuitem name="Registro Profesor Adjunto" id="menu_unefa_asistente" parent="menu_unefa_usuarios_desplegar" action="action_usuarios_asistentes_unefa" sequence="20" groups="base.group_system,unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+             
+             <menuitem name="Características del Profesor" id="menu_unefa_condicion_profesor" parent="unefa_configuracion.unefa_menu_configuracion" sequence="46" groups="base.group_system,unefa_configuracion.group_unefa_coordinador"/>
+             <menuitem name="Condición profesor" id="menu_unefa_condicion_profesor_id" parent="menu_unefa_condicion_profesor" action="action_unefa_condicion_profesor" sequence="5" groups="base.group_system,unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+             <menuitem name="Dedicación profesor" id="menu_unefa_dedicacion_profesor_id" parent="menu_unefa_condicion_profesor" action="action_unefa_dedicacion_profesor" sequence="10" groups="base.group_system,unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+             <menuitem name="Categoría profesor" id="menu_unefa_categoria_profesor_id" parent="menu_unefa_condicion_profesor" action="action_unefa_categoria_profesor" sequence="10" groups="base.group_system,unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+    </data>
+</openerp>
+
+    

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <openerp>
+     <data>
+    <!--REGISTRO DE ESTADOS-->
+    
+    <record model="ir.ui.view" id="view_unefa_estados_form">
+        <field name="name">unefa_estados.form</field>
+        <field name="model">unefa.estados</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Dirección de Estados">
+                <sheet>
+                    <header>
+                        <h2 style="color:#7C7BAD"><center>Estado</center></h2>
+                    </header>
+                    <group>
+<!--
+                        <field name="redi_id" widget="selection"/>
+-->
+                        <field name="estado" />
+                        <field name="codigo" />
+                        <field name="active" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_unefa_estados_tree">
+        <field name="name">unefa_estados.tree</field>
+        <field name="model">unefa.estados</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Dirección de Estados">
+                <field name="estado"/>
+                <field name="codigo"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="action_unefa_estados">
+        <field name="name">Estados</field>
+        <field name="res_model">unefa.estados</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Aquí se registran las asignaturas
+            </p>
+        </field>
+    </record>
+    
+
+
+    <menuitem name="Estados" id="menu_res_estados" parent="unefa_menu_direccion_configuracion" action="action_unefa_estados" sequence="10" groups="base.group_system"/>
+
+    </data>
+</openerp>

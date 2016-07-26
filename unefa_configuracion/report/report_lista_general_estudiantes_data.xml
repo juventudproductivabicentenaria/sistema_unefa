@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<report id="id_lista_general_estudiante"
+			string="Lista General de Estudiantes"
+			model="unefa.coordinacion"
+			report_type="qweb-pdf"
+			file="unefa_configuracion.lista_generales_estudiantes_qweb"
+            name="unefa_configuracion.lista_generales_estudiantes_qweb"
+            menu="True"/>
+            
+            
+           <record id="paperformat_lista_general_estudiantes" model="report.paperformat">
+            <field name="name">Horarios</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+        </record>
+        <record id="id_lista_general_estudiante" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="paperformat_lista_general_estudiantes"/>
+        </record>     
+	</data>
+</openerp>

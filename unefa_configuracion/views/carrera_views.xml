@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_unefa_carrera_form">
+            <field name="name">Unefa_carrera_form</field>
+            <field name="model">unefa.carrera</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="carrera">
+                    <header>
+                        <button name="activar_carrera" string="Activar" states="inactivo,activo"  type="object" class="oe_highlight" groups="base.group_system"/>
+                        <button name="desactivar_carrera" string="Desactivar" states="activo,inactivo"  type="object" class="oe_highlight" groups="base.group_system"/>
+                        <field name="state" widget="statusbar" statusbar_visible="inactivo,activo"/>
+                    </header>
+                    <sheet>
+                        <header>
+                        <h2 style="color:#7C7BAD"><center>Carrera</center></h2>
+                        </header>
+                    <group>
+                        <field name="nombre" string="Nombre de la Carrera" />
+                        <field name="codigo"/>
+                        <field name="area_conocimiento_id" widget="selection"/>
+                        <field name="tipo" string="Tipo de Carrera" style="width:40%"/>
+                        <field name="active" invisible="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Sedes">
+                            <field name="nucleo_ids"/>
+                        </page>
+                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_carreras_tree">
+         <field name="name">unefa.carrera.tree</field>
+        <field name="model">unefa.carrera</field>
+        <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Carrera">
+                    <field name="nombre" />
+                    <field name="nucleo_ids" />
+                    <field name="tipo" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+        
+       
+        <record model="ir.actions.act_window" id="action_unefa_carreras">
+            <field name="name">Carreras universitarias</field>
+            <field name="res_model">unefa.carrera</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+            Aqui se registran las Carreras a impartir
+            </p>
+        </field>
+        </record>
+        
+<!--
+       vista form y tree para el área de conocimiento 
+-->
+        
+        <record model="ir.ui.view" id="view_unefa_area_conocimiento_form">
+            <field name="name">unefa_area_conocimiento_form</field>
+            <field name="model">unefa.area_conocimiento</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Área de Conocimiento">
+                    <sheet>
+                        <header>
+                        <h2 style="color:#7C7BAD"><center>Área de Conocimiento</center></h2>
+                        </header>
+                        <group>
+                            <field name="area_conocimiento" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_area_conocimiento_tree">
+         <field name="name">unefa_area_conocimiento.tree</field>
+        <field name="model">unefa.area_conocimiento</field>
+        <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Área de Conocimiento">
+                    <field name="area_conocimiento" />
+                </tree>
+            </field>
+        </record>
+        
+       
+        <record model="ir.actions.act_window" id="action_unefa_area_conocimiento">
+            <field name="name">Área de Conocimiento</field>
+            <field name="res_model">unefa.area_conocimiento</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Aqui se registran las Áreas de Conocimiento de las Carreras.
+            </p>
+        </field>
+        </record>
+        
+        
+        <menuitem name="Carrera" id="unefa_submenu_carrera_configuracion" parent="unefa_menu_carrera_configuracion" action="action_unefa_carreras" sequence="10" groups="base.group_system"/>
+        <menuitem name="Área de Conocimiento" id="unefa_area_conocimiento_id" parent="unefa_menu_carrera_configuracion" action="action_unefa_area_conocimiento" sequence="10" groups="base.group_system"/>
+        
+    </data>
+</openerp>

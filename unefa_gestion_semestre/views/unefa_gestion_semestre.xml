@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_unefa_gestion_semestre_form">
+            <field name="name">unefa_gestion_semestre_form</field>
+            <field name="model">unefa.gestion_semestre</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Gestión Semestre">
+                    <header>
+                        <button name="generar_contrato_aprendizaje" string="Contrato Aprendizaje" states=""  type="object" class="oe_highlight"/>
+                        <button name="generar_lista_asignatura" string="Lista Alumnos" states=""  type="object" class="oe_highlight"/>
+                        <button name="generar_plan_evaluacion" string="Plan de Evaluación" states=""  type="object" class="oe_highlight"/>
+                        <button name="descargar_acta_notas_recuperacion" string="Acta Nota Recuperación" states=""  type="object" class="oe_highlight"/>
+                        <button name="culminar_gestion_semestre" string="Culminar Gestión Semestre" states="borrador" groups="unefa_configuracion.group_unefa_profesores"  type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="borrador,culminado"/>
+                    </header>
+                    <sheet>
+                        <header>
+                            <h2 style="color:#7C7BAD"><center>Gestionar Semestre</center></h2>
+                        </header>
+                        <group>
+                            <group>
+                                <field name="asignatura_id"/>
+                                <field name="seccion_id"/>
+                                <field name="profesor_id"/>
+                                <field name="periodo_id"/>
+                                <field name="carrera_id"/>
+                                <field name="turno"/>
+                                <field name="pensum_id"/>
+                                <field name="active"/>
+                                <field name="acta_aprobada" invisible="1"/>
+                                <field name="acta_recuperacion" invisible="1"/>
+                            </group>
+                            <group>
+                                <button name="aprobar_acta_notas" string="Aprobar acta de notas" attrs="{'invisible': [('acta_aprobada','=',True)]}"  type="object" class="oe_highlight" groups="unefa_configuracion.group_unefa_profesores"/>
+                                <button name="aprobar_acta_notas_recuperacion" string="Aprobar acta de notas de recuperación" attrs="{'invisible': ['|',('acta_aprobada','=',False),('acta_recuperacion','=',True)]}"  type="object" class="oe_highlight" groups="unefa_configuracion.group_unefa_profesores"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Plan de Evaluación">
+                                <field name="plan_evaluacion_ids" context="{'default_asignatura_id': asignatura_id}"/>
+                            </page>
+                            <page string="Acta de Notas">
+                                <field name="actas_ids" attrs="{'readonly': [('acta_aprobada','=',True)]}">
+                                    <form>
+                                        <group>
+                                            <field name="state" invisible="True"/>
+                                            <field name="creado" invisible="True"/>
+                                            <field name="pensum_id" on_change="domain_pensum_inscritos(parent.asignatura_id,parent.seccion_id)"/>
+                                        </group>
+                                        <button name="crear_acta_notas" string="Crear Acta de Notas" states="borrador" attrs="{'invisible': [('creado','=',True)]}" type="object" icon="gtk-paste-v" class="oe_highlight" groups="unefa_configuracion.group_unefa_profesores"/>
+                                        <button name="editar_acta_notas" string="Editar Acta de Notas" states="borrador" attrs="{'invisible': ['|',('creado','=',False),('state','=','aprobado')]}" type="object" icon="gtk-refresh" class="oe_highlight" groups="unefa_configuracion.group_unefa_profesores"/>
+                                        <button name="consultar_acta_notas" string="Consultar Acta de Notas" states="" attrs="{'invisible': [('creado','=',False)]}"  type="object" icon="gtk-find" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente,unefa_configuracion.group_unefa_profesores,unefa_configuracion.group_unefa_estudiantes"/>
+                                        <button name="descargar_acta_notas" string="Descagar Acta de Notas" states="" attrs="{'invisible': [('creado','=',False)]}"  type="object" icon="gtk-go-down" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente,unefa_configuracion.group_unefa_profesores,unefa_configuracion.group_unefa_estudiantes"/>
+                                    </form>
+                                    <tree>
+                                        <field name="state" invisible="True"/>
+                                        <field name="pensum_id"/>
+                                        <field name="creado" invisible="True"/>
+                                        <button name="crear_acta_notas" string="Crear Acta de Notas"  attrs="{'invisible': [('creado','=',True)]}" type="object" icon="gtk-paste-v" class="oe_highlight" groups="unefa_configuracion.group_unefa_profesores"/>
+                                        <button name="editar_acta_notas" string="Editar Acta de Notas"  attrs="{'invisible': ['|',('creado','=',False),('state','=','aprobado')]}" type="object" icon="gtk-refresh" class="oe_highlight" groups="unefa_configuracion.group_unefa_profesores"/>
+                                        <button name="consultar_acta_notas" string="Consultar Acta de Notas" states="" attrs="{'invisible': [('creado','=',False)]}" type="object" icon="gtk-find" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente,unefa_configuracion.group_unefa_profesores,unefa_configuracion.group_unefa_estudiantes"/>
+                                        <button name="descargar_acta_notas" string="Descagar Acta de Notas" states="" attrs="{'invisible': [('creado','=',False)]}"  type="object" icon="gtk-go-down" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente,unefa_configuracion.group_unefa_profesores,unefa_configuracion.group_unefa_estudiantes"/>
+                                    </tree>
+                                </field>
+                                
+                            </page>
+                            <page string="Acta de Notas Reparación">
+                                <field name="actas_recuperacion_ids">
+                                    <form>
+                                        <group>
+                                            <field name="state" invisible="True"/>
+                                            <field name="pensum_id"/>
+                                        </group>
+                                        <notebook>
+                                            <page>
+                                                <field name="notas_ids">
+                                                    <form>
+                                                        <field name="state" invisible="True"/>
+                                                        <field name="estudiante_id" attrs="{'required': [('state','=','borrador')]}"/>
+                                                        <field name="calificacion" attrs="{'required': [('state','=','borrador')]}"/>
+                                                        <field name="definitiva_letras"/>
+                                                    </form>
+                                                    <tree create="0" delete="0" editable="botton">
+                                                        <field name="state" invisible="True"/>
+                                                        <field name="estudiante_id" attrs="{'required': [('state','=','borrador')]}"/>
+                                                        <field name="calificacion" on_change="convertir_numero_letras(calificacion)" attrs="{'required': [('state','=','borrador')]}"/>
+                                                        <field name="definitiva_letras" />
+                                                    </tree>
+                                                </field>
+                                            </page>
+                                        </notebook>
+                                    </form>
+                                    <tree create="0" delete="0">
+                                        <field name="state" invisible="True"/>
+                                        <field name="pensum_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_gestion_semestre_tree">
+        <field name="name">unefa_gestion_semestre.tree</field>
+        <field name="model">unefa.gestion_semestre</field>
+        <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Gestión Semestre" colors="blue:state=='culminado';green:state=='borrador'">
+                    <field name="asignatura_id"/>
+                    <field name="seccion_id" />
+                    <field name="profesor_id" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_unefa_gestion_semestre">
+            <field name="name">Gestionar Semestre</field>
+            <field name="res_model">unefa.gestion_semestre</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Aquí se gestionaran las listas, actas de notas, contrato de apendizaje y actas de reparación.
+                </p>
+            </field>
+        </record>
+        
+        <menuitem name="Gestión Semestre" id="unefa_gestion_semestre_inicio" parent="unefa_configuracion.unefa_menu_principal_gestion" sequence="170" />
+        <menuitem name="Gestión Semestre" id="unefa_gestion_semestre" parent="unefa_gestion_semestre_inicio" action="action_unefa_gestion_semestre" sequence="10"/>
+        
+        
+        
+<!--
+        vista tree y form del plan de evaluación
+-->
+        
+        
+        <record model="ir.ui.view" id="view_unefa_planes_evaluaciones_form">
+            <field name="name">unefa_planes_evaluaciones_form</field>
+            <field name="model">unefa.planes_evaluaciones</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Plan de Evaluación">
+                    <sheet>
+                        <group>
+                          <field name="cohorte"/>
+                            <field name="fecha_evaluacion"/>
+                            <field name="semana_evaluacion"/>
+                            <field name="actividad_evaluativa"/>
+                            <field name="ponderacion"/>
+                            <field name="contenido_ids" domain="[('asignatura_id','=',parent.asignatura_id)]"/>
+                            <field name="observaciones"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_planes_evaluaciones_tree">
+        <field name="name">unefa_planes_evaluaciones.tree</field>
+        <field name="model">unefa.planes_evaluaciones</field>
+        <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Plan de Evaluación">
+                    <field name="cohorte"/>
+                    <field name="fecha_evaluacion"/>
+                    <field name="semana_evaluacion"/>
+                    <field name="actividad_evaluativa"/>
+                    <field name="ponderacion"/>
+                    <field name="contenido_ids"/>
+                    <field name="observaciones"/>
+                </tree>
+            </field>
+        </record>
+        
+        
+        
+        
+        
+    </data>
+</openerp>

@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+<template id="lib_index_template" name="template_index">
+         <!-- Scripts -->
+			<script src="website_index/static/src/assets/js/jquery.min.js"></script>
+			<script src="website_index/static/src/assets/js/jquery.scrolly.min.js"></script>
+			<script src="website_index/static/src/assets/js/jquery.dropotron.min.js"></script>
+			<script src="website_index/static/src/assets/js/jquery.scrollex.min.js"></script>
+			<script src="website_index/static/src/assets/js/skel.min.js"></script>
+			<script src="website_index/static/src/assets/js/util.js"></script>
+<!--
+			[if lte IE 8]><script src="website_index/static/src/assets/js/ie/respond.min.js"></script><![endif]
+-->
+			<script src="website_index/static/src/assets/js/main.js"></script>
+
+</template>
+
+
+
+
+<template id="unefa_index.index" name="Index">
+<t t-call="website.layout">
+    <head>
+		<title>Unefa</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="unefa_index/static/src/assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="unefa_index/static/src/assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="unefa_index/static/src/assets/css/ie9.css" /><![endif]-->
+	</head>
+	<body class="landing">
+		<div id="wrapper">
+			<div id="bg"></div>
+			<div id="overlay"></div>
+			<div id="main">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>SIGECOORD</h1>
+                    <span class="image"><img src="unefa_index/static/src/assets/css/images/UNEFA.gif" alt="" /></span>
+						<nav>
+							<ul>
+								<li><a href="https://twitter.com/unefa_ve" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+<!--
+								<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+-->
+								<li><a href="http://www.unefa.edu.ve/" class="glyphicon glyphicon-globe"><span class="label">Página Web</span></a></li>
+								<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<span class="copyright"> Create by: Jeison Pernía and Jonathan Reyes.</span>
+					</footer>
+
+			</div>
+		</div>
+		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+		<script>
+			window.onload = function() { document.body.className = ''; }
+			window.ontouchmove = function() { return false; }
+			window.onorientationchange = function() { document.body.scrollTop = 0; }
+		</script>
+	</body>
+    </t>
+</template>
+
+<template id="footer_custom_unefa" inherit_id="website.layout" name="Footer JPV">
+    <xpath expr="//footer" position="replace">
+    
+    </xpath>
+</template>
+
+<template id="editor_head_unefa" inherit_id="website.user_navbar" name="Editor">
+    
+    <xpath expr='//nav[@id="oe_main_menu_navbar"]' position="attributes">
+        <attribute name="class">hidden</attribute>
+    </xpath>
+    
+</template>
+
+
+    </data>
+</openerp>

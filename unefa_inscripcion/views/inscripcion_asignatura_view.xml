@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+<!--
+		vista para inscripción de asignaturas estudiantes
+-->
+		
+		
+        <record model="ir.ui.view" id="view_unefa_inscripcion_asignatura_form">
+            <field name="name">unefa.inscripcion_asignatura_form</field>
+            <field name="model">unefa.inscripcion_asignatura</field>
+            <field name="priority">3</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Inscripción de asignaturas">
+                    <header>
+                        <button name="preinscribir_asignaturas" string="Preinscribir" states="borrador"  type="object" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_estudiantes"/>
+                        <button name="inscribir_asignaturas" string="Inscribir" states="preinscrito"  type="object" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_estudiantes"/>
+                        <button name="crear_planilla_inscripcion" string="Descargar planilla" states="borrador,preinscrito,inscrito"  type="object" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_estudiantes"/>
+                        <field name="state" widget="statusbar" statusbar_visible="borrador,preinscrito,inscrito"/>
+                    </header>
+                    <sheet>
+                        <header>
+                            <h2 style="color:#7C7BAD"><center>Inscripción de Asignaturas</center></h2>
+                        </header><br/>
+                        <group col="4">
+                            <field name="user_id" widget="selection" readonly="1"/>
+                            <field name="fecha_inscripcion" on_change="filtrar_carreras_regimen()" />
+                            <field name="carrera_id" widget="selection" readonly="1" domain="[('state','=','activo')]"/>
+                            <field name="periodo_id" widget="selection" domain="[('state','=','activo')]"/>
+                        </group>
+                        <notebook>
+                            <page string="Asignaturas">
+                                <field name="asignaturas_inscritas_ids" >
+                                    <form string="Asignaturas" >
+                                        <field name="semestre_id"  on_change="domain_semestre_inscripcion(parent.user_id,parent.periodo_id,semestre_id)"/>
+                                        <field name="seccion_id" widget="selection" on_change="domain_asignatura_inscripcion(parent.user_id,parent.periodo_id,semestre_id,seccion_id)"/>
+										<field name="asignatura_id" on_change="buscar_uc(asignatura_id)"/>
+                                        <field name="unidad_credito"/>
+                                        <field name="state" invisible="1"/>
+                                     </form>
+                                    <tree string="Asignaturas" editable="bottom">
+                                        <field name="semestre_id"  on_change="domain_semestre_inscripcion(parent.user_id,parent.periodo_id,semestre_id)"/>
+                                        <field name="seccion_id" attrs="{'readonly': [('state','in',['borrador','preinscrito'])]}"  required="1" on_change="domain_asignatura_inscripcion(parent.user_id,parent.periodo_id,semestre_id,seccion_id)"/>
+                                        <field name="asignatura_id" on_change="buscar_uc(asignatura_id)"/>
+                                        <field name="unidad_credito" sum="Total UC"/>
+                                        <field name="state" invisible="1"/>
+                                     </tree>
+                                </field>
+                            </page>
+                    </notebook>
+                        <div class="oe_clear"/>
+                        <field name="observaciones" placeholder="Observaciones..." />
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_inscripcion_asignatura_tree">
+        <field name="name">unefa.inscripcion_asignatura.tree</field>
+        <field name="model">unefa.inscripcion_asignatura</field>
+        <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Inscripción de asignaturas">
+                    <field name="carrera_id" />
+                    <field name="user_id" />
+                    <field name="fecha_inscripcion" />
+                    <field name="periodo_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_inscripcion_asignatura">
+            <field name="name">Inscripción de asignaturas</field>
+            <field name="res_model">unefa.inscripcion_asignatura</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_unefa_inscripcion_asignatura_form"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Aquí se registra la inscripción de asignaturas.
+                </p>
+            </field>
+        </record>
+        
+        <menuitem name="Inscripción de asignatura" id="unefa_inscripcion_asignatura_id" parent="unefa_configuracion.unefa_menu_principal_gestion" sequence="150" groups="unefa_configuracion.group_unefa_estudiantes"/>
+        <menuitem name="Inscripción de asignatura" id="unefa_inscripcion_despl_id" parent="unefa_inscripcion_asignatura_id" action="action_inscripcion_asignatura" sequence="10" groups="unefa_configuracion.group_unefa_estudiantes"/>
+        
+        
+        
+<!--
+        vista para inscripción de asignaturas coordinador
+-->
+        
+        <record model="ir.ui.view" id="view_unefa_inscripcion_asignatura_coordinador_form">
+            <field name="name">unefa.inscripcion_asignatura_form</field>
+            <field name="model">unefa.inscripcion_asignatura</field>
+            <field name="priority">2</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Inscripción de asignaturas">
+                    <header>
+                        <button name="preinscribir_asignaturas" string="Preinscribir" states="borrador"  type="object" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_estudiantes"/>
+                        <button name="inscribir_asignaturas" string="Inscribir" states="preinscrito"  type="object" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_estudiantes"/>
+                        <button name="crear_planilla_inscripcion" string="Descargar planilla" states="borrador,preinscrito,inscrito"  type="object" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_estudiantes"/>
+                        <field name="state" widget="statusbar" statusbar_visible="borrador,preinscrito,inscrito"/>
+                    </header>
+                    <sheet>
+                        <header>
+                            <h2 style="color:#7C7BAD"><center>Inscripción de Asignatura</center></h2>
+                        </header><br/>
+                        <group col="4">
+                            <field name="user_id"/>
+                            <field name="fecha_inscripcion" on_change="filtrar_carreras_regimen()" />
+                            <field name="carrera_id" readonly="True" domain="[('state','=','activo')]"/>
+                            <field name="periodo_id" widget="selection" domain="[('state','=','activo')]"/>
+                        </group>
+                        <notebook>
+                            <page string="Asignaturas">
+                                <field name="asignaturas_inscritas_ids" >
+                                    <form string="Asignaturas" >
+                                        <field name="semestre_id"  on_change="domain_semestre_inscripcion(parent.user_id,parent.periodo_id,semestre_id)"/>
+                                        <field name="seccion_id" widget="selection" on_change="domain_asignatura_inscripcion(parent.user_id,parent.periodo_id,semestre_id,seccion_id)"/>
+                                        <field name="asignatura_id" on_change="buscar_uc(asignatura_id)"/>
+                                        <field name="unidad_credito"/>
+                                     </form>
+                                    <tree string="Asignaturas" editable="bottom">
+                                        <field name="semestre_id"  on_change="domain_semestre_inscripcion(parent.user_id,parent.periodo_id,semestre_id)"/>
+                                        <field name="seccion_id" attrs="{'readonly': [('state','in',['borrador','preinscrito'])]}" required="1" on_change="domain_asignatura_inscripcion(parent.user_id,parent.periodo_id,semestre_id,seccion_id)"/>
+                                        <field name="asignatura_id" on_change="buscar_uc(asignatura_id)"/>
+                                        <field name="unidad_credito" sum="Total UC"/>
+                                        <field name="state" invisible="1"/>
+                                     </tree>
+                                </field>
+                            </page>
+                    </notebook>
+                        <div class="oe_clear"/>
+                        <field name="observaciones" placeholder="Observaciones..." />
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_inscripcion_asignatura_coordinador_tree">
+        <field name="name">unefa.inscripcion_asignatura.tree</field>
+        <field name="model">unefa.inscripcion_asignatura</field>
+        <field name="priority">2</field>
+        <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Inscripción de asignaturas">
+                    <field name="carrera_id" />
+                    <field name="user_id" />
+                    <field name="fecha_inscripcion" />
+                    <field name="periodo_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_inscripcion_asignatura_coordinador">
+            <field name="name">Inscripción de asignaturas</field>
+            <field name="res_model">unefa.inscripcion_asignatura</field>
+            <field name="sequence" eval="2"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+             <field name="view_id" ref="view_unefa_inscripcion_asignatura_coordinador_form"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Aquí se registra la inscripción de asignaturas.
+                </p>
+            </field>
+        </record>
+        
+        <menuitem name="Inscripción de asignatura" id="unefa_inscripcion_asignatura_coordinador_id" parent="unefa_configuracion.unefa_menu_principal_gestion" sequence="155" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+        <menuitem name="Inscripción de asignatura" id="unefa_inscripcion_despl_coordinador_id" parent="unefa_inscripcion_asignatura_coordinador_id" action="action_inscripcion_asignatura_coordinador" sequence="20" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+
+<!--
+        vista para inscripción de asignaturas otros pensum estudiantes
+-->
+        
+        <record model="ir.ui.view" id="view_unefa_inscripcion_asignatura_otros_pensum_form">
+            <field name="name">unefa.inscripcion_asignatura_form</field>
+            <field name="model">unefa.inscripcion_asignatura</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Inscripción de asignaturas">
+                    <header>
+                        <button name="preinscribir_asignaturas" string="Preinscribir" states="borrador"  type="object" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_estudiantes"/>
+<!--
+                        <button name="inscribir_asignaturas" string="Inscribir" states="preinscrito"  type="object" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_estudiantes"/>
+-->
+                        <button name="crear_planilla_inscripcion" string="Descargar planilla" states="borrador,preinscrito,inscrito"  type="object" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_estudiantes"/>
+                        <field name="state" widget="statusbar" statusbar_visible="borrador,preinscrito,inscrito"/>
+                    </header>
+                    <sheet>
+                        <header>
+                            <h2 style="color:#7C7BAD"><center>Inscripción de Asignatura Especial</center></h2>
+                        </header><br/>
+                        <group col="4">
+                            <field name="user_id" readonly="1"/>
+                            <field name="fecha_inscripcion" on_change="filtrar_carreras_regimen()" />
+                            <field name="carrera_id" readonly="True" domain="[('state','=','activo')]"/>
+                            <field name="periodo_id" widget="selection" domain="[('state','=','activo')]"/>
+                        </group>
+                        <notebook>
+                            <page string="Asignaturas">
+                                <field name="asignaturas_inscritas_ids" >
+                                    <form string="Asignaturas" >
+                                        <field name="semestre_id"  on_change="domain_semestre_inscripcion_especial(parent.user_id,parent.periodo_id,semestre_id)"/>
+                                        <field name="seccion_id"  widget="selection" readonly="1"/>
+                                        <field name="asignatura_id" />
+                                        <field name="semestre_relacion_id" on_change="domain_semestre2_inscripcion_especial(parent.user_id,parent.periodo_id,semestre_relacion_id)"/>
+                                        <field name="unidad_credito"/>
+                                        <field name="inscripcion_especial"/>
+                                     </form>
+                                    <tree string="Asignaturas" editable="bottom">
+                                        <field name="semestre_id" on_change="domain_semestre_inscripcion_especial(parent.user_id,parent.periodo_id,semestre_id)"/>
+                                        <field name="asignatura_id" on_change="buscar_uc(asignatura_id)"/>
+                                        <field name="seccion_id"  readonly="1" />
+                                        <field name="unidad_credito" sum="Total UC"/>
+                                        <field name="state" invisible="1"/>
+                                        <field name="inscripcion_especial" on_change="inscripcion_especial_default()" invisible="1"/>
+                                     </tree>
+                                </field>
+                            </page>
+                    </notebook>
+                        <div class="oe_clear"/>
+                        <field name="observaciones" placeholder="Observaciones..." />
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        
+        <record model="ir.actions.act_window" id="action_inscripcion_asignatura_otros_pensum">
+            <field name="name">Inscripción de asignaturas</field>
+            <field name="res_model">unefa.inscripcion_asignatura</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+             <field name="view_id" ref="view_unefa_inscripcion_asignatura_otros_pensum_form"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Aquí se registra la inscripción de asignaturas con otros pensum.
+                </p>
+            </field>
+        </record>
+        
+        <menuitem name="Inscripción Especial" id="unefa_inscripcion_asignatura_otros_pensum" parent="unefa_configuracion.unefa_menu_principal_gestion" sequence="160" groups="unefa_configuracion.group_unefa_estudiantes"/>
+        <menuitem name="Inscripción Especial" id="unefa_inscripcion_despl_otros_pensum" parent="unefa_inscripcion_asignatura_otros_pensum" action="action_inscripcion_asignatura_otros_pensum" sequence="30" groups="unefa_configuracion.group_unefa_estudiantes"/>
+        
+<!--
+        vista para inscripción de asignaturas otros pensum coordinador
+-->  
+        
+        <record model="ir.ui.view" id="view_unefa_inscripcion_asignatura_otros_pensum_coordinador_form">
+            <field name="name">unefa.inscripcion_asignatura_form</field>
+            <field name="model">unefa.inscripcion_asignatura</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Inscripción de asignaturas">
+                    <header>
+                        <button name="preinscribir_asignaturas" string="Preinscribir" states="borrador"  type="object" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_estudiantes"/>
+                        <button name="inscribir_asignaturas" string="Inscribir" states="preinscrito"  type="object" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_estudiantes"/>
+                        <button name="crear_planilla_inscripcion" string="Descargar planilla" states="borrador,preinscrito,inscrito"  type="object" class="oe_highlight" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_estudiantes"/>
+                        <field name="state" widget="statusbar" statusbar_visible="borrador,preinscrito,inscrito"/>
+                    </header>
+                    <sheet>
+                        <header>
+                            <h2 style="color:#7C7BAD"><center>Inscripción de Asignatura Especial</center></h2>
+                        </header><br/>
+                        <group col="4">
+                            <field name="user_id"/>
+                            <field name="fecha_inscripcion" on_change="filtrar_carreras_regimen()" />
+                            <field name="carrera_id" readonly="True" domain="[('state','=','activo')]"/>
+                            <field name="periodo_id" widget="selection" domain="[('state','=','activo')]"/>
+                        </group>
+                        <notebook>
+                            <page string="Asignaturas">
+                                <field name="asignaturas_inscritas_ids" >
+                                    <form string="Asignaturas" >
+                                        <field name="semestre_id" on_change="domain_semestre_inscripcion_especial(parent.user_id,parent.periodo_id,semestre_id)"/>
+                                        <field name="asignatura_id" />
+                                        <field name="semestre_relacion_id" on_change="domain_semestre2_inscripcion_especial(parent.user_id,parent.periodo_id,semestre_relacion_id)"/>
+                                        <field name="seccion_id" widget="selection" on_change="domain_asignatura_inscripcion_especial(parent.user_id,parent.periodo_id,seccion_id)"/>
+                                        <field name="asignatura_relacion_id" />
+                                        <field name="asignatura_id" />
+                                        <field name="unidad_credito"/>
+                                        <field name="inscripcion_especial" invisible="1"/>
+                                     </form>
+                                    <tree string="Asignaturas" editable="bottom">
+                                        <field name="semestre_id" on_change="domain_semestre_inscripcion_especial(parent.user_id,parent.periodo_id,semestre_id)"/>
+                                        <field name="asignatura_id" on_change="buscar_uc(asignatura_id)"/>
+                                        <field name="semestre_relacion_id" on_change="domain_semestre2_inscripcion_especial(parent.user_id,parent.periodo_id,semestre_relacion_id)"/>
+                                        <field name="seccion_id"  required="1" on_change="domain_asignatura_inscripcion_especial(parent.user_id,parent.periodo_id,seccion_id)"/>
+                                        <field name="asignatura_relacion_id" required="1"/>
+                                        <field name="unidad_credito" sum="Total UC"  style="width:10%"/>
+                                        <field name="state" invisible="1"/>
+                                        <field name="inscripcion_especial" on_change="inscripcion_especial_default()" invisible="1"/>
+                                     </tree>
+                                </field>
+                            </page>
+                    </notebook>
+                        <div class="oe_clear"/>
+                        <field name="observaciones" placeholder="Observaciones..." />
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        
+        <record model="ir.actions.act_window" id="action_inscripcion_asignatura_otros_coordinador_pensum">
+            <field name="name">Inscripción de asignaturas</field>
+            <field name="res_model">unefa.inscripcion_asignatura</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+             <field name="view_id" ref="view_unefa_inscripcion_asignatura_otros_pensum_coordinador_form"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Aquí se registra la inscripción de asignaturas con otros pensum.
+                </p>
+            </field>
+        </record>
+        
+        <menuitem name="Inscripción Especial" id="unefa_inscripcion_asignatura_otros_pensum_coordinador" parent="unefa_configuracion.unefa_menu_principal_gestion" sequence="160" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+        <menuitem name="Inscripción Especial" id="unefa_inscripcion_despl_otros_pensum_coordinador" parent="unefa_inscripcion_asignatura_otros_pensum_coordinador" action="action_inscripcion_asignatura_otros_coordinador_pensum" sequence="30" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+        
+    </data>
+</openerp>
+

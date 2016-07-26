@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+<!--
+        vista form y tree de sede
+-->
+        
+        <record model="ir.ui.view" id="view_unefa_nucleo_form">
+            <field name="name">Unefa_nucleo_form</field>
+            <field name="model">unefa.nucleo</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="sede">
+                    <sheet>
+                    <group>
+                        <field name="nombre"/>
+                        <field name="decano"/>
+                        <field name="unidad_academica"/>
+                    </group>
+                    <group col="4" colums="4">
+                        <field name="tipo_sede"/>
+                        <field name="region_id"/>
+                        <field name="redi_id" on_change="cp_limpiar_campos('estado_id')" widget="selection"/>
+                        <field name="telefono" placeholder="Por ejemplo 0212-1234567" data-inputmask="'mask': '9999-9999999'"/>
+                        <field name="active"/>
+                    </group>
+                    <notebook>
+                    <page string="Dirección">
+                        <group>
+                            <field name="estado_id" on_change="cp_limpiar_campos('municipio_id')" widget="selection"/>
+                            <field name="municipio_id" on_change="cp_limpiar_campos('parroquia_id')" domain="[('estado_id','=',[estado_id])]" widget="selection"/>
+                            <field name="parroquia_id" domain="[('municipio_id','=',[municipio_id])]" widget="selection"/>
+                            <field name="direccion"/>
+                        </group>
+                    </page>
+                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_nucleo_tree">
+            <field name="name">Unefa_nucleo_tree</field>
+            <field name="model">unefa.nucleo</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="sede">
+                    <field name="nombre"/>
+                    <field name="decano"/>
+                    <field name="tipo_sede"/>
+                    <field name="telefono"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_unefa_nucleo">
+            <field name="name">Sede</field>
+            <field name="res_model">unefa.nucleo</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Aquí se registran las sedes de la universidad.
+                </p>
+            </field>
+        </record>
+
+
+        
+    <menuitem name="Sede" id="unefa_nucleo_id" parent="base.menu_res_company_global" action="action_unefa_nucleo"  sequence="61"/>
+       
+    </data>
+</openerp>

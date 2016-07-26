@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<openerp>
+<data noupdate="1">
+	
+	<record model="ir.sequence.type" id="seq_type_supervicion_clase">
+		<field name="name">unefa.supervision.clase</field>
+		<field name="code">unefa.supervision.clase</field>
+	</record>
+	<record model="ir.sequence" id="seq_unefa_inscripcion">
+		<field name="name">unefa.supervision.clase</field>
+		<field name="code">unefa.supervision.clase</field>
+		<field name="prefix">N°</field>
+		<field name="padding">6</field>
+	</record>
+</data>
+</openerp>

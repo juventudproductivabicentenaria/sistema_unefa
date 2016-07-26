@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+
+
+
+
+<template id="unefa_cronograma_recuperacion.cronograma_recuperacion">
+    <style type="text/css">.fondoho{background-color: rgb(208, 236, 248);}</style>
+     <div class="page">
+        <t t-call="unefa_horarios.unefa_horarios_cabecera"/>
+            <div style="text-align: center" class="col-xs-12">
+                <h6><t t-esc="data['coordinacion_data']['nombre']"/></h6>
+                <h6><strong>CRONOGRAMA DE RECUPERACIÓN</strong></h6>
+            </div>
+                <div style="text-align: center" class="col-xs-12">
+                    <div class="col-xs-4" style="font-size: 10px">
+                        <strong>PERÍODO ACADÉMICO: <t t-esc="data['cronograma_data']['periodo_id']['periodo_academico']"/></strong>
+                    </div>
+                    <div class="col-xs-4" style="font-size: 10px">
+                        <strong>CARRERA: <t t-esc="data['cronograma_data']['carrera_id']['nombre']"/></strong>
+                    </div>
+                    <div class="col-xs-4" style="font-size: 10px">
+                        <strong>TURNO:
+                            <t t-if="data['cronograma_data']['turno']">
+                                NOCTURNO
+                            </t>
+                            <t t-if="data['cronograma_data']['turno']">
+                                DIURNO
+                            </t>
+                        </strong>
+                    </div>
+                </div>
+                <div style="text-align: center" class="col-xs-12">
+                        <h4><strong>FECHA INICIO: <t t-esc="data['cronograma_data']['fecha_inicio']"/> FECHA FIN: <t t-esc="data['cronograma_data']['fecha_fin']"/></strong></h4>
+                </div>
+                <table colspan="18" class="table table-condensed table-bordered" style="border: 1px solid black" >
+                    <thead>
+                        <tr>
+                            <th colspan="1" class="fondoho" style="border: 1px solid black;color: black;font-size: 10px"><strong>SEMESTRE</strong></th>
+                            <th colspan="2" class="fondoho" style="border: 1px solid black;color: black;font-size: 10px"><strong>SECCIÓN</strong></th>
+                            <th colspan="4" class="fondoho" style="border: 1px solid black;color: black;font-size: 10px"><strong>ASIGNATURA</strong></th>
+                            <th colspan="1" class="fondoho" style="border: 1px solid black;color: black;font-size: 10px"><strong>PENSUM</strong></th>
+                            <th colspan="4" class="fondoho" style="border: 1px solid black;color: black;font-size: 10px"><strong>PROFESOR</strong></th>
+                            <th colspan="1" class="fondoho" style="border: 1px solid black;color: black;font-size: 10px"><strong>FECHA</strong></th>
+                            <th colspan="1" class="fondoho" style="border: 1px solid black;color: black;font-size: 10px"><strong>HORA</strong></th>
+                            <th colspan="4" class="fondoho" style="border: 1px solid black;color: black;font-size: 10px"><strong>OBSERVACIONES</strong></th>
+                        </tr>
+                    </thead>
+                    <body>
+                        <t t-foreach="data['pensum_data']['cronograma_line_ids']" t-as="cronograma">
+                            <tr>
+                                <td colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="cronograma['semestre_id']['semestre']"/></td>
+                                <td colspan="2" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="cronograma['seccion_id']['seccion']"/></td>
+                                <td colspan="4" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="cronograma['asignatura_id']['asignatura']"/></td>
+                                <td colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="data['pensum_data']['pensum_id']['pensum']"/></td>
+                                <td colspan="4" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="cronograma['profesor_id']['nombre_completo']"/></td>
+                                <td colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="cronograma['fecha_recuperacion']"/></td>
+                                <td colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="cronograma['hora']"/> <t t-esc="cronograma['horario']"/></td>
+                                <td colspan="4" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="cronograma['observaciones']"/></td>
+                            </tr>
+                        </t>
+                    </body>
+                </table>
+            
+        </div>
+</template>
+
+</data>
+</openerp>

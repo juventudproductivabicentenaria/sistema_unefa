@@ -1,0 +1,75 @@
+.horarios_0{
+    
+
+   height:51px;
+   line-height: 10px; 
+}
+.horarios_1{
+    
+
+   height:153px;
+   line-height: 170px; 
+}
+
+.horarios_2{
+    
+
+   height:102px;
+   line-height: 75px;
+}
+
+.horarios_3{
+    
+
+   height:204px;
+   line-height: 175px;
+}
+
+.horarios_4{
+    
+
+   height:255px;
+   line-height: 220px;
+}
+
+.horarios_5{
+    
+/*
+   width:189px;
+*/
+   height:306px;
+   line-height: 280px;
+}
+
+.horas{
+   height:343px;
+}
+
+.horassa{
+   height:700px;
+}
+
+.centrar{
+   text-align:center;
+   vertical-align:-1px;
+}
+
+.bordersup{
+   border-top: 1px solid ;
+}
+
+.borderright{
+   border-right: 1px solid;
+}
+
+
+.fondoho {
+    background-color: rgb(208, 236, 248);
+}
+.fondoho2 {
+    background-color: white;
+    background-position: -10px -30px;
+}
+
+
+

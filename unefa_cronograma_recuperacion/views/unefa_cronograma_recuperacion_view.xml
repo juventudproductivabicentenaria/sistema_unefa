@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <openerp>
+        <data>
+            
+            
+<!--
+    vista form y tree para la gestión de horarios
+-->
+    
+            <record id="view_unefa_cronogramas_recuperacion_form" model="ir.ui.view">
+                    <field name="name">view_unefa_cronogramas_recuperacion_form</field>
+                    <field name="model">unefa.cronogramas_recuperacion</field>
+                    <field name="arch" type="xml">
+                        <form string="Cronograma Recuperación">
+                            <header>
+                                <button name="descargar_cronograma_recuperacion" states="borrador,aprobado,publicado" string ="Descargar Cronograma Recuperación" type="object"/>
+                                <button name="aprobar_cronograma_recuperacion" states="borrador" string ="Aprobar" type="object" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+                                <button name="publicar_cronograma_recuperacion" states="aprobado" string ="Publicar" type="object" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+                                <field name="state" widget="statusbar" statusbar_visible="borrador,aprobado,publicado" />
+                            </header>
+                            <sheet>
+                                <header>
+                                    <h2 style="color:#7C7BAD"><center>CRONOGRAMA RECUPERACIÓN</center></h2>
+                                </header><br/>
+                                <group colspan="4" col="4">
+                                    <field name="carrera_id"/>
+                                    <field name="turno"/>
+                                    <field name="periodo_id" widget="selection" />
+                                </group>
+                                <group colspan="4" col="4">
+                                    <field name="fecha_inicio" attrs="{'required': [('state','=','borrador')]}"/>
+                                    <field name="fecha_fin" attrs="{'required': [('state','=','borrador')]}"/>
+                                </group>
+                                <notebook>
+                                    <page>
+                                        <field name="pensum_ids" >
+                                            <form>
+                                                <group>
+                                                    <field name="pensum_id"/>
+                                                </group>
+                                                <notebook>
+                                                    <page>
+                                                        <field name="cronograma_line_ids">
+                                                            <form>
+                                                                <group>
+                                                                    <field name="semestre_id"/>
+                                                                    <field name="seccion_id"/>
+                                                                    <field name="asignatura_id"/>
+                                                                    <field name="profesor_id"/>
+                                                                    <field name="fecha_recuperacion" attrs="{'required': [('state','=','borrador')]}"/>
+                                                                    <field name="hora" attrs="{'required': [('state','=','borrador')]}" data-inputmask="'mask': '99:99'"/>
+                                                                    <field name="horario" attrs="{'required': [('state','=','borrador')]}"/>
+                                                                    <field name="observaciones"/>
+                                                                </group>
+                                                            </form>
+                                                            <tree create="0" delete="0" editable="botton">
+                                                                <field name="semestre_id"/>
+                                                                <field name="seccion_id"/>
+                                                                <field name="asignatura_id"/>
+                                                                <field name="profesor_id"/>
+                                                                <field name="fecha_recuperacion" attrs="{'required': [('state','=','borrador')]}"/>
+                                                                <field name="hora" data-inputmask="'mask': '99:99'" attrs="{'required': [('state','=','borrador')]}"/>
+                                                                <field name="horario" attrs="{'required': [('state','=','borrador')]}"/>
+                                                                <field name="observaciones"/>
+                                                                <field name="state" invisible="1"/> 
+                                                            </tree>
+                                                        </field>
+                                                    </page>
+                                                </notebook>
+                                            </form>
+                                            <tree create="0" delete="0">
+                                                <field name="pensum_id"/>
+                                                <field name="state" invisible="1"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </sheet>
+                        </form>
+                    </field>
+                </record>
+                
+                <record id="view_unefa_cronogramas_recuperacion_tree" model="ir.ui.view">
+                    <field name="name">unefa_cronogramas_recuperacion_tree</field>
+                    <field name="model">unefa.cronogramas_recuperacion</field>
+                    <field name="arch" type="xml">
+                        <tree string="Cronograma de recuperación">
+                            <field name="carrera_id"/>
+                            <field name="turno"/>
+                            <field name="periodo_id"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                </record>
+                
+            
+                <record model="ir.actions.act_window" id="action_unefa_cronogramas_recuperacion">
+                    <field name="name">Cronograma de Recuperación</field>
+                    <field name="res_model">unefa.cronogramas_recuperacion</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="help" type="html">
+                    <p class="oe_view_nocontent_create">
+                       Cronograma de Recuperación.
+                    </p>
+                    </field>
+                </record>
+               
+        
+<!--
+           menus para para la gestión de horarios
+-->
+           
+            
+        <menuitem name="Cronograma de recuperación" id="gestion_cronogramas_reparacion" parent="unefa_configuracion.unefa_menu_principal_gestion" sequence="160" />
+        <menuitem name="Cronograma de recuperación" id="gestion_conogramas_reparacion_inicio" parent="gestion_cronogramas_reparacion" />
+        <menuitem name="Cronograma de recuperación" id="cronogramas_reparacion" parent="gestion_conogramas_reparacion_inicio" action="action_unefa_cronogramas_recuperacion" sequence="10" />
+    
+        
+
+                
+    </data>
+</openerp>
+
+    

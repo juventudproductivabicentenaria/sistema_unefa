@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_unefa_contenido_programatico_form">
+            <field name="name">unefa_contenido_programatico_form</field>
+            <field name="model">unefa.contenido_programatico</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Contenido Programático">
+                    <header>
+                        <button name="activar_contenido_programatico" string="Activar" states="inactivo"  type="object" class="oe_highlight" groups="base.group_system,unefa_configuracion.group_unefa_coordinador"/>
+                        <button name="desactivar_contenido_programatico" string="Desactivar" states="activo"  type="object" class="oe_highlight" groups="base.group_system,unefa_configuracion.group_unefa_coordinador"/>
+                        <field name="state" widget="statusbar" statusbar_visible="inactivo,activo"/>
+                    </header>
+                    <sheet>
+                        <header>
+                            <h2 style="color:#7C7BAD"><center>Contenido Programático</center></h2>
+                        </header><br/>  
+                        <group col="4">
+                            <field name="carrera_id" on_change="filtrar_carreras_regimen()" readonly="True" widget="selection"/>
+                            <field name="pensum_id" domain="[('carrera_id','=',[carrera_id])]" widget="selection"/>
+                            <field name="turno" readonly="True"/>
+                            <field name="semestre_id" domain="[('pensum_id','=',[pensum_id])]" widget="selection"/>
+                            <field name="asignatura_id" domain="[('semestres_ids','=',semestre_id)]"  widget="selection"/>
+                            <field name="contenido_ids" widget="many2many_binary"/>
+                            <field name="active"/>
+                        </group>
+                        <notebook>
+                            <page string="Unidades">
+                                <field name="unidades_ids" context="{'default_asignatura_id': asignatura_id}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_contenido_programatico_tree">
+        <field name="name">unefa_contenido_programatico.tree</field>
+        <field name="model">unefa.contenido_programatico</field>
+        <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Contemido Programático">
+                    <field name="asignatura_id" />
+                    <field name="pensum_id" />
+                    <field name="carrera_id" />
+                    <field name="turno"/>
+                    <field name="semestre_id" />
+                    <field name="active"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_unefa_contenido_programatico">
+            <field name="name">Contenido programático</field>
+            <field name="res_model">unefa.contenido_programatico</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Aquí se registran los contenidos programáticos de las asignaturas
+                </p>
+            </field>
+        </record>
+            
+<!--
+            vista for y tree para la unidad del contenido programatico
+-->
+    
+        <record model="ir.ui.view" id="view_unefa_contenido_unidad_form">
+            <field name="name">unefa_contenido_unidad.form</field>
+            <field name="model">unefa.contenido_unidad</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Unidades">
+                    <sheet>
+                        <group>
+                            <field name="unidad" />
+                            <field name="descipcion" />
+                            <field name="asignatura_id" invisible="1"/>
+                            
+                        </group>
+                        <notebook>
+                            <page string="Objetivos">
+                                <field name="objetivos_ids">
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_contenido_unidad_tree">
+        <field name="name">unefa_contenido_unidad.tree</field>
+        <field name="model">unefa.contenido_unidad</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Unidades">
+                <field name="unidad" />
+                <field name="descipcion" />
+            </tree>
+        </field>
+    </record>
+            
+<!--
+            vista for y tree para los objetivos del contenido programatico
+-->
+    
+        <record model="ir.ui.view" id="view_unefa_contenido_objetivo_form">
+            <field name="name">unefa_contenido_objetivo.form</field>
+            <field name="model">unefa.contenido_objetivo</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Objetivos">
+                    <sheet>
+                        <group>
+                            <field name="objetivo" />
+                            <field name="descipcion" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_contenido_objetivo_tree">
+        <field name="name">unefa_contenido_objetivo.tree</field>
+        <field name="model">unefa.contenido_objetivo</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Objetivos">
+                <field name="objetivo" />
+                <field name="descipcion" />
+            </tree>
+        </field>
+    </record>
+        
+    
+
+        <menuitem name="Contenido programático" id="contenido_programatico_id" parent="unefa_configuracion.unefa_menu_principal_gestion" sequence="140" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente,unefa_configuracion.group_unefa_profesores,unefa_configuracion.group_unefa_estudiantes"/>
+        <menuitem name="Contenido programático" id="unefa_contenido_programatico_id" parent="contenido_programatico_id"  sequence="10" groups="base.group_system,unefa_configuracion.group_unefa_coordinador"/>
+        <menuitem name="Contenido programático" id="contenido_programatico_despl_id" parent="unefa_contenido_programatico_id" action="action_unefa_contenido_programatico" sequence="10" groups="base.group_system,unefa_configuracion.group_unefa_coordinador"/>
+        
+    </data>
+</openerp>

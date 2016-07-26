@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<report id="report_contrato_aprendizaje"
+			string="Contrato de Aprendizaje"
+			model="unefa.gestion_semestre"
+			report_type="qweb-pdf"
+			file="unefa_gestion_semestre.contrato_aprendizaje_qweb"
+            name="unefa_gestion_semestre.contrato_aprendizaje_qweb"
+            menu="True"/>
+	</data>
+</openerp>

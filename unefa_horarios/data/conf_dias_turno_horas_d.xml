@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+<!--
+                    HORAS ACADÉMICAS
+-->                                          
+    <record id="hrs_0730_am" model="unefa.horarios_horas">
+        <field name="horas_desde">07:30</field>
+        <field name="horas_hasta">08:15</field>
+        <field name="periodo_desde">AM</field>
+        <field name="periodo_hasta">AM</field>
+    </record>
+    
+    <record id="hrs_0815_am" model="unefa.horarios_horas">
+        <field name="horas_desde">08:15</field>
+        <field name="horas_hasta">09:00</field>
+        <field name="periodo_desde">AM</field>
+        <field name="periodo_hasta">AM</field>
+    </record>
+    
+    <record id="hrs_0900_am" model="unefa.horarios_horas">
+        <field name="horas_desde">09:00</field>
+        <field name="horas_hasta">09:45</field>
+        <field name="periodo_desde">AM</field>
+        <field name="periodo_hasta">AM</field>
+    </record>
+    
+    <record id="hrs_0945_am" model="unefa.horarios_horas">
+        <field name="horas_desde">09:45</field>
+        <field name="horas_hasta">10:30</field>
+        <field name="periodo_desde">AM</field>
+        <field name="periodo_hasta">AM</field>
+    </record>
+    
+    <record id="hrs_1030_am" model="unefa.horarios_horas">
+        <field name="horas_desde">10:30</field>
+        <field name="horas_hasta">11:15</field>
+        <field name="periodo_desde">AM</field>
+        <field name="periodo_hasta">AM</field>
+    </record>
+    
+    <record id="hrs_1115_am" model="unefa.horarios_horas">
+        <field name="horas_desde">11:15</field>
+        <field name="periodo_desde">AM</field>
+        <field name="horas_hasta">12:00</field>
+        <field name="periodo_hasta">PM</field>
+    </record>
+    
+    <record id="hrs_1115_am" model="unefa.horarios_horas">
+        <field name="horas_desde">11:15</field>
+        <field name="periodo_desde">AM</field>
+        <field name="horas_hasta">12:00</field>
+        <field name="periodo_hasta">PM</field>
+    </record>
+    
+    <record id="hrs_1200_pm" model="unefa.horarios_horas">
+        <field name="horas_desde">12:00</field>
+        <field name="periodo_desde">PM</field>
+        <field name="horas_hasta">12:45</field>
+        <field name="periodo_hasta">PM</field>
+    </record>
+    
+    <record id="hrs_1245_pm" model="unefa.horarios_horas">
+        <field name="horas_desde">12:45</field>
+        <field name="periodo_desde">PM</field>
+        <field name="horas_hasta">01:30</field>
+        <field name="periodo_hasta">PM</field>
+    </record>
+    
+    <record id="hrs_0130_pm" model="unefa.horarios_horas">
+        <field name="horas_desde">01:30</field>
+        <field name="periodo_desde">PM</field>
+        <field name="horas_hasta">02:15</field>
+        <field name="periodo_hasta">PM</field>
+    </record>
+    
+    <record id="hrs_0215_pm" model="unefa.horarios_horas">
+        <field name="horas_desde">02:15</field>
+        <field name="periodo_desde">PM</field>
+        <field name="horas_hasta">03:00</field>
+        <field name="periodo_hasta">PM</field>
+    </record>
+    
+    <record id="hrs_0300_pm" model="unefa.horarios_horas">
+        <field name="horas_desde">03:00</field>
+        <field name="periodo_desde">PM</field>
+        <field name="horas_hasta">03:45</field>
+        <field name="periodo_hasta">PM</field>
+    </record>
+    
+    <record id="hrs_0345_pm" model="unefa.horarios_horas">
+        <field name="horas_desde">03:45</field>
+        <field name="periodo_desde">PM</field>
+        <field name="horas_hasta">04:30</field>
+        <field name="periodo_hasta">PM</field>
+    </record>
+    
+    <record id="hrs_0430_pm" model="unefa.horarios_horas">
+        <field name="horas_desde">04:30</field>
+        <field name="periodo_desde">PM</field>
+        <field name="horas_hasta">05:15</field>
+        <field name="periodo_hasta">PM</field>
+    </record>
+
+    <record id="hrs_0530_pm" model="unefa.horarios_horas">
+        <field name="horas_desde">05:30</field>
+        <field name="periodo_desde">PM</field>
+        <field name="horas_hasta">06:15</field>
+        <field name="periodo_hasta">PM</field>
+    </record>
+    
+    <record id="hrs_0615_pm" model="unefa.horarios_horas">
+        <field name="horas_desde">06:15</field>
+        <field name="periodo_desde">PM</field>
+        <field name="horas_hasta">07:00</field>
+        <field name="periodo_hasta">PM</field>
+    </record>
+    
+    <record id="hrs_0700_pm" model="unefa.horarios_horas">
+        <field name="horas_desde">07:00</field>
+        <field name="periodo_desde">PM</field>
+        <field name="horas_hasta">07:45</field>
+        <field name="periodo_hasta">PM</field>
+    </record>
+    
+    <record id="hrs_0745_pm" model="unefa.horarios_horas">
+        <field name="horas_desde">07:45</field>
+        <field name="periodo_desde">PM</field>
+        <field name="horas_hasta">08:30</field>
+        <field name="periodo_hasta">PM</field>
+    </record>
+    
+    <record id="hrs_0830_pm" model="unefa.horarios_horas">
+        <field name="horas_desde">08:30</field>
+        <field name="periodo_desde">PM</field>
+        <field name="horas_hasta">09:15</field>
+        <field name="periodo_hasta">PM</field>
+    </record>
+    
+    <record id="hrs_0915_pm" model="unefa.horarios_horas">
+        <field name="horas_desde">09:15</field>
+        <field name="periodo_desde">PM</field>
+        <field name="horas_hasta">10:00</field>
+        <field name="periodo_hasta">PM</field>
+    </record>
+    
+<!--
+                    TURNOS Y HIRAS ASOCIADAS
+-->
+    
+    <record id="horas_turno_diurno" model="unefa.horas_turno">
+        <field name="turno">diurno</field>
+        <field name="periodo_id" ref="unefa_planificacion_semestre.periodo_academico_2016_1"/>
+        <field name="state">aprobado</field>
+        <field name="horas_ids" eval="[(6, 0, [ref('hrs_0730_am'),ref('hrs_0815_am'),ref('hrs_0900_am'),
+                                                ref('hrs_0945_am'),ref('hrs_1030_am'),ref('hrs_1115_am'),
+                                                ref('hrs_1200_pm'),ref('hrs_1245_pm'),ref('hrs_0130_pm'),
+                                                ref('hrs_0215_pm'),ref('hrs_0300_pm'),ref('hrs_0345_pm'),
+                                                ref('hrs_0430_pm')
+                                                ])]" />  
+    </record>
+    
+    <record id="horas_turno_nocturno" model="unefa.horas_turno">
+        <field name="turno">nocturno</field>
+        <field name="periodo_id" ref="unefa_planificacion_semestre.periodo_academico_2016_1"/>
+        <field name="state">aprobado</field>
+        <field name="horas_ids" eval="[(6, 0, [ref('hrs_0530_pm'),ref('hrs_0615_pm'),ref('hrs_0700_pm'),
+                                                ref('hrs_0745_pm'),ref('hrs_0830_pm'),ref('hrs_0915_pm')
+                                                ])]" />  
+    </record>
+    
+    <record id="horas_turno_sabatino" model="unefa.horas_turno">
+        <field name="turno">sabatino</field>
+        <field name="periodo_id" ref="unefa_planificacion_semestre.periodo_academico_2016_1"/>
+        <field name="state">aprobado</field>
+        <field name="horas_ids" eval="[(6, 0, [ref('hrs_0730_am'),ref('hrs_0815_am'),ref('hrs_0900_am'),
+                                                ref('hrs_0945_am'),ref('hrs_1030_am'),ref('hrs_1115_am'),
+                                                ref('hrs_1200_pm'),ref('hrs_1245_pm'),ref('hrs_0130_pm'),
+                                                ref('hrs_0215_pm'),ref('hrs_0300_pm'),ref('hrs_0345_pm'),
+                                                ref('hrs_0430_pm')
+                                                ])]" />  
+    </record>
+    
+<!--
+                                DÍAS DE LA SEMANA
+-->
+    <record id="horario_dias_lunes" model="unefa.horario_dias">
+        <field name="dia">Lunes</field>
+    </record>
+    
+    <record id="horario_dias_Martes" model="unefa.horario_dias">
+        <field name="dia">Martes</field>
+    </record>
+    
+    <record id="horario_dias_Miercoles" model="unefa.horario_dias">
+        <field name="dia">Miercoles</field>
+    </record>
+    
+    <record id="horario_dias_Jueves" model="unefa.horario_dias">
+        <field name="dia">Jueves</field>
+    </record>
+    
+    <record id="horario_dias_Viernes" model="unefa.horario_dias">
+        <field name="dia">Viernes</field>
+    </record>
+    
+    <record id="horario_dias_Sabado" model="unefa.horario_dias">
+        <field name="dia">Sabado</field>
+    </record>
+    
+    </data>
+</openerp>
+    

@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+    <openerp>
+        <data>
+            <template id="website_apiform_2" inherit_id="website.assets_frontend" name="website_apiform" >
+                <xpath expr="/t" position="inside">
+                    <script type="text/javascript" src="/unefa_horarios/static/src/js/gestionar_horarios.js"/>
+                </xpath>
+            </template>
+            
+            <template id="unefa_horarios.crear_horarios" name="Template para el registro de horarios">
+                <div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Datos Académicos</div>
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <label for="carrera">Carrera</label>
+                                    <input type="text" class="form-control" disabled="disabled"  id="carrera" name="carrera" t-att-value="'%s' % (horarios_data['horario_id']['carrera_id']['nombre'])"/>  
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="turno">Turno</label>
+                                    <t t-if="horarios_data['horario_id']['turno']=='nocturno'">
+                                        <input type="text" class="form-control" disabled="disabled" id="turno" name="turno" value="NOCTURNO"/>  
+                                    </t>
+                                    <t t-if="horarios_data['horario_id']['turno']=='diurno'">
+                                        <input type="text" class="form-control" disabled="disabled" id="turno" name="turno" value="DIURNO"/>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <label for="pensum">Pensum</label>
+                                    <input type="text" class="form-control" disabled="disabled" id="pensum" name="pensum" t-att-value="'%s' % (horarios_data['horario_id']['pensum_id']['pensum'])"/>  
+                                </div>
+                                <div class="col-md-6">
+                                   <label for="periodo_academico">Período Académico</label>
+                                    <input type="text" class="form-control" disabled="disabled" id="periodo_academico" name="periodo_academico" t-att-value="'%s' % (horarios_data['horario_id']['periodo_id']['periodo_academico'])"/>  
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                     <label for="seccion">Sección</label>
+                                    <input type="text" class="form-control" disabled="disabled" id="seccion" name="seccion" t-att-value="'%s' % (horarios_data['seccion_id']['seccion'])"/>  
+                                </div>
+                                <div class="col-md-6">
+                                     <label for="aula">Aula</label>
+                                    <input type="text" class="form-control" disabled="disabled" id="aula" name="aula" t-att-value="'%s' % (horarios_data['aula_id']['numero'])"/>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Horario</div>
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                    <table class="table table-bordered table-striped mt32" id="horarios">
+                                        <thead>
+                                            <tr>
+                                                <th class="hidden">Id</th>
+                                                <th class="col-xs-2">Horas</th>
+                                                <th class="col-xs-2">Lunes</th>
+                                                <th class="col-xs-2">Martes</th>
+                                                <th class="col-xs-2">Miercoles</th>
+                                                <th class="col-xs-2">Jueves</th>
+                                                <th class="col-xs-2">Viernes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="horario_cuerpo">
+                                            <t t-foreach="relacion_hora_turno_data['horas_ids']" t-as="horas">
+                                                <tr>
+                                                    <td class="col-xs-2 hidden">
+                                                        <input type="text" class="form-control" id="" name="" t-att-value="'%s' % (horarios_data['id'])"/>  
+                                                    </td>
+                                                    <td class="col-xs-2">
+                                                        <select class="form-control input-sm" name="" id="">
+                                                            <option t-att-value="'%s' % (horas.id)"><t t-esc="horas.hora_completo"/></option>
+                                                        </select>
+                                                    </td>
+                                                    <td class="col-xs-2">
+                                                        <select class="form-control input-sm"  t-att-name="'Lunes-asignatura_id-%s-%s' % (horas.id,horarios_data['id'])" id="">
+                                                            <option class="" value=''></option>
+                                                            <t t-foreach="asignatura_seccion_data" t-as="asignatura">
+                                                                <option t-att-value="'%s' % (asignatura['asignatura_id']['id'])"><t t-esc="asignatura['asignatura_id']['asignatura']"/></option>
+                                                            </t>
+                                                        </select>
+                                                    </td>
+                                                    <td class="col-xs-2">
+                                                        <select class="form-control input-sm" t-att-name="'Martes-asignatura_id-%s-%s' % (horas.id,horarios_data['id'])" id="">
+                                                            <option class="" value=''></option>
+                                                            <t t-foreach="asignatura_seccion_data" t-as="asignatura">
+                                                                <option t-att-value="'%s' % (asignatura['asignatura_id']['id'])"><t t-esc="asignatura['asignatura_id']['asignatura']"/></option>
+                                                            </t>
+                                                        </select>
+                                                    </td>
+                                                    <td class="col-xs-2">
+                                                        <select class="form-control input-sm" t-att-name="'Miercoles-asignatura_id-%s-%s' % (horas.id,horarios_data['id'])" id="">
+                                                            <option class="" value=''></option>
+                                                            <t t-foreach="asignatura_seccion_data" t-as="asignatura">
+                                                                <option t-att-value="'%s' % (asignatura['asignatura_id']['id'])"><t t-esc="asignatura['asignatura_id']['asignatura']"/></option>
+                                                            </t>
+                                                        </select>
+                                                    </td>
+                                                    <td class="col-xs-2">
+                                                        <select class="form-control input-sm" t-att-name="'Jueves-asignatura_id-%s-%s' % (horas.id,horarios_data['id'])" id="">
+                                                            <option class="" value=''></option>
+                                                            <t t-foreach="asignatura_seccion_data" t-as="asignatura">
+                                                                <option t-att-value="'%s' % (asignatura['asignatura_id']['id'])"><t t-esc="asignatura['asignatura_id']['asignatura']"/></option>
+                                                            </t>
+                                                        </select>
+                                                    </td>
+                                                    <td class="col-xs-2">
+                                                        <select class="form-control input-sm" t-att-name="'Viernes-asignatura_id-%s-%s' % (horas.id,horarios_data['id'])" id="">
+                                                            <option class="" value=''></option>
+                                                            <t t-foreach="asignatura_seccion_data" t-as="asignatura">
+                                                                <option t-att-value="'%s' % (asignatura['asignatura_id']['id'])"><t t-esc="asignatura['asignatura_id']['asignatura']"/></option>
+                                                            </t>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Horario Sabados</div>
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                    <table class="table table-bordered table-striped mt32" id="horarios_sabado">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-md-2 hidden">id</th>
+                                                <th class="col-md-2">Horas</th>
+                                                <th class="col-md-4">Sabado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="horario_cuerpo_sabado">
+                                            <t t-foreach="relacion_hora_sabado_data['horas_ids']" t-as="horasa">
+                                                <tr>
+                                                    <td class="col-xs-2 hidden">
+                                                        <input type="text" class="form-control" id="" name="" t-att-value="'%s' % (horarios_data['id'])"/>  
+                                                    </td>
+                                                    <td class="col-xs-2">
+                                                        <select class="form-control input-sm" name="" id="">
+                                                            <option t-att-value="'%s' % (horasa.id)"><t t-esc="horasa.hora_completo"/></option>
+                                                        </select>
+                                                    </td>
+                                                    <td class="col-xs-4">
+                                                        <select class="form-control input-sm" t-att-name="'Sabado-asignatura_id-%s-%s' % (horasa.id,horarios_data['id'])" id="">
+                                                            <option class="" value=''></option>
+                                                            <t t-foreach="asignatura_seccion_data" t-as="asignatura">
+                                                                <option t-att-value="'%s' % (asignatura['asignatura_id']['id'])"><t t-esc="asignatura['asignatura_id']['asignatura']"/></option>
+                                                            </t>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">ASIGNATURAS Y PROFESORES</div>
+                        <div class="panel-body">
+                            <table colspan="24" class="table table-bordered table-striped mt32 centrar" id="horarios">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center" class="fondoho" colspan="2">CÓDIGO</th>
+                                        <th style="text-align:center" class="fondoho" colspan="5">ASIGNATURA</th>
+                                        <th style="text-align:center" class="fondoho" colspan="1">T</th>
+                                        <th style="text-align:center" class="fondoho" colspan="1">P</th>
+                                        <th style="text-align:center" class="fondoho" colspan="1">L</th>
+                                        <th style="text-align:center" class="fondoho" colspan="1">UC</th>
+                                        <th style="text-align:center" class="fondoho" colspan="3">PRELACIÓN</th>
+                                        <th style="text-align:center" class="fondoho" colspan="7">PROFESOR</th>
+                                        <th style="text-align:center" class="fondoho" colspan="3">N° DE CEDULA</th>
+                                    </tr>
+                                </thead>
+                                <body>
+                                    <t t-set="prelaciones" value=""/>
+                                    <t t-foreach="asignatura_oferta_academica_data" t-as="asignatura">
+                                        <tr>
+                                            <td colspan="2"><t t-esc="asignatura['asignatura_id']['codigo_asignatura']"/></td>
+                                            <td colspan="5"><t t-esc="asignatura['asignatura_id']['asignatura']"/></td>
+                                            <td colspan="1"><t t-esc="asignatura['asignatura_id']['hora_teorica']"/></td>
+                                            <td colspan="1"><t t-esc="asignatura['asignatura_id']['hora_practica']"/></td>
+                                            <td colspan="1"><t t-esc="asignatura['asignatura_id']['hora_laboratorio']"/></td>
+                                            <td colspan="1"><t t-esc="asignatura['asignatura_id']['unidad_credito']"/></td>
+                                            <td colspan="3"><t t-esc="dic_prelacion[asignatura.id]"/></td>
+                                            <td colspan="7"><t t-esc="asignatura['profesor_id']['nombre_completo']"/></td>
+                                            <td colspan="3"><t t-esc="asignatura['profesor_id']['cedula']"/></td>
+                                        </tr>
+                                    </t>
+                                </body>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </template>
+    </data>
+</openerp>

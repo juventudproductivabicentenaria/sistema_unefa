@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_unefa_inscripcion_asignatura_asistente,unefa.inscripcion_asignatura,model_unefa_inscripcion_asignatura,unefa_configuracion.group_unefa_asistente,1,0,0,0
+access_unefa_asignatura_inscritas_asistente,unefa.asignatura_inscritas,model_unefa_asignatura_inscritas,unefa_configuracion.group_unefa_asistente,1,0,0,0

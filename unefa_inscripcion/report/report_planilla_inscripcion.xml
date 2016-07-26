@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+
+
+<template id="unefa_inscripcion.planilla_inscripcion_qweb">
+		<style type="text/css">.fondoho{background-color: rgb(208, 236, 248);}</style>
+		<style type="text/css">.letrapequeña {font-size: 10px}</style>
+		<t t-call="unefa_usuarios.header_documentos_unefa"/>
+        <div class="page">
+            <center>
+                <div  style="text-align: center;color: black; font-size: 14px"><strong>PLANILLA DE INSCRIPCIÓN PROVISIONAL</strong></div> 
+                <div style="text-align: center;color: black; font-size: 14px" ><strong>PERÍODO</strong> <strong><t t-esc="data['inscripcion_data']['periodo_id']['periodo_academico']"/></strong></div>
+            </center>
+            <div style="font-size: 10px;color: black;text-align: right" ><strong>Fecha:</strong> <t t-esc="data['inscripcion_data']['fecha_inscripcion']"/></div>
+            
+            
+            <table colspan="12" class="table table-condensed table-bordered" style="border: 1px solid black" >
+                <tr>
+                    <td colspan="12" class="fondoho letrapequeña" style="border: 1px solid black;color: black;text-align: center;font-size: 14px"><strong>DATOS PERSONALES</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="12" style="border: 1px solid black;color: black;text-align: left;font-size: 10px"><strong>NOMBRES Y APELLIDOS:</strong> <t t-esc="data['inscripcion_data']['user_id']['nombre_completo']"/></td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="border: 1px solid black;color: black;text-align: left;font-size: 10px"><strong>CÉDULA:</strong> <t t-esc="data['inscripcion_data']['user_id']['cedula']"/> </td>
+                    <td colspan="6" style="border: 1px solid black;color: black;text-align: left;font-size: 10px"><strong>FECHA DE NACIMIENTO:</strong> <t t-esc="data['inscripcion_data']['user_id']['fecha_nacimiento']"/> </td>
+                </tr>
+                <tr>
+                    <t t-if="data['inscripcion_data']['user_id']['sexo']=='masculino'">
+                        <td colspan="6" style="border: 1px solid black;color: black;text-align: left;font-size: 10px"><strong>SEXO: </strong>MASCULINO</td>
+                    </t>
+                    <t t-if="data['inscripcion_data']['user_id']['sexo']=='femenino'">
+                        <td colspan="6" style="border: 1px solid black;color: black;text-align: left;font-size: 10px"><strong>SEXO: </strong>FEMENINO</td>
+                    </t>
+                    <t t-if="data['inscripcion_data']['user_id']['condicion']=='civil'">
+                        <td colspan="6" style="border: 1px solid black;color: black;text-align: left;font-size: 10px"><strong>CONDICIÓN: </strong>CIVIL</td>
+                    </t>
+                    <t t-if="data['inscripcion_data']['user_id']['condicion']=='militar'">
+                        <td colspan="2" style="border: 1px solid black;color: black;text-align: left;font-size: 10px"><strong>CONDICIÓN: </strong>MILITAR</td>
+                        <td colspan="2" style="border: 1px solid black;color: black;text-align: left;font-size: 10px"><strong>FUERZA:</strong> <t t-esc="data['inscripcion_data']['user_id']['fuerza_id']['fuerza']"/></td>
+                        <td colspan="2" style="border: 1px solid black;color: black;text-align: left;font-size: 10px"><strong>GRADO:</strong> <t t-esc="data['inscripcion_data']['user_id']['grado_id']['grado']"/></td>
+                    </t>
+                </tr>
+                <tr>
+                    <td colspan="12" style="border: 1px solid black;color: black;text-align: left;font-size: 10px"><strong>DIRECCIÓN:</strong> ESTADO <t t-esc="data['inscripcion_data']['user_id']['estado_id']['estado']"/> MUNICIPIO <t t-esc="data['inscripcion_data']['user_id']['municipio_id']['municipio']"/> PARROQUIA <t t-esc="data['inscripcion_data']['user_id']['parroquia_id']['parroquia']"/> SECTOR <t t-esc="data['inscripcion_data']['user_id']['sector']"/> AVENIDA <t t-esc="data['inscripcion_data']['user_id']['calle_avenida']"/> CASA/APTO <t t-esc="data['inscripcion_data']['user_id']['casa_apto']"/></td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="border: 1px solid black;color: black;text-align: left;font-size: 10px"><strong>TELÉFONO:</strong> <t t-esc="data['inscripcion_data']['user_id']['telefono']"/></td>
+                    <td colspan="6" style="border: 1px solid black;color: black;text-align: left;font-size: 10px"><strong>CORREO:</strong> <t t-esc="data['inscripcion_data']['user_id']['login']"/></td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="border: 1px solid black;color: black;text-align: left;font-size: 10px"><strong>CARRERA:</strong> <t t-esc="data['inscripcion_data']['user_id']['carrera_id']['nombre']"/></td>
+                    <td colspan="6" style="border: 1px solid black;color: black;text-align: left;font-size: 10px"><strong>PENSUM:</strong> <t t-esc="data['inscripcion_data']['user_id']['pensum_id']['pensum']"/></td>
+                </tr>
+                <tr>
+                    <td colspan="12" class="fondoho" style="border: 1px solid black;color: black;text-align: center;font-size: 14px"><strong>ASIGNATURAS A CURSAR</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="1" class="letrapequeña" style="border: 1px solid black;color: black;font-size: 10px"><strong>SEMESTRE</strong></td>
+                    <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black;font-size: 10px"><strong>SECCIÓN</strong></td>
+                    <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black;font-size: 10px"><strong>COD. ASIGNATURA</strong></td>
+                    <td colspan="6" class="letrapequeña" style="border: 1px solid black;color: black;font-size: 10px"><strong>NOMBRE ASIGNATURA</strong></td>
+                    <td colspan="1" class="letrapequeña" style="border: 1px solid black;color: black;font-size: 10px"><strong>U.C.</strong></td>
+                </tr>
+                <t t-set="lineas" t-value="len(data['inscripcion_data']['asignaturas_inscritas_ids'])" /> 
+                <t t-set="columnas" t-value="10" />
+                <t t-foreach="data['inscripcion_data']['asignaturas_inscritas_ids']" t-as="asignatura">
+                    <tr>
+                        <td colspan="1" class="letrapequeña" style="border: 1px solid black;color: black;font-size: 10px"> <t t-esc="'%s' % (asignatura.semestre_id.semestre)"/></td>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black;font-size: 10px"> <t t-esc="'%s' % (asignatura.seccion_id.seccion)"/></td>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black;font-size: 10px"> <t t-esc="'%s' % (asignatura.asignatura_id.codigo_asignatura)"/></td>
+                        <td colspan="6" class="letrapequeña" style="border: 1px solid black;color: black;font-size: 10px"> <t t-esc="'%s' % (asignatura.asignatura_id.asignatura)"/></td>
+                        <td colspan="1" class="letrapequeña" style="border: 1px solid black;color: black;font-size: 10px"> <t t-esc="'%s' % (asignatura.asignatura_id.unidad_credito)"/></td>
+                    </tr>
+                </t>
+                <t t-set="i" t-value="1" /> 
+                <t t-set="linea_blanca" t-value="columnas-lineas"/> 
+                <t t-foreach="linea_blanca" t-as="i">
+                    <tr>
+                        <td colspan="1" class="letrapequeña" style="border: 1px solid black;color: black;font-size: 10px"><h3></h3></td>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black;font-size: 10px"></td>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black;font-size: 10px"></td>
+                        <td colspan="6" class="letrapequeña" style="border: 1px solid black;color: black;font-size: 10px"></td>
+                        <td colspan="1" class="letrapequeña" style="border: 1px solid black;color: black;font-size: 10px"></td>
+                    </tr>
+                <t t-set="i" t-value="i+1" />
+                </t>
+            </table>
+            <br/>
+            
+            <div>
+                <h6 style="margin: 10px;padding: 5px; text-align: center;font-size: 10px">______________________________________</h6>
+                <h6 style="margin: 10px;padding: 5px; text-align: center;font-size: 10px"> FIRMA ESTUDIANTE</h6>
+            </div>
+            <div>
+                <h6 style="margin: 10px;padding: 5px; text-align: left;font-size: 10px">DECISIÓN: _______________________________________________________________________________________________________</h6>
+            </div>
+            <br/>
+            <div>
+                <h6 style="margin: 10px;padding: 5px; text-align: center;font-size: 10px">______________________________________</h6>
+                <h6 style="margin: 10px;padding: 5px; text-align: center;font-size: 10px"><t t-esc="data['coordinador_data']['nombre_completo']"/></h6>
+                <h6 style="margin: 10px;padding: 5px; text-align: center;font-size: 10px"> COORDINADOR DE CARRERA</h6>
+            </div>
+        </div>
+</template>
+</data>
+</openerp>

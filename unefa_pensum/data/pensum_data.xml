@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        
+    
+<!--
+                    PENSUM 2010
+-->
+    
+    <record id="pensum_2010_carrera_ING_SIS" model="unefa.pensum">
+        <field name="pensum">2010</field>
+        <field name="carrera_id" ref="unefa_configuracion.carrera_ING_SIS"/>
+        <field name="turno">nocturno</field>
+        <field name="state">activo</field>
+    </record>
+    
+    <record id="semestre_01" model="unefa.semestre">
+        <field name="pensum_id" ref="pensum_2010_carrera_ING_SIS"/>
+        <field name="semestre">1</field>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_ADG_25132'),
+                                                    ref('asignatura_ADG_25123'),
+                                                    ref('asignatura_IDM_24113'),
+                                                    ref('asignatura_MAT_21212'),
+                                                    ref('asignatura_MAT_21215'),
+                                                    ref('asignatura_MAT_21524'),
+                                                    ref('asignatura_DIN_21113'),
+                                                    ref('asignatura_DEPORTE_I'),
+                                                    ref('asignatura_CULTURA_I'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="semestre_02" model="unefa.semestre">
+        <field name="semestre">2</field>
+        <field name="pensum_id" ref="pensum_2010_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_ADG_25131'),
+                                                    ref('asignatura_IDM_24123'),
+                                                    ref('asignatura_QUF_22014'),
+                                                    ref('asignatura_QUF_23015'),
+                                                    ref('asignatura_MAT_21225'),
+                                                    ref('asignatura_MAT_21114'),
+                                                    ref('asignatura_DIN_21123'),
+                                                    ref('asignatura_DEPORTE_II'),
+                                                    ref('asignatura_CULTURA_II'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="semestre_03" model="unefa.semestre">
+        <field name="semestre">3</field>
+        <field name="pensum_id" ref="pensum_2010_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_ADG_25141'),
+                                                    ref('asignatura_QUF_23025'),
+                                                    ref('asignatura_MAT_21235'),
+                                                    ref('asignatura_MAT_21414'),
+                                                    ref('asignatura_SYC_22113'),
+                                                    ref('asignatura_DIN_21133'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="semestre_04" model="unefa.semestre">
+        <field name="semestre">4</field>
+        <field name="pensum_id" ref="pensum_2010_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_AGG_22313'),
+                                                    ref('asignatura_SYC_32114'),
+                                                    ref('asignatura_MAT_31214'),
+                                                    ref('asignatura_SYC_32225'),
+                                                    ref('asignatura_DIN_31143'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="semestre_05" model="unefa.semestre">
+        <field name="semestre">5</field>
+        <field name="pensum_id" ref="pensum_2010_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_AGL_30214'),
+                                                    ref('asignatura_SYC_32414'),
+                                                    ref('asignatura_MAT_31714'),
+                                                    ref('asignatura_MAT_31114'),
+                                                    ref('asignatura_SYC_32235'),
+                                                    ref('asignatura_DIN_31153'),
+                                                    ref('asignatura_ADG_10820'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="semestre_06" model="unefa.semestre">
+        <field name="semestre">6</field>
+        <field name="pensum_id" ref="pensum_2010_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_30925'),
+                                                    ref('asignatura_ELN_30514'),
+                                                    ref('asignatura_SYC_32514'),
+                                                    ref('asignatura_SYC_32614'),
+                                                    ref('asignatura_SYC_32245'),
+                                                    ref('asignatura_DIN_31163'),
+                                                    ref('asignatura_ADG_10821'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="semestre_07" model="unefa.semestre">
+        <field name="semestre">7</field>
+        <field name="pensum_id" ref="pensum_2010_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_30935'),
+                                                    ref('asignatura_MAT_31414'),
+                                                    ref('asignatura_SYC_30525'),
+                                                    ref('asignatura_SYC_32524'),
+                                                    ref('asignatura_SYC_30834'),
+                                                    ref('asignatura_DIN_31173'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="semestre_08" model="unefa.semestre">
+        <field name="semestre">8</field>
+        <field name="pensum_id" ref="pensum_2010_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32714'),
+                                                    ref('asignatura_ADG_30214'),
+                                                    ref('asignatura_MAT_30945'),
+                                                    ref('asignatura_SYC_31644'),
+                                                    ref('asignatura_DIN_31173'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="semestre_09" model="unefa.semestre">
+        <field name="semestre">9</field>
+        <field name="pensum_id" ref="pensum_2010_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_31314'),
+                                                    ref('asignatura_SYC_32814'),
+                                                    ref('asignatura_ELECTIVA_TECNICA_NOV'),
+                                                    ref('asignatura_ELECTIVA_NO_TECNICA_NOV'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="semestre_10" model="unefa.semestre">
+        <field name="semestre">10</field>
+        <field name="pensum_id" ref="pensum_2010_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_CJU_37314'),
+                                                    ref('asignatura_TTC_31154'),
+                                                    ref('asignatura_ELECTIVA_TECNICA_DEC'),
+                                                    ref('asignatura_ELECTIVA_NO_TECNICA_DEC'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="semestre_11" model="unefa.semestre">
+        <field name="semestre">11</field>
+        <field name="pensum_id" ref="pensum_2010_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_TGR_30010'),
+                                                    ref('asignatura_PSI_30010'),
+                                                    ])]"/>
+    </record>
+    
+    
+    
+<!--
+                    PENSUM 2009
+                    PENSUM 2009
+                    PENSUM 2009
+                    PENSUM 2009
+                    PENSUM 2009
+                    PENSUM 2009
+                    PENSUM 2009
+-->
+    
+    <record id="pensum_2009_carrera_ING_SIS" model="unefa.pensum">
+        <field name="pensum">2009</field>
+        <field name="carrera_id" ref="unefa_configuracion.carrera_ING_SIS"/>
+        <field name="turno">nocturno</field>
+        <field name="state">activo</field>
+    </record>
+    
+    <record id="2009_semestre_01" model="unefa.semestre">
+        <field name="pensum_id" ref="pensum_2009_carrera_ING_SIS"/>
+        <field name="semestre">1</field>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_ADG_25132'),
+                                                    ref('asignatura_ADG_25123'),
+                                                    ref('asignatura_IDM_24113'),
+                                                    ref('asignatura_MAT_21212'),
+                                                    ref('asignatura_MAT_21215'),
+                                                    ref('asignatura_MAT_21524'),
+                                                    ref('asignatura_ADG_25131'),
+                                                    ref('asignatura_IMI_21110'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2009_semestre_02" model="unefa.semestre">
+        <field name="semestre">2</field>
+        <field name="pensum_id" ref="pensum_2009_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IDM_24123'),
+                                                    ref('asignatura_QUF_22014'),
+                                                    ref('asignatura_QUF_23015'),
+                                                    ref('asignatura_MAT_21225'),
+                                                    ref('asignatura_MAT_21114'),
+                                                    ref('asignatura_ADG_25141'),
+                                                    ref('asignatura_IMI_21120'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2009_semestre_03" model="unefa.semestre">
+        <field name="semestre">3</field>
+        <field name="pensum_id" ref="pensum_2009_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_QUF_23025'),
+                                                    ref('asignatura_MAT_21235'),
+                                                    ref('asignatura_MAT_21414'),
+                                                    ref('asignatura_SYC_22113'),
+                                                    ref('asignatura_AGG_22313'),
+                                                    ref('asignatura_IMI_21130'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2009_semestre_04" model="unefa.semestre">
+        <field name="semestre">4</field>
+        <field name="pensum_id" ref="pensum_2009_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32114'),
+                                                    ref('asignatura_MAT_31714'),
+                                                    ref('asignatura_MAT_31214'),
+                                                    ref('asignatura_SYC_32225'),
+                                                    ref('asignatura_SYC_32414'),
+                                                    ref('asignatura_AGL_30214'),
+                                                    ref('asignatura_IMI_21140'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2009_semestre_05" model="unefa.semestre">
+        <field name="semestre">5</field>
+        <field name="pensum_id" ref="pensum_2009_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_31114'),
+                                                    ref('asignatura_SYC_32235'),
+                                                    ref('asignatura_MAT_30925'),
+                                                    ref('asignatura_ELN_30514'),
+                                                    ref('asignatura_SYC_32514'),
+                                                    ref('asignatura_SYC_32614'),
+                                                    asignatura_IMI_31150
+                                                    ])]"/>
+    </record>
+    
+    <record id="2009_semestre_06" model="unefa.semestre">
+        <field name="semestre">6</field>
+        <field name="pensum_id" ref="pensum_2009_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_30935'),
+                                                    ref('asignatura_SYC_32245'),
+                                                    ref('asignatura_MAT_31414'),
+                                                    ref('asignatura_SYC_30525'),
+                                                    ref('asignatura_SYC_32524'),
+                                                    ref('asignatura_SYC_30834'),
+                                                    ref('asignatura_IMI_31160'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2009_semestre_07" model="unefa.semestre">
+        <field name="semestre">7</field>
+        <field name="pensum_id" ref="pensum_2009_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32714'),
+                                                    ref('asignatura_ADG_30214'),
+                                                    ref('asignatura_MAT_30945'),
+                                                    ref('asignatura_SYC_31644'),
+                                                    ref('asignatura_ADG_30224'),
+                                                    ref('asignatura_ELECTIVA_TECNICA_NOV'),
+                                                    ref('asignatura_ELECTIVA_NO_TECNICA_NOV'),
+                                                    ref('asignatura_IMI_31170'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2009_semestre_08" model="unefa.semestre">
+        <field name="semestre">8</field>
+        <field name="pensum_id" ref="pensum_2009_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_31314'),
+                                                    ref('asignatura_SYC_32814'),
+                                                    ref('asignatura_CJU_37314'),
+                                                    ref('asignatura_TTC_31154'),
+                                                    ref('asignatura_ELECTIVA_TECNICA_DEC'),
+                                                    ref('asignatura_ELECTIVA_NO_TECNICA_DEC'),
+                                                    ref('asignatura_IMI_31180'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2009_semestre_O9" model="unefa.semestre">
+        <field name="semestre">09</field>
+        <field name="pensum_id" ref="pensum_2009_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_TGR_30010'),
+                                                    ref('asignatura_PSI_30010'),
+                                                    ])]"/>
+    </record>
+    
+    
+<!--
+                SEMESTRES DEL PENSUM 2007
+                SEMESTRES DEL PENSUM 2007
+                SEMESTRES DEL PENSUM 2007
+                SEMESTRES DEL PENSUM 2007
+                SEMESTRES DEL PENSUM 2007
+-->
+    
+    <record id="pensum_20O7_carrera_ING_SIS" model="unefa.pensum">
+        <field name="pensum">2007</field>
+        <field name="carrera_id" ref="unefa_configuracion.carrera_ING_SIS"/>
+        <field name="turno">nocturno</field>
+        <field name="state">activo</field>
+    </record>
+    
+
+    <record id="2007_semestre_01" model="unefa.semestre">
+        <field name="pensum_id" ref="pensum_20O7_carrera_ING_SIS"/>
+        <field name="semestre">1</field>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_ADG_17112'),
+                                                    ref('asignatura_MAT_10114'),
+                                                    ref('asignatura_SYC_10113'),
+                                                    ref('asignatura_ADG_11113'),
+                                                    ref('asignatura_MAT_25212'),
+                                                    ref('asignatura_IMI_21110'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2007_semestre_02" model="unefa.semestre">
+        <field name="semestre">2</field>
+        <field name="pensum_id" ref="pensum_20O7_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21214'),
+                                                    ref('asignatura_MAT_21524'),
+                                                    ref('asignatura_ADG_25122'),
+                                                    ref('asignatura_IDM_24112'),
+                                                    ref('asignatura_ADG_25132'),
+                                                    ref('asignatura_IMI_21120'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2007_semestre_03" model="unefa.semestre">
+        <field name="semestre">3</field>
+        <field name="pensum_id" ref="pensum_20O7_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21212'),
+                                                    ref('asignatura_QUF_23014'),
+                                                    ref('asignatura_MAT_21224'),
+                                                    ref('asignatura_MAT_21113'),
+                                                    ref('asignatura_IDM_24122'),
+                                                    ref('asignatura_ADG_25130'),
+                                                    ref('asignatura_IMI_21130'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2007_semestre_04" model="unefa.semestre">
+        <field name="semestre">4</field>
+        <field name="pensum_id" ref="pensum_20O7_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IDM_24212'),
+                                                    ref('asignatura_QUF_23025'),
+                                                    ref('asignatura_MAT_21235'),
+                                                    ref('asignatura_MAT_21413'),
+                                                    ref('asignatura_SYC_22112'),
+                                                    ref('asignatura_QUF_22013'),
+                                                    ref('asignatura_ADG_25141'),
+                                                    ref('asignatura_IMI_21140'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2007_semestre_05" model="unefa.semestre">
+        <field name="semestre">5</field>
+        <field name="pensum_id" ref="pensum_20O7_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_AGG_32314'),
+                                                    ref('asignatura_SYC_32114'),
+                                                    ref('asignatura_MAT_31713'),
+                                                    ref('asignatura_MAT_31213'),
+                                                    ref('asignatura_SYC_32224'),
+                                                    ref('asignatura_SYC_32414'),
+                                                    ref('asignatura_AGL_30214'),
+                                                    ref('asignatura_IMI_31150'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2007_semestre_06" model="unefa.semestre">
+        <field name="semestre">6</field>
+        <field name="pensum_id" ref="pensum_20O7_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_31114'),
+                                                    ref('asignatura_SYC_32235'),
+                                                    ref('asignatura_MAT_30925'),
+                                                    ref('asignatura_ELN_30514'),
+                                                    ref('asignatura_SYC_32514'),
+                                                    ref('asignatura_SYC_32614'),
+                                                    ref('asignatura_IMI_31160'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2007_semestre_07" model="unefa.semestre">
+        <field name="semestre">7</field>
+        <field name="pensum_id" ref="pensum_20O7_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32245'),
+                                                    ref('asignatura_MAT_31414'),
+                                                    ref('asignatura_SYC_30525'),
+                                                    ref('asignatura_SYC_32524'),
+                                                    ref('asignatura_SYC_30834'),
+                                                    ref('asignatura_IMI_31170'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2007_semestre_08" model="unefa.semestre">
+        <field name="semestre">8</field>
+        <field name="pensum_id" ref="pensum_20O7_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32714'),
+                                                    ref('asignatura_ADG_30214'),
+                                                    ref('asignatura_MAT_30945'),
+                                                    ref('asignatura_SYC_31644'),
+                                                    ref('asignatura_ADG_30224'),
+                                                    ref('asignatura_IMI_31180'),
+                                                    ref('asignatura_ELECTIVA_TECNICA_NOV'),
+                                                    ref('asignatura_ELECTIVA_NO_TECNICA_NOV'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2007_semestre_09" model="unefa.semestre">
+        <field name="semestre">9</field>
+        <field name="pensum_id" ref="pensum_20O7_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_31314'),
+                                                    ref('asignatura_SYC_32814'),
+                                                    ref('asignatura_CJU_37314'),
+                                                    ref('asignatura_TTC_31154'),
+                                                    ref('asignatura_IMI_31190'),
+                                                    ref('asignatura_ELECTIVA_TECNICA_DEC'),
+                                                    ref('asignatura_ELECTIVA_NO_TECNICA_DEC'),
+                                                    ])]"/>
+    </record>
+    
+    <record id="2007_semestre_10" model="unefa.semestre">
+        <field name="semestre">10</field>
+        <field name="pensum_id" ref="pensum_20O7_carrera_ING_SIS"/>
+        <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_PSI_30010'),
+                                                    ref('asignatura_TGR_30010'),
+                                                    
+                                                    ])]"/>
+    </record>
+    
+    
+    
+    </data>
+</openerp>
+    

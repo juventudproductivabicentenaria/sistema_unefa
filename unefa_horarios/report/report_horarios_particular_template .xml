@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+
+
+
+
+<template id="unefa_horarios.horarios_particular">
+    <style type="text/css">.horarios_00 { width: 148px}</style>
+    <style type="text/css">.horarios_001 {height: 30px; }</style>
+    
+    <style type="text/css">.horarios_111{height:90px;line-height: 30px;}</style>
+    
+    <style type="text/css">.horarios_221{height:60px; line-height: 30px;}</style>
+    
+    <style type="text/css">.horarios_331{height:120px; line-height: 50px;}</style>
+    
+    <style type="text/css">.horarios_441{height:150px; line-height: 55px;}</style>
+   
+    <style type="text/css">.horarios_551{height:180px; line-height: 50px;}</style>
+    
+    <style type="text/css">.divwidthtable{width:930px}</style>
+    
+    <style type="text/css">#cajon1{float:left;}</style>
+    <style type="text/css">#cajon2{float:left;}</style>
+    <style type="text/css">#cajon3{float:left;}</style>
+    <style type="text/css">#cajon4{float:left;}</style>
+    <style type="text/css">#cajon5{float:left;}</style>
+    <style type="text/css">#cajon6{float:left;}</style>
+    <style type="text/css">#cajon7{float:left;}</style>
+    <style type="text/css">#cajon8{float:left;}</style>
+    <style type="text/css">#cajon9{float:left;}</style>
+    <style type="text/css">#cajon10{float:left;}</style>
+    <style type="text/css">#cajon11{float:left;}</style>
+    <style type="text/css">#cajon12{float:left;}</style>
+    <style type="text/css">#div1 {float:left}</style>
+    <style type="text/css">#div2 {float:right}</style>
+    <style type="text/css">.bordersup{border-top: 1px solid ;}</style>
+    <style type="text/css">.fondoho{background-color: rgb(208, 236, 248);}</style>
+    <style type="text/css">.centrar{text-align:center}</style>
+    <style type="text/css">.fondoho2 {background-color: white;background-position: -10px -30px;}</style>
+    <style type="text/css">.borderright{border-right: 1px solid;}</style>
+    <style type="text/css">.divborder {border-top-width: 1px solid;border-right-width: 1px solid;border-bottom-width: 1px solid;border-left-width: 1px solid;}</style>
+    <style type="text/css">.letrapequeña {font-size: 12px}</style>
+    <style type="text/css">.stylediv{border:1px solid, font-size: 10px}</style>
+     <div class="page">
+        <t t-call="unefa_horarios.unefa_horarios_cabecera"/>
+            <div style="text-align: center" class="col-xs-10">
+                <h6>ÁREA EDUCATIVA</h6>
+                <h6><t t-esc="data['coordinacion_data']"/></h6>
+            </div>
+                <div style="text-align: center" class="col-xs-10">
+                    <div class="col-xs-2" style="font-size: 10px">
+                        <strong>AULA: <t t-esc="data['seccion_horario_data']['aula_id']['numero']"/></strong>
+                    </div>
+                    <div class="col-xs-2" style="font-size: 10px">
+                        <strong>SEMESTRE: <t t-esc="data['seccion_horario_data']['seccion_id']['oferta_semestre_id']['semestre_id']['semestre']"/></strong>
+                    </div>
+                    <div class="col-xs-2" style="font-size: 10px">
+                        <strong>PENSUM: <t t-esc="data['pensum']"/></strong>
+                    </div>
+                    <div class="col-xs-3" style="font-size: 10px">
+                        <strong>PERÍODO ACADÉMICO: <t t-esc="data['periodo']"/></strong>
+                    </div>
+                    <div class="col-xs-2" style="font-size: 10px">
+                        <strong>SECCIÓN: <t t-esc="data['seccion_horario_data']['seccion_id']['seccion']"/></strong>
+                    </div>
+                </div>
+            <br></br>
+            <br></br>
+            
+            
+            <div class="col-md-12">
+                <div class="col-md-8" id="div1">
+                    <div class="divhorariop">
+                        <div class="horarios_00 centrar fondoho stylediv" style="border:1px solid" id="cajon1">HORAS
+                            <t t-foreach="data['relacion_hora_turno_data']['horas_ids']" t-as="horas">
+                                <div style="font-size: 10px" class="bordersup fondoho2 divwidth horarios_00 horarios_001"><t t-esc="'%s' % (horas.hora_completo)"/></div>
+                            </t>
+                        </div>
+                        <div class="horarios_00 centrar fondoho stylediv" id="cajon2" style="border:1px solid">LUNES
+                            <t t-set="asig" value=""/>
+                            <t t-foreach="data['relacion_hora_turno_data']['horas_ids']" t-as="horas">
+                                <t t-foreach="data['seccion_horario_data']['datos_ids']" t-as="datos">
+                                    <t t-if="'Lunes' == datos.dia_id.dia">
+                                        <t t-if="datos.hora_id.id == horas.id">
+                                            <t t-if="not datos.asignatura_id == asig"> 
+                                                <div style="font-size: 10px" t-attf-class="bordersup fondoho2 divborder horarios_00 #{data['lunes'][datos.id]}">
+                                                    <t t-if="datos['asignatura_id']['asignatura']!=False">
+                                                        <t t-esc="'%s' % (datos['asignatura_id']['asignatura'])"/>
+                                                    </t>
+                                                    <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                        <h3></h3>
+                                                    </t>
+                                                </div>
+                                                <t t-set="asig" t-value="datos.asignatura_id"/>
+                                                <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                    <t t-set="asig" value="1"/>
+                                                </t>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </t>
+                            </t>
+                        </div>
+                        <div class="horarios_00 centrar fondoho stylediv" id="cajon2" style="border:1px solid">MARTES
+                            <t t-set="asig" value=""/>
+                            <t t-foreach="data['relacion_hora_turno_data']['horas_ids']" t-as="horas">
+                                <t t-foreach="data['seccion_horario_data']['datos_ids']" t-as="datos">
+                                    <t t-if="'Martes' == datos.dia_id.dia">
+                                        <t t-if="datos.hora_id.id == horas.id">
+                                            <t t-if="not datos.asignatura_id == asig"> 
+                                                <div style="font-size: 10px" t-attf-class="bordersup fondoho2 divborder horarios_00 #{data['martes'][datos.id]}">
+                                                    <t t-if="datos['asignatura_id']['asignatura']!=False">
+                                                        <t t-esc="'%s' % (datos['asignatura_id']['asignatura'])"/>
+                                                    </t>
+                                                    <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                        <h3></h3>
+                                                    </t>
+                                                </div>
+                                                <t t-set="asig" t-value="datos.asignatura_id"/>
+                                                <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                    <t t-set="asig" value="1"/>
+                                                </t>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </t>
+                            </t>
+                        </div>
+                        <div class="horarios_00 centrar fondoho stylediv" id="cajon2" style="border:1px solid">MIERCOLES
+                            <t t-set="asig" value=""/>
+                            <t t-foreach="data['relacion_hora_turno_data']['horas_ids']" t-as="horas">
+                                <t t-foreach="data['seccion_horario_data']['datos_ids']" t-as="datos">
+                                    <t t-if="'Miercoles' == datos.dia_id.dia">
+                                        <t t-if="datos.hora_id.id == horas.id">
+                                            <t t-if="not datos.asignatura_id == asig"> 
+                                                <div style="font-size: 10px" t-attf-class="bordersup fondoho2 divborder horarios_00 #{data['miercoles'][datos.id]}">
+                                                    <t t-if="datos['asignatura_id']['asignatura']!=False">
+                                                        <t t-esc="'%s' % (datos['asignatura_id']['asignatura'])"/>
+                                                    </t>
+                                                    <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                        <h3></h3>
+                                                    </t>
+                                                </div>
+                                                <t t-set="asig" t-value="datos.asignatura_id"/>
+                                                <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                    <t t-set="asig" value="1"/>
+                                                </t>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </t>
+                            </t>
+                        </div>
+                        <div class="horarios_00 centrar fondoho stylediv" id="cajon2" style="border:1px solid">JUEVES
+                            <t t-set="asig" value=""/>
+                            <t t-foreach="data['relacion_hora_turno_data']['horas_ids']" t-as="horas">
+                                <t t-foreach="data['seccion_horario_data']['datos_ids']" t-as="datos">
+                                    <t t-if="'Jueves' == datos.dia_id.dia">
+                                        <t t-if="datos.hora_id.id == horas.id">
+                                            <t t-if="not datos.asignatura_id == asig"> 
+                                                <div style="font-size: 10px" t-attf-class="bordersup fondoho2 divborder horarios_00 #{data['jueves'][datos.id]}">
+                                                    <t t-if="datos['asignatura_id']['asignatura']!=False">
+                                                        <t t-esc="'%s' % (datos['asignatura_id']['asignatura'])"/>
+                                                    </t>
+                                                    <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                        <h3></h3>
+                                                    </t>
+                                                </div>
+                                                <t t-set="asig" t-value="datos.asignatura_id"/>
+                                                <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                    <t t-set="asig" value="1"/>
+                                                </t>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </t>
+                            </t>
+                        </div>
+                        <div class="horarios_00 centrar fondoho stylediv" id="cajon2" style="border:1px solid">VIERNES
+                            <t t-set="asig" value=""/>
+                            <t t-foreach="data['relacion_hora_turno_data']['horas_ids']" t-as="horas">
+                                <t t-foreach="data['seccion_horario_data']['datos_ids']" t-as="datos">
+                                    <t t-if="'Viernes' == datos.dia_id.dia">
+                                        <t t-if="datos.hora_id.id == horas.id">
+                                            <t t-if="not datos.asignatura_id == asig"> 
+                                                <div style="font-size: 10px" t-attf-class="bordersup borderright fondoho2 divborder horarios_00 #{data['viernes'][datos.id]}">
+                                                    <t t-if="datos['asignatura_id']['asignatura']!=False">
+                                                        <t t-esc="'%s' % (datos['asignatura_id']['asignatura'])"/>
+                                                    </t>
+                                                    <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                        <h3></h3>
+                                                    </t>
+                                                </div>
+                                                <t t-set="asig" t-value="datos.asignatura_id"/>
+                                                <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                    <t t-set="asig" value="1"/>
+                                                </t>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" id="div2">
+                    <div class="row">
+                        <div class="horarios_00 centrar fondoho stylediv" style="border:1px solid" id="cajon1">HORAS
+                            <t t-foreach="data['relacion_hora_sabado_data']['horas_ids']" t-as="horass">
+                                <div style="font-size: 10px" class="bordersup fondoho2 divwidth horarios_00 horarios_001"><t t-esc="'%s' % (horass.hora_completo)"/></div>
+                            </t>
+                        </div>
+                        <div class="horarios_00 centrar fondoho stylediv" id="cajon2" style="border:1px solid">SABADO
+                            <t t-set="asig" value=""/>
+                            <t t-foreach="data['relacion_hora_sabado_data']['horas_ids']" t-as="horasa">
+                                <t t-foreach="data['seccion_horario_data']['datos_ids']" t-as="datos">
+                                    <t t-if="'Sabado' == datos.dia_id.dia">
+                                        <t t-if="datos.hora_id.id == horasa.id">
+                                            <t t-if="not datos.asignatura_id == asig"> 
+                                                <div style="font-size: 10px" t-attf-class="bordersup fondoho2 borderright divborder horarios_00 #{data['sabado'][datos.id]}">
+                                                    <t t-if="datos['asignatura_id']['asignatura']!=False">
+                                                        <t t-esc="'%s' % (datos['asignatura_id']['asignatura'])"/>
+                                                    </t>
+                                                    <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                        <h3></h3>
+                                                    </t>
+                                                </div>
+                                                <t t-set="asig" t-value="datos.asignatura_id"/>
+                                                <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                    <t t-set="asig" value="1"/>
+                                                </t>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="col-md-8 divwidthtable mt32">	
+					<p style="color:white">Profesores</p>
+                </div>
+                
+                <t t-set="lineas" t-value="len(data['asignatura_oferta_academica_data'])" /> 
+                <t t-set="columnas" t-value="9" /> 
+                <div class="col-md-8 divwidthtable mt32">
+                    <table colspan="24" class="table table table-condensed table-bordered centrar" style="border: 1px solid black" id="horarios">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center,font-size: 10px,border: 1px solid black" class="fondoho centrar" colspan="2"><h6>CÓDIGO</h6></th>
+                                <th style="text-align:center,font-size: 10px,border: 1px solid black" class="fondoho centrar" colspan="5"><h6>ASIGNATURA</h6></th>
+                                <th style="text-align:center,font-size: 10px,border: 1px solid black" class="fondoho centrar" colspan="1"><h6>T</h6></th>
+                                <th style="text-align:center,font-size: 10px,border: 1px solid black" class="fondoho centrar" colspan="1"><h6>P</h6></th>
+                                <th style="text-align:center,font-size: 10px,border: 1px solid black" class="fondoho centrar" colspan="1"><h6>L</h6></th>
+                                <th style="text-align:center,font-size: 10px,border: 1px solid black" class="fondoho centrar" colspan="1"><h6>UC</h6></th>
+                                <th style="text-align:center,font-size: 10px,border: 1px solid black" class="fondoho centrar" colspan="3"><h6>PRELACIÓN</h6></th>
+                                <th style="text-align:center,font-size: 10px,border: 1px solid black" class="fondoho centrar" colspan="7"><h6>PROFESOR</h6></th>
+                                <th style="text-align:center,font-size: 10px,border: 1px solid black" class="fondoho centrar" colspan="3"><h6>N° DE CEDULA</h6></th>
+                            </tr>
+                        </thead>
+                        <t t-set="prelaciones" value=""/>
+                        <t t-foreach="data['asignatura_oferta_academica_data']" t-as="asignatura">
+                            <tr>
+                                <td colspan="2" style="font-size: 10px"><t t-esc="asignatura['asignatura_id']['codigo_asignatura']"/></td>
+                                <td colspan="5" style="font-size: 10px"><t t-esc="asignatura['asignatura_id']['asignatura']"/></td>
+                                <td colspan="1" style="font-size: 10px"><t t-esc="asignatura['asignatura_id']['hora_teorica']"/></td>
+                                <td colspan="1" style="font-size: 10px"><t t-esc="asignatura['asignatura_id']['hora_practica']"/></td>
+                                <td colspan="1" style="font-size: 10px"><t t-esc="asignatura['asignatura_id']['hora_laboratorio']"/></td>
+                                <td colspan="1" style="font-size: 10px"><t t-esc="asignatura['asignatura_id']['unidad_credito']"/></td>
+                                <td colspan="3" style="font-size: 10px"><t t-esc="data['dic_prelacion'][asignatura.id]"/></td>
+                                <td colspan="7" style="font-size: 10px"><t t-esc="asignatura['profesor_id']['nombre_completo']"/></td>
+                                <td colspan="3" style="font-size: 10px"><t t-esc="asignatura['profesor_id']['cedula']"/></td>
+                            </tr>
+                        </t>
+                        <t t-set="i" t-value="1" /> 
+                        <t t-set="linea_blanca" t-value="columnas-lineas"/> 
+                            <t t-foreach="linea_blanca" t-as="i">
+                               <tr>
+                                    <td colspan="2"></td>
+                                    <td colspan="5"></td>
+                                    <td colspan="1"></td>
+                                    <td colspan="1"></td>
+                                    <td colspan="1"></td>
+                                    <td colspan="1"></td>
+                                    <td colspan="3"></td>
+                                    <td colspan="7"></td>
+                                    <td colspan="3"></td>
+                                </tr>
+                            </t>
+                    </table>
+                </div>
+            
+			</div>
+            <div style="text-align: center" class="col-xs-12">
+                <div id="cajon9" style="margin: 10px;padding: 5px; text-align: center;font-size: 10px">
+                    <h6>______________________________________</h6>
+                    <h6><t t-esc="data['coordinador']['nombre_completo']"/></h6>
+                    <h6> COORDINADOR DE CARRERA</h6>
+                </div>
+                <div id="cajon10" style="margin: 10px;padding: 5px; text-align: center;font-size: 10px">
+                    <h6>______________________________________</h6>
+                    <h6> JEFE DE PREGRADO</h6>
+                </div>
+                <div id="cajon11" style="margin: 10px;padding: 5px; text-align: center;font-size: 10px">
+                    <h6>______________________________________</h6>
+                    <h6> JEFA DE ÁREA EDUCATIVA </h6>
+                </div>
+<!--
+                <t t-if="data['estudiante']=='estudiante'">
+-->
+					<div id="cajon12" style="margin: 10px;padding: 5px; text-align: center;font-size: 10px">
+						<h6>Estudiante: <t t-esc="data['nombre']"/> Cedula: <t t-esc="data['cedula']"/></h6>
+					</div>
+<!--
+				</t>
+-->
+            </div>
+        </div>
+</template>
+
+
+<template id="unefa_horarios.unefa_horarios_cabecera">
+    <div style="text-align: center">
+        <div class="col-xs-1">
+            <img class="img-responsive" src="/unefa_oferta_academica/static/img/logo_unefa.png"/>
+        </div>
+        <div class="col-xs-10">
+            <h6>REPÚBLICA BOLIVARIANA DE VENEZUELA</h6>
+            <h6>MINISTERIO DEL PODER POPULAR PARA LA DEFENSA</h6>
+            <h6>UNIVERSIDAD NACIONAL EXPERIMENTAL POLITECNICA DE LA FUERZA ARMADA</h6>
+        </div>
+    </div>
+</template>
+</data>
+</openerp>

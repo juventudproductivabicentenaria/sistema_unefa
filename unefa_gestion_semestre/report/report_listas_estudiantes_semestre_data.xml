@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<report id="report_lista_estudiantes_semestre"
+			string="Listas Estudiantes por semestre"
+			model="unefa.generar_lista_semestre"
+			report_type="qweb-pdf"
+			file="unefa_gestion_semestre.listas_estudiantes_semestre_qweb"
+            name="unefa_gestion_semestre.listas_estudiantes_semestre_qweb"
+            menu="True"/>
+	</data>
+</openerp>

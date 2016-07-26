@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_unefa_res_company_form">
+            <field name="name">Universidad</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                
+<!--
+                hago invisible la etiqueta nombre de la compañia
+-->
+ 
+        <xpath expr="/form/sheet/div/label" position="attributes">
+            <attribute name="invisible">True</attribute>
+        </xpath>
+<!--
+        le agrego el pleceholder al campo name
+-->
+        <xpath expr="/form/sheet/div/h1/field[@name='name']" position="attributes">
+            <attribute name="placeholder">Universidad</attribute>
+        </xpath>
+<!--
+            Agrego el compo nuevo heredado que llame rif
+-->
+        <xpath expr="/form/sheet/div/h1" position="after">
+           <h1>
+                <field name="rif" class="oe_inline" placeholder="RIF" data-inputmask="'mask': 'G-99999999-9'"/> 
+           </h1>
+        </xpath>
+        
+<!--
+            Agrego el campo nuevo heredado registrar los nucleos
+-->
+        <xpath expr="/form/sheet/notebook/page[@string='Report Configuration']" position="after">
+            <page string="Sedes">
+                <field name="nucleo_ids" class="oe_inline" placeholder="nucleo">
+                <tree string="Nucleos" editable="botton">
+                        <field name="nombre"/>
+                        <field name="direccion"/>
+                        <field name="telefono"/>
+                </tree>
+                
+                </field> 
+            </page>
+        </xpath>
+        
+<!--
+        cambio de universidad direccion 
+-->
+        <xpath expr="/form/sheet/notebook/page/group/group/field[@name='partner_id']" position="attributes">
+           <attribute name="string">Universidad</attribute>
+        </xpath>
+        
+<!--
+        cambio de lema 
+-->
+
+        <xpath expr="/form/sheet/notebook/page/group/group/label[@for='rml_header1']" position="attributes">
+           <attribute name="string">Lema de la Universidad</attribute>
+        </xpath>
+<!--
+        registro de la universidad
+-->
+        
+        <xpath expr="/form/sheet/notebook/page/group/group/field[@name='company_registry']" position="attributes">
+           <attribute name="string">Registro de la Universidad</attribute>
+        </xpath>
+        
+<!--
+        Oculto el group Acount Banks
+-->  
+        
+        <xpath expr="/form/sheet/notebook/page/group[@string='Bank Accounts']" position="attributes">
+           <attribute name="invisible">True</attribute>
+        </xpath>
+        
+        
+<!--
+        Oculto el page de configuracion de moneda
+-->
+        
+         <xpath expr="/form/sheet/notebook/page[@string='Configuration']" position="attributes">
+             <attribute name="invisible">True</attribute>
+        </xpath>
+         
+         <field name="country_id" position="replace">
+                <field name="country_id" invisible="True"/>
+        </field>
+         
+         <xpath expr="/form/sheet/div/p[@class='oe_view_nocontent_create oe_edit_only']" position="replace">
+             <p class="oe_view_nocontent_create oe_edit_only">
+                Pulse para establecer el logo de la Universidad
+             </p>
+        </xpath>
+        
+        
+        <field name="street2" position="replace"/>
+        <field name="city" position="before">
+            <field name="street2" attrs="{'invisible': [('country_id','=',240)]}"/>
+        </field>
+        
+        <field name="street" position="replace"/>
+        <field name="street2" position="before">
+            <field name="street" placeholder="Street..." attrs="{'invisible': [('country_id','=',240)]}"/>
+        </field>
+        
+        <field name="city" position="replace"/>
+        <field name="state_id" position="before">
+            <field name="city" placeholder="City" style="width: 40%%" attrs="{'invisible': [('country_id','=',240)]}"/>
+        </field>
+        
+        <field name="state_id" position="replace"/>
+        <field name="zip" position="before">
+            <field name="state_id" class="oe_no_button" placeholder="State" on_change="onchange_state(state_id)" style="width: 26%%" options='{"no_open": True}' attrs="{'invisible': [('country_id','=',240)]}"/>
+        </field>
+        
+        <field name="zip" position="replace"/>
+        <field name="state_id" position="after">
+            <field name="zip" placeholder="ZIP" style="width: 34%%" attrs="{'invisible': [('country_id','=',240)]}"/>
+        </field>                    
+        
+        <field name="country_id" position="after">
+            <field name="estado_id" placeholder="Estado" on_change="cp_limpiar_campos('municipio_id')" attrs="{'invisible': [('country_id','!=',240)], 'required': [('country_id','=',240)]}" widget="selection"/>
+            <field name="municipio_id" placeholder="Municipio" domain="[('estado_id','=',[estado_id])]" on_change="cp_limpiar_campos('parroquia_id')" attrs="{'invisible': [('country_id','!=',240)], 'required': [('country_id','=',240)]}" widget="selection"/>
+            <field name="parroquia_id" placeholder="Parroquia" domain="[('municipio_id','=',[municipio_id])]" on_change="cp_limpiar_campos('sector')" attrs="{'invisible': [('country_id','!=',240)], 'required': [('country_id','=',240)]}" widget="selection"/>
+            <field name="sector" placeholder="Sector" attrs="{'invisible': [('country_id','!=',240)]}"/>
+            <field name="calle_avenida" placeholder="Calle/Avenida" attrs="{'invisible': [('country_id','!=',240)]}"/>
+            <field name="casa_apto" placeholder="Casa/Edificio" attrs="{'invisible': [('country_id','!=',240)]}"/>
+        </field>
+        </field>
+    </record>
+        
+        
+
+        
+    </data>
+</openerp>

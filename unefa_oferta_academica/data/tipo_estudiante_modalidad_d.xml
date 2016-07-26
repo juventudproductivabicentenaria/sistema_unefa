@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+<!--
+                    Modaldad de las carreras
+-->                                          
+    <record id="modalidad_PRESENCIAL" model="unefa.modalidad">
+        <field name="modalidad">PRESENCIAL</field>
+    </record>
+    
+    <record id="modalidad_SEMIPRESENCIAL" model="unefa.modalidad">
+        <field name="modalidad">SEMIPRESENCIAL</field>
+    </record>
+    
+    <record id="modalidad_VIRTUAL" model="unefa.modalidad">
+        <field name="modalidad">VIRTUAL</field>
+    </record>
+    
+<!--
+                    TIPO DE ESTUDIANTE
+-->
+    
+    <record id="tipo_estudiante_REGULARES" model="unefa.tipo_estudiante">
+        <field name="tipo_estudiante">REGULARES</field>
+    </record>
+    
+    <record id="tipo_estudiante_REPITIENTE" model="unefa.tipo_estudiante">
+        <field name="tipo_estudiante">REPITIENTE</field>
+    </record>
+    
+    <record id="tipo_estudiante_DEFASADO" model="unefa.tipo_estudiante">
+        <field name="tipo_estudiante">DEFASADO</field>
+    </record>
+    
+    
+    </data>
+</openerp>

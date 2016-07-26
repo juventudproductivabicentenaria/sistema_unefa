@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_unefa_pensum_form">
+            <field name="name">unefa_pensum_form</field>
+            <field name="model">unefa.pensum</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Pensum">
+                    <header>
+                        <button name="activar_pensum" string="Activar"  type="object" states="inactivo,activo" class="oe_highlight" groups="base.group_system"/>
+                        <button name="desactivar_pensum" string="Desactivar"  type="object" states="inactivo,activo" class="oe_highlight" groups="base.group_system"/>
+                        <field name="state" widget="statusbar" statusbar_visible="inactivo,activo"/>
+                    </header>
+                    <sheet>
+                        <header>
+                            <h2 style="color:#7C7BAD"><center>Pensum</center></h2>
+                        </header>
+                        <group col="4">
+                            <field name="pensum" />
+                            <field name="carrera_id"  widget="selection" domain="[('state','=','activo')]"/>
+                            <field name="turno" />
+                            <field name="pensum_ids" widget="many2many_binary"/>
+                            <field name="active"/>
+                        </group>
+                        <notebook>
+                            <page string="Semestre">
+                                <field name="semestre_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_pensum_tree">
+        <field name="name">unefa_pensum.tree</field>
+        <field name="model">unefa.pensum</field>
+        <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Pensum">
+                    <field name="pensum" />
+                    <field name="carrera_id" />
+                    <field name="turno" />
+                    <field name="active"/>
+                    <field name="state" invisible = "1"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_unefa_pensum">
+            <field name="name">Pensum de Estudio</field>
+            <field name="res_model">unefa.pensum</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Aquí se registran los Pensum
+            </p>
+            </field>
+        </record>
+        
+<!--
+                                            vista form y tree de semestre
+-->
+        
+        <record model="ir.ui.view" id="view_unefa_semestre_form">
+            <field name="name">unefa_semestre_form</field>
+            <field name="model">unefa.semestre</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Semestre">
+                    <sheet>
+                        <group col="4">
+                            <field name="semestre" />
+                            <field name="active"/>
+                        </group>
+                        <notebook>
+                            <page string="Asignaturas">
+                                <field name="asignaturas_ids" domain="[('state','=','activo')]"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_semestre_tree">
+        <field name="name">unefa_semestre.tree</field>
+        <field name="model">unefa.semestre</field>
+        <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Semestre">
+                    <field name="semestre" />
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_unefa_semestre">
+            <field name="name">Semestre</field>
+            <field name="res_model">unefa.semestre</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Aquí se registran los Semestres
+            </p>
+            </field>
+        </record>
+        
+        <menuitem name="Pensum de estudio" id="unefa_pensum_titulo" parent="unefa_configuracion.unefa_menu_principal_gestion"  sequence="120"/>
+        <menuitem name="Pensum" id="unefa_pensum_inicio" parent="unefa_pensum_titulo" sequence="10"/>
+        <menuitem name="Pensum" id="unefa_pensum_pensum" parent="unefa_pensum_inicio" action="action_unefa_pensum" sequence="15"/>
+        
+    </data>
+</openerp>

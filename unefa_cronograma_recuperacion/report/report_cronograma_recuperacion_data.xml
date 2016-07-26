@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<report id="id_cronograma_recuperacion"
+			string="Cronograma de Recuperación"
+			model="unefa.cronogramas_recuperacion"
+			report_type="qweb-pdf"
+			file="unefa_cronograma_recuperacion.cronograma_recuperacion"
+            name="unefa_cronograma_recuperacion.cronograma_recuperacion"
+            menu="True"/>
+            
+        
+        
+        <record id="paperformat_cronograma_recuperacion" model="report.paperformat">
+            <field name="name">Horarios</field>
+            <field name="default" eval="True"/>
+            <field name="format">Legal</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">3</field>
+            <field name="margin_bottom">3</field>
+            <field name="margin_left">3</field>
+            <field name="margin_right">3</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">3</field>
+            <field name="dpi">80</field>
+        </record>
+        <record id="id_cronograma_recuperacion" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="paperformat_cronograma_recuperacion"/>
+        </record>    
+        
+	</data>
+</openerp>

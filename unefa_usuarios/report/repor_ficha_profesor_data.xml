@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<report id="id_ficha_profesor"
+			string="Ficha de Profesor"
+			model="unefa.usuario_profesor"
+			report_type="qweb-pdf"
+			file="unefa_usuarios.ficha_profesores_qweb"
+            name="unefa_usuarios.ficha_profesores_qweb"
+            menu="True"/>
+	</data>
+</openerp>

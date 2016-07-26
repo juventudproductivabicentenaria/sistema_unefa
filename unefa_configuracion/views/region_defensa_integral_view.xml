@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <openerp>
+     <data>
+    <!--REGISTRO DE REGIONES DE REGIONES DEFENSA INTEGRAL -->
+        
+    <record model="ir.ui.view" id="view_unefa_region_defensa_integral_form">
+        <field name="name">unefa_region_defensa_integral.form</field>
+        <field name="model">unefa.region_defensa_integral</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="RegiOn de Defensa Integral de la Nación">
+                <sheet>
+                    <header>
+                           <h2 style="color:#7C7BAD"><center>Región de Defensa Integral</center></h2>
+                     </header>
+                    <group>
+                        <field name="region_defensa_integral"/>
+                        <field name="active" />
+                        <field name="estados_ids" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_unefa_region_defensa_integral_tree">
+        <field name="name">unefa_region_defensa_integral.tree</field>
+        <field name="model">unefa.region_defensa_integral</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Región de Defensa Integral">
+                <field name="region_defensa_integral"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    
+     <record model="ir.actions.act_window" id="action_unefa_region_defensa_integral">
+        <field name="name">Región de Defensa Integral</field>
+        <field name="res_model">unefa.region_defensa_integral</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Aquí se registran las asignaturas
+            </p>
+        </field>
+    </record>
+    
+    
+
+    
+    <menuitem name="Región Defensa Integral" id="menu_region_defensa_integral" parent="unefa_menu_direccion_configuracion" action="action_unefa_region_defensa_integral" sequence="30" groups="base.group_system"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+
+<template id="unefa_oferta_academica.oferta_academica_qweb" >
+    <style type="text/css">.text-rotation {display: block; -webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);}</style>
+     <style type="text/css">.letrapequena{font-size: 8px}</style>
+     <style type="text/css">.fondoho{background-color: rgb(208, 236, 248);}</style>
+    <div class="page">
+        <t t-call="unefa_oferta_academica.oferta_academica_cabecera_qweb"/>
+        <t t-set="cont" t-value="1" />
+            <div style="text-align: right" class="col-xs-12 letrapequena">
+                <h7><strong>Fecha de Elaboración:</strong> <t t-esc="data['oferta']['create_date']"/><strong> Folio:</strong> Pag-00<t t-esc="data['folio']"></t></h7>
+            </div>
+            
+            <table colspan="51" class="table table-condensed table-bordered letrapequena" width="10%" style="border: 1px solid black;" >
+                <tr>
+                    <td colspan="51" style=";border: 1px solid black;color: black;text-align: center; font-size: 8px" class="fondoho"><strong>SOLICITUD DE OFERTA ACADÉMICA DE LOS NUCLEOS DE LA UNEFA</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="51" style="border: 1px solid black;color: black;text-align: left; font-size: 8px" class="fondoho"><strong>I. DATOS IDENTIFICACIÓN DEL NUCLEO</strong></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="13" class="letrapequena"><strong>1. REGIÓN DE DEFENSA INTEGRAL: <t t-esc="data['sede_data']['region_id']['region_defensa_integral']"/></strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="13" class="letrapequena"><strong>2. ESTADO: <t t-esc="data['sede_data']['estado_id']['estado']"/></strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="13" class="letrapequena"><strong>3. TIPO DE SEDE: 
+						<t t-if="data['sede_data']['tipo_sede']=='nucleo'">
+							  NÚCLEO
+						 </t>
+						<t t-if="data['sede_data']['tipo_sede']=='extencion'">
+							  EXTENCIÓN
+						 </t>
+						<t t-if="data['sede_data']['tipo_sede']=='ampliacion'">
+							  AMPLIACIÓN
+						 </t>
+						 </strong></td>
+						 <t t-if="data['sede_data']['tipo_sede']=='nucleo'">
+							<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="102" class="letrapequena"><strong>4. NÚCLEO: <t t-esc="data['sede_data']['nombre']"/></strong></td>
+						</t>
+						<t t-if="data['sede_data']['tipo_sede']=='extencion'">
+							<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="102" class="letrapequena"><strong>5. EXTENCIÓN: <t t-esc="data['sede_data']['nombre']"/></strong></td>
+						</t>
+						<t t-if="data['sede_data']['tipo_sede']=='ampliacion'">
+							<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="102" class="letrapequena"><strong>6. AMPLIACIÓN: <t t-esc="data['sede_data']['nombre']"/></strong></td>
+						</t>
+                </tr>                
+                <tr>
+                    <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="51" class="letrapequena"><strong>7. DIRECCIÓN DE LA UNEFA QUE REPORTA: <t t-esc="data['sede_data']['direccion']"/></strong></td>
+                </tr>  
+                <tr>
+                    <td colspan="51" style="border: 1px solid black;color: black;text-align: left; font-size: 8px" class="fondoho"><strong>II. DATOS IDENTIFICACIÓN CARRERA PREGRADO</strong></td>
+                </tr> 
+                <tr>
+                    <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="13" class="letrapequena"><strong>8. TIPO CARRERA: 
+                    <t t-if="data['oferta']['carrera_id']['tipo']=='corta'">
+                        CORTA
+                    </t>
+                    <t t-if="data['oferta']['carrera_id']['tipo']=='larga'">
+                        LARGA
+                    </t>
+                    </strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="13" class="letrapequena"><strong>9. ÁREA DE CONOCIMIENTO: <t t-esc="data['oferta']['carrera_id']['area_conocimiento_id']['area_conocimiento']"/></strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="13" class="letrapequena"><strong>10. CARRERA: <t t-esc="data['oferta']['carrera_id']['nombre']"/></strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="12" class="letrapequena"><strong>11. REGÍMEN: 
+						<t t-if="data['oferta']['regimen']=='semestre'">
+							SEMESTRE
+						</t>
+						<t t-if="data['oferta']['regimen']=='modular'">
+							MODULAR
+						</t>
+						<t t-if="data['oferta']['regimen']=='ninguno'">
+							NINGUNO
+						</t>
+						</strong></td>
+                </tr>                
+                <tr>
+                    <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="13" class="letrapequena"><strong>12. N° S o T: <t t-esc="data['semestre']['semestre_id']['semestre']"/></strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="13" class="letrapequena"><strong>13. MODALIDAD: <t t-esc="data['oferta']['modalidad_id']['modalidad']"/></strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="13" class="letrapequena"><strong>14. ESTUDIANTES: <t t-esc="data['semestre']['tipo_estudiante_id']['tipo_estudiante']"/></strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="12" class="letrapequena"><strong>15. PERÍODO ACADÉMICO: <t t-esc="data['oferta']['periodo_id']['periodo_academico']"/></strong></td>
+                </tr>   
+                <tr>
+                    <td colspan="51" style="fondoho;border: 1px solid black;color: black;text-align: left; font-size: 8px" class="fondoho"><strong>III. DATOS REQUERIDOS DE LA OFERTA ACADÉMICA</strong></td>
+                </tr>   
+                <tr>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="8" class="fondoho"><strong>16. ASIGNATURA </strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>17. PLAN DE ESTUDIO </strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>18. SECCIONES: </strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>19. MATRÍCULA ESTUDIANTIL </strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>20. TURNO: </strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="6" class="fondoho"><strong>21. CANTIDAD HORAS ACADÉMICAS </strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="33" class="fondoho"><strong>22. DATOS ACADÉMICOS DEL DOCENTE </strong>
+                    </td>
+                </tr>   
+                <tr>
+						<td style="border: 1px solid black;color: black;text-align: center ; font-size: 6px" colspan="18" class="fondoho"></td>
+						<td style="border: 1px solid black;color: black;text-align: center ; font-size: 6px" colspan="13" class="fondoho"><strong>DATOS DEL DOCENTE</strong></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="2" class="fondoho"><strong>CONDICIÓN</strong></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="4" class="fondoho"><strong>DEDICACIÓN</strong></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="6" class="fondoho"><strong>CATEGORÍA</strong></td>
+				</tr>          
+                <tr>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="8" class="fondoho"><strong>NOMBRE ASIGNATURA </strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>AÑO </strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>SECCIÓN </strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>CANTIDAD</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>TURNO</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>T</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>P</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>L</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>T.H</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>H.AD-H</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>T.H.P</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="3" class="fondoho"><strong>CEDULA</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="10" class="fondoho"><strong>NOMBRE COMPLETO</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>O</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>C</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>TV</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>MT</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>TC</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>DC</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>AUX</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>INST</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>ASIS</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>AGRE</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>ASOC</strong></td>
+                    <td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><strong>TITULAR</strong></td>
+                </tr>
+                <t t-set="lineas" t-value="len(data['seccion']['asignaturas_ids'])" /> 
+                <t t-set="columnas" t-value="10" />
+                <t t-set="h_t_general" t-value="0" /> 
+                <t t-set="h_t_t_general" t-value="0" /> 
+                <t t-set="h_t_p_general" t-value="0" /> 
+                <t t-set="h_t_l_general" t-value="0" /> 
+                <t t-set="matricula_total" t-value="0" /> 
+                <t t-set="condicion_total_ordinario" t-value="0" />  
+                <t t-set="condicion_total_contratado" t-value="0" />  
+                
+                <t t-set="dedicacion_tiempo_convencional" t-value="0" />  
+                <t t-set="dedicacion_medio_tiempo" t-value="0" />  
+                <t t-set="dedicacion_tiempo_completo" t-value="0" />  
+                <t t-set="dedicacion_exclusiva" t-value="0" />  
+                
+                
+                <t t-set="categoria_auxiliar" t-value="0" />  
+                <t t-set="categoria_instructor" t-value="0" />  
+                <t t-set="categoria_asistente" t-value="0" />  
+                <t t-set="categoria_agregado" t-value="0" />  
+                <t t-set="categoria_asociado" t-value="0" />  
+                <t t-set="categoria_titular" t-value="0" />
+                <t t-set="total_horas_and_horonem" t-value="0" />  
+                <t t-set="total_horas_pagar_general" t-value="0" />  
+               
+                
+                
+                
+                
+                <t t-foreach="data['seccion']['asignaturas_ids']" t-as="asignatura">
+                    <tr>
+                        <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="8" class="letrapequena"><t t-esc="asignatura['asignatura_id']['asignatura']"/></td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena"><t t-esc="data['pensum']"/></td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena"><t t-esc="data['seccion']['seccion']"/></td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena"><t t-esc="asignatura['matricula']"/></td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena">
+                            <t t-if="data['oferta']['turno']=='nocturno'">
+                                NOCTURNO
+                            </t>
+                            <t t-if="data['oferta']['turno']=='diurno'">
+                                DIURNO
+                            </t>
+                            <t t-if="data['oferta']['turno']=='sabatino'">
+                                SABATINO
+                            </t>
+                        </td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena"><t t-esc="asignatura['asignatura_id']['hora_teorica']"/></td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena"><t t-esc="asignatura['asignatura_id']['hora_practica']"/></td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena"><t t-esc="asignatura['asignatura_id']['hora_laboratorio']"/></td>
+                        <t t-set="horas_total" t-value="asignatura['asignatura_id']['hora_teorica']+asignatura['asignatura_id']['hora_practica']+asignatura['asignatura_id']['hora_laboratorio']" />
+                        <t t-set="horas_total_pagar" t-value="horas_total" />  
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena"><t t-esc="horas_total"/></td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena">
+							<t t-if="horas_total==8">
+                                1
+                                <t t-set="horas_total_pagar" t-value="horas_total-1" />
+                                <t t-set="total_horas_and_horonem" t-value="total_horas_and_horonem+1" />
+                            </t>
+                        </td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena"><t t-esc="horas_total_pagar"/></td>
+                        <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="3" class="letrapequena"><t t-esc="asignatura['profesor_id']['cedula']"/></td>
+                        <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="10" class="letrapequena"><t t-esc="asignatura['profesor_id']['nombre_completo']"/></td>
+                        <td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="1" class="letrapequena">
+							<t t-if="asignatura['profesor_id']['condicion_id']['condicion']=='ORDINARIO'">
+                                1
+                                <t t-set="condicion_total_ordinario" t-value="condicion_total_ordinario+1" /> 
+                            </t>
+                        </td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena">
+							<t t-if="asignatura['profesor_id']['condicion_id']['condicion']=='CONTRATADO'">
+                                1
+                                <t t-set="condicion_total_contratado" t-value="condicion_total_contratado+1" />  
+                            </t>
+						</td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena">
+							<t t-if="asignatura['profesor_id']['dedicacion_id']['dedicacion']=='TIEMPO CONVENCIONAL'">
+                                1
+                                <t t-set="dedicacion_tiempo_convencional" t-value="dedicacion_tiempo_convencional+1" /> 
+                            </t>
+                        </td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena">
+							<t t-if="asignatura['profesor_id']['dedicacion_id']['dedicacion']=='MEDIO TIEMPO'">
+                                1
+                                <t t-set="dedicacion_medio_tiempo" t-value="dedicacion_medio_tiempo+1" /> 
+                            </t>
+                        </td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena">
+							<t t-if="asignatura['profesor_id']['dedicacion_id']['dedicacion']=='TIEMPO COMPLETO'">
+                                1
+                                <t t-set="dedicacion_tiempo_completo" t-value="dedicacion_tiempo_completo+1" /> 
+                            </t>
+                        </td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena">
+							<t t-if="asignatura['profesor_id']['dedicacion_id']['dedicacion']=='DEDICACIÓN EXCLUSIVA'">
+                                1
+                                <t t-set="dedicacion_exclusiva" t-value="dedicacion_exclusiva+1" /> 
+                            </t>
+                        </td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena">
+							<t t-if="asignatura['profesor_id']['categoria_id']['categoria']=='AUXILIAR DOCENTE'">
+                                1
+                                <t t-set="categoria_auxiliar" t-value="categoria_auxiliar+1" /> 
+                            </t>
+                        </td>
+                        <td style="border: 1px solid black;color: black;text-align: lecenterft; font-size: 8px" colspan="1" class="letrapequena">
+							<t t-if="asignatura['profesor_id']['categoria_id']['categoria']=='DOCENTE INSTRUCTOR'">
+                                1
+                                <t t-set="categoria_instructor" t-value="categoria_instructor+1" /> 
+                            </t>
+                        </td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena">
+							<t t-if="asignatura['profesor_id']['categoria_id']['categoria']=='DOCENTE ASISTENTE'">
+                                1
+                                <t t-set="categoria_asistente" t-value="categoria_asistente+1" /> 
+                            </t>
+                        </td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena">
+							<t t-if="asignatura['profesor_id']['categoria_id']['categoria']=='DOCENTE AGREGADO'">
+                                1
+                                <t t-set="categoria_agregado" t-value="categoria_agregado+1" /> 
+                            </t>
+                        </td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena">
+							<t t-if="asignatura['profesor_id']['categoria_id']['categoria']=='DOCENTE ASOCIADO'">
+                                1
+                                <t t-set="categoria_asociado" t-value="categoria_asociado+1" /> 
+                            </t>
+						</td>
+                        <td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="1" class="letrapequena">
+							<t t-if="asignatura['profesor_id']['categoria_id']['categoria']=='DOCENTE TITULAR'">
+                                1
+                                <t t-set="categoria_titular" t-value="categoria_titular+1" /> 
+                            </t>
+                        </td>
+                        <t t-set="total_horas_pagar_general" t-value="horas_total_pagar+total_horas_pagar_general" />
+                        <t t-set="h_t_general" t-value="h_t_general+horas_total" /> 
+                        <t t-set="h_t_t_general" t-value="h_t_t_general+asignatura['asignatura_id']['hora_teorica']" /> 
+						<t t-set="h_t_p_general" t-value="h_t_p_general+asignatura['asignatura_id']['hora_practica']" /> 
+						<t t-set="h_t_l_general" t-value="h_t_l_general+asignatura['asignatura_id']['hora_laboratorio']" /> 
+                        <t t-set="matricula_total" t-value="matricula_total+asignatura['matricula']" /> 
+                        <t t-set="horas_total" t-value="0" />
+                        <t t-set="horas_total_pagar" t-value="o" />
+                    </tr>
+                </t>
+                <t t-set="total_condicion" t-value="condicion_total_ordinario+condicion_total_contratado" /> 
+                <t t-set="total_dedicacion" t-value="dedicacion_tiempo_convencional+dedicacion_medio_tiempo+dedicacion_tiempo_completo+dedicacion_exclusiva" /> 
+                <t t-set="total_categoria" t-value="categoria_auxiliar+categoria_instructor+categoria_asistente+categoria_agregado+categoria_asociado+categoria_titular" /> 
+                <t t-set="i" t-value="1" /> 
+                <t t-set="linea_blanca" t-value="columnas-lineas"/> 
+                        <t t-foreach="linea_blanca" t-as="i">
+                           <tr>
+                                <td style="border: 1px solid black;color: black;text-align: left" colspan="8"><h6> </h6></td>
+                                <td style="border: 1px solid black;color: black;text-align: left" colspan="1"></td>
+                                <td style="border: 1px solid black;color: black;text-align: left" colspan="1"></td>
+                                <td style="border: 1px solid black;color: black;text-align: left" colspan="1"></td>
+                                <td style="border: 1px solid black;color: black;text-align: left" colspan="1"></td>
+                                <td style="border: 1px solid black;color: black;text-align: left" colspan="1"></td>
+                                <td style="border: 1px solid black;color: black;text-align: left" colspan="1"></td>
+                                <td style="border: 1px solid black;color: black;text-align: left" colspan="1"></td>
+                                <td style="border: 1px solid black;color: black;text-align: left" colspan="1"></td>
+                                <td style="border: 1px solid black;color: black;text-align: left" colspan="1"></td>
+                                <td style="border: 1px solid black;color: black;text-align: left" colspan="1"></td>
+                                <td style="border: 1px solid black;color: black;text-align: left" colspan="3"></td>
+                                <td style="border: 1px solid black;color: black;text-align: left" colspan="10"></td>
+								<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="1"></td>
+								<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="1"></td>
+								<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="1"></td>
+								<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="1"></td>
+								<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="1"></td>
+								<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="1"></td>
+								<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="1"></td>
+								<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="1"></td>
+								<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="1"></td>
+								<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="1"></td>
+								<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="1"></td>
+								<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="1"></td>
+                            </tr>
+                        </t>
+                 <tr>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="8" class="fondoho">TOTALES</td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="2" class="fondoho">TOTAL MATRÍCULA</td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="matricula_total"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho">TOTAL HORAS</td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="h_t_t_general"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="h_t_p_general"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="h_t_l_general"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="h_t_general"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="total_horas_and_horonem"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="total_horas_pagar_general"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="13" class="fondoho">TOTALES DATOS ACADÉMICOS</td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="condicion_total_ordinario"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="condicion_total_contratado"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="dedicacion_tiempo_convencional"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="dedicacion_medio_tiempo"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="dedicacion_tiempo_completo"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="dedicacion_exclusiva"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="categoria_auxiliar"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="categoria_instructor"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="categoria_asistente"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="categoria_agregado"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="categoria_asociado"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 6px" colspan="1" class="fondoho"><t t-esc="categoria_titular"/></td>
+				</tr>
+				<tr>
+						<td style="border: 1px solid black;color: black;text-align: center ; font-size: 6px" colspan="18" class="fondoho"></td>
+						<td style="border: 1px solid black;color: black;text-align: center ; font-size: 6px" colspan="13" class="fondoho"><strong>TOTAL GENERAL</strong></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="2" class="fondoho"><t t-esc="total_condicion"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="4" class="fondoho"><t t-esc="total_dedicacion"/></td>
+						<td style="border: 1px solid black;color: black;text-align: center; font-size: 8px" colspan="6" class="fondoho"><t t-esc="total_categoria"/></td>
+				</tr>   
+			</table>  
+				
+            <table colspan="51" class="table table-condensed table-bordered letrapequena" width="10%" style="border: 1px solid black;">
+					<tr>
+						<td style="border: 1px solid black;color: black;text-align: left ; font-size: 8px" colspan="7" class="fondoho"><strong>DECANO DEL NÚCLEO</strong></td>
+						<td style="border: 1px solid black;color: black;text-align: left ; font-size: 8px" colspan="7" class="fondoho"><strong>JEFE UNIDAD ACADÉMICA</strong></td>
+						<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="7" class="fondoho"><strong>COORDINADOR DE CARRERA</strong></td>
+						<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="7" class="fondoho"><strong>REVISADO Y APROBADO POR: (SECRETARIA)</strong></td>
+						<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="7" class="fondoho"><strong>SELLO DEL NÚCLEO</strong></td>
+						<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="7" class="fondoho"><strong>REVISADO Y APROBADO POR: (COORD DE PROGRAMACIÓN ACADÉMICA)</strong></td>
+						<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="5" class="fondoho"><strong>SELLO COORD DE PROGRAMACIÓN ACADÉMICA</strong></td>
+				</tr>     
+				<tr>
+						<td style="border: 1px solid black;color: black;text-align: left ; font-size: 8px" colspan="7" class=""><t t-esc="data['sede_data']['decano']"/><br/><br/><br/></td>
+						<td style="border: 1px solid black;color: black;text-align: left ; font-size: 8px" colspan="7" class=""><t t-esc="data['sede_data']['unidad_academica']"/></td>
+						<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="7" class=""><t t-esc="data['coordinador']"/></td>
+						<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="7" class=""></td>
+						<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="7" class=""></td>
+						<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="7" class=""></td>
+						<td style="border: 1px solid black;color: black;text-align: left; font-size: 8px" colspan="5" class=""></td>
+				</tr>     
+            </table>
+        </div>
+</template>
+
+<template id="unefa_oferta_academica.oferta_academica_cabecera_qweb">
+	<style type="text/css">.letrapequena{font-size: 10px}</style>
+    <div style="text-align: center">
+        <div class="col-xs-1">
+            <img class="img-responsive" src="/unefa_oferta_academica/static/img/logo_unefa.png"/>
+        </div>
+        <div class="col-xs-10 letrapequena">
+            REPÚBLICA BOLIVARIANA DE VENEZUELA<br/>
+            MINISTERIO DEL PODER POPULAR PARA LA DEFENSA<br/>
+            UNIVERSIDAD NACIONAL EXPERIMENTAL POLITECNICA DE LA FUERZA ARMADA<br/>
+            VICERRECTORADO ACADÉMICO<br/>
+            COORDINACIÓN DE PROGRAMACION ACADEMICA<br/>
+        </div>
+    </div>
+</template>
+</data>
+</openerp>

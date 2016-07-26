@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <openerp>
+        <data>
+            
+            
+<!--
+    vista form y tree para la gestión de horarios
+-->
+    
+            <record id="view_unefa_horarios_form" model="ir.ui.view">
+                    <field name="name">view_unefa_horarios_form</field>
+                    <field name="model">unefa.horarios</field>
+                    <field name="arch" type="xml">
+                        <form string="Horarios UNEFA">
+                            <header>
+                                <button name="descargar_horarios_principal" states="borrador,aprobado,publicado" string ="Descargar Horarios" type="object" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+                                <button name="aprobar_horario" states="borrador" string ="Aprobar" type="object" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+                                <button name="publicar_horario" states="aprobado" string ="Publicar" type="object" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+                                <field name="state" widget="statusbar" statusbar_visible="borrador,aprobado,publicado" />
+                            </header>
+                            <sheet>
+                                <header>
+                                    <h2 style="color:#7C7BAD"><center>Horarios</center></h2>
+                                </header><br/>
+                                <group colspan="4" col="4">
+                                    <field name="carrera_id"/>
+                                    <field name="turno"/>
+                                    <field name="pensum_id" widget="selection" on_change="limpiar_campos_pensum(pensum_id)" domain="[('carrera_id','=',carrera_id),('turno','=',turno)]"/>
+                                    <field name="periodo_id" widget="selection" on_change="cargar_secciones_default(carrera_id,turno,periodo_id,pensum_id)"/>
+                                </group>
+                                <notebook>
+                                    <page>
+                                        <field name="secciones_ids" >
+                                            <form>
+                                                <field name="seccion_id" widget="selection" on_change="domain_seccion(parent.carrera_id,parent.turno,parent.pensum_id,parent.periodo_id)"/>
+                                                <field name="aula_id" widget="selection" domain="[('piso_id','=',piso_id)]"/>
+                                                <field name="datos_ids" invisible="1"/>
+                                                <field name="creado" invisible="True"/>
+                                                <field name="state" invisible="True"/>
+                                                <field name="piso_id" invisible="1"/>
+                                                <button name="crear_horario"
+                                                    attrs="{'invisible': [('creado','=',True)]}"
+                                                    string="Crear Horario" type="object" help=""
+                                                    icon="gtk-paste-v"
+                                                    groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+                                                <button name="editar_horario"
+                                                    attrs="{'invisible': [('creado','=',False)]}"
+                                                    string="Editar Horario" type="object" help=""
+                                                    icon="gtk-refresh"
+                                                    groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+                                                <button name="consultar_horario"
+                                                    attrs="{'invisible': [('creado','=',False)]}"
+                                                    string="Consultar Horario" type="object" help=""
+                                                    icon="gtk-find"
+                                                    groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente,unefa_configuracion.group_unefa_profesores"/>
+                                                <button name="descargar_horarios_particular"
+                                                    attrs="{'invisible': [('creado','=',False)]}"
+                                                    string="Descargar Horario" type="object" help=""
+                                                    icon="gtk-go-down"
+                                                    groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente,unefa_configuracion.group_unefa_profesores"/>
+                                                <button name="consultar_horario"
+                                                    attrs="{'invisible': [('creado','=',False),('state','!=','publicado')]}"
+                                                    string="Consultar Horario" type="object" help=""
+                                                    icon="gtk-find"
+                                                    groups="unefa_configuracion.group_unefa_estudiantes"/>
+                                                <button name="descargar_horarios_particular"
+                                                   attrs="{'invisible': [('creado','=',False),('state','!=','publicado')]}"
+                                                    string="Descargar Horario" type="object" help=""
+                                                    icon="gtk-go-down"
+                                                    groups="unefa_configuracion.group_unefa_estudiantes"/>
+                                            </form>
+                                            <tree>
+                                                <field name="seccion_id"/>
+                                                <field name="aula_id"/>
+                                                <field name="datos_ids" invisible="True"/>
+                                                 <field name="creado" invisible="True"/>
+                                                 <field name="state" invisible="True"/>
+                                                <button name="crear_horario"
+                                                    attrs="{'invisible': [('creado','=',True)]}"
+                                                    string="Crear Horario" type="object" help=""
+                                                    icon="gtk-paste-v"
+                                                    groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+                                                <button name="editar_horario"
+                                                    attrs="{'invisible': [('creado','=',False)]}"
+                                                    string="Editar Horario" type="object" help=""
+                                                    icon="gtk-refresh"
+                                                    groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+                                                   <button name="consultar_horario"
+                                                    attrs="{'invisible': [('creado','=',False),('state','!=','publicado')]}"
+                                                    string="Consultar Horario" type="object" help=""
+                                                    icon="gtk-find"
+                                                    groups="unefa_configuracion.group_unefa_estudiantes"/>
+                                                <button name="descargar_horarios_particular"
+                                                   attrs="{'invisible': [('creado','=',False),('state','!=','publicado')]}"
+                                                    string="Descargar Horario" type="object" help=""
+                                                    icon="gtk-go-down"
+                                                    groups="unefa_configuracion.group_unefa_estudiantes"/>
+                                                <button name="consultar_horario"
+                                                    attrs="{'invisible': [('creado','=',False)]}"
+                                                    string="Consultar Horario" type="object" help=""
+                                                    icon="gtk-find"
+                                                    groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente,unefa_configuracion.group_unefa_profesores"/>
+                                                <button name="descargar_horarios_particular"
+                                                    attrs="{'invisible': [('creado','=',False)]}"
+                                                    string="Descargar Horario" type="object" help=""
+                                                    icon="gtk-go-down"
+                                                    groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente,unefa_configuracion.group_unefa_profesores"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </sheet>
+                            <div class="oe_chatter">
+                                <field name="message_ids" widget="mail_thread" readonly="1" />
+                            </div>
+                        </form>
+                    </field>
+                </record>
+                
+                <record id="view_unefa_horarios_unefa_tree" model="ir.ui.view">
+                    <field name="name">unefa_horarios_tree</field>
+                    <field name="model">unefa.horarios</field>
+                    <field name="arch" type="xml">
+                        <tree string="Horarios UNEFA">
+                            <field name="carrera_id"/>
+                            <field name="turno"/>
+                            <field name="pensum_id"/>
+                            <field name="periodo_id"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                </record>
+                
+            
+                <record model="ir.actions.act_window" id="action_unefa_horarios_unefa">
+                    <field name="name">Gestión de Horarios</field>
+                    <field name="res_model">unefa.horarios</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="help" type="html">
+                    <p class="oe_view_nocontent_create">
+                       Gestión de horarios.
+                    </p>
+                    </field>
+                </record>
+               
+        
+<!--
+           menus para para la gestión de horarios
+-->
+           
+            
+        <menuitem name="Gestión Horarios" id="gestion_horarios_id" parent="unefa_configuracion.unefa_menu_principal_gestion" sequence="140" />
+        <menuitem name="Gestión Horarios" id="gestion_horarios_inicio" parent="gestion_horarios_id" />
+        <menuitem name="Horarios" id="gestion_horarios" parent="gestion_horarios_inicio" action="action_unefa_horarios_unefa" sequence="10" />
+    
+        
+<!--
+        form y tree para la configuracion de horas
+-->
+
+
+                <record id="view_unefa_horarios_horas_form" model="ir.ui.view">
+                    <field name="name">view_unefa_horarios_form</field>
+                    <field name="model">unefa.horarios_horas</field>
+                    <field name="arch" type="xml">
+                        <form string="Configuración de Horas">
+                            <sheet>
+                                <group colspan="4" col="4">
+                                    <field name="horas_desde"  data-inputmask="'mask': '99:99'"/>
+                                    <field name="periodo_desde" />
+                                    <field name="horas_hasta"  data-inputmask="'mask': '99:99'"/>
+                                    <field name="periodo_hasta"/>
+                                    <field name="active"/>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </record>
+                
+                <record id="view_unefa_horarios_unefa" model="ir.ui.view">
+                    <field name="name">unefa_horarios_horas_tree</field>
+                    <field name="model">unefa.horarios_horas</field>
+                    <field name="arch" type="xml">
+                        <tree string="Configuración de Horas">
+                            <field name="hora_completo" string="Horas"/>
+                        </tree>
+                    </field>
+                </record>
+                
+            
+                <record model="ir.actions.act_window" id="action_unefa_horarios_horas">
+                    <field name="name">Configuración Horas</field>
+                    <field name="res_model">unefa.horarios_horas</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="help" type="html">
+                    <p class="oe_view_nocontent_create">
+                       Configuración de Horas para los Horarios.
+                    </p>
+                    </field>
+                </record>
+            
+                
+                <menuitem name="Configuración Horarios" id="unefa_menu_horas_configuracion" parent="unefa_configuracion.unefa_menu_configuracion"  sequence="53" groups="base.group_system"/>
+                <menuitem name="Horas" id="menu_horas" parent="unefa_menu_horas_configuracion" action="action_unefa_horarios_horas" sequence="10" groups="base.group_system"/>
+    
+    
+<!--
+        form y tree de relacion turno hora
+-->
+                <record id="view_unefa_horas_turno_form" model="ir.ui.view">
+                    <field name="name">view_unefa_horas_turno_form</field>
+                    <field name="model">unefa.horas_turno</field>
+                    <field name="arch" type="xml">
+                        <form string="Relación Horas-Turno">
+                            <header>
+                                <button name="aprobar_horas" states="borrador" string = "Aprobado" type="object"/>
+                                <field name="state" widget="statusbar" statusbar_visible="borrador,aprobado"/>
+                            </header>
+                            <sheet>
+                                <group colspan="4" col="4">
+                                    <field name="turno"/>
+                                    <field name="periodo_id"/>
+                                </group>
+                                <notebook>
+                                    <page>
+                                        <field name="horas_ids"/>
+                                    </page>
+                                </notebook>
+                            </sheet>
+                        </form>
+                    </field>
+                </record>
+                
+                <record id="view_unefa_horas_turno" model="ir.ui.view">
+                    <field name="name">unefa_horas_turno_tree</field>
+                    <field name="model">unefa.horas_turno</field>
+                    <field name="arch" type="xml">
+                        <tree string="Relación Horas-Turno">
+                            <field name="turno"/>
+                            <field name="periodo_id"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                </record>
+                
+            
+                <record model="ir.actions.act_window" id="action_unefa_horas_turno">
+                    <field name="name">Configuración Horas</field>
+                    <field name="res_model">unefa.horas_turno</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="help" type="html">
+                    <p class="oe_view_nocontent_create">
+                       Relación Horas Turno.
+                    </p>
+                    </field>
+                </record>
+                
+                
+                <menuitem name="Turno-Horas" id="menu_horas-turno" parent="unefa_menu_horas_configuracion" action="action_unefa_horas_turno" sequence="20" groups="base.group_system"/>
+<!--
+        form y tree de dias
+-->
+                <record id="view_unefa_horario_dias_form" model="ir.ui.view">
+                    <field name="name">view_unefa_horario_dias_form</field>
+                    <field name="model">unefa.horario_dias</field>
+                    <field name="arch" type="xml">
+                        <form string="Dias">
+                            <sheet>
+                                <group colspan="4" col="4">
+                                    <field name="dia"/>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </record>
+                
+                <record id="view_unefa_horario_dias" model="ir.ui.view">
+                    <field name="name">unefa_horario_dias_tree</field>
+                    <field name="model">unefa.horario_dias</field>
+                    <field name="arch" type="xml">
+                        <tree string="Días">
+                            <field name="dia"/>
+                        </tree>
+                    </field>
+                </record>
+                
+            
+                <record model="ir.actions.act_window" id="action_unefa_horario_dias">
+                    <field name="name">Días</field>
+                    <field name="res_model">unefa.horario_dias</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="help" type="html">
+                    <p class="oe_view_nocontent_create">
+                       Aquí se registran los Días.
+                    </p>
+                    </field>
+                </record>
+                
+                
+                <menuitem name="Días" id="menu_horarios_dias" parent="unefa_menu_horas_configuracion" action="action_unefa_horario_dias" sequence="20" groups="base.group_system"/>
+                
+    </data>
+</openerp>
+
+    

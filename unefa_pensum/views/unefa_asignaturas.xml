@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_unefa_asignaturas_form">
+            <field name="name">unefa_asignatura_form</field>
+            <field name="model">unefa.asignatura</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Asignaturas">
+                    <header>
+                        <button name="activar_asignatura" string="Activar" states="inactivo,activo"  type="object" class="oe_highlight" groups="base.group_system"/>
+                        <button name="desactivar_asignatura" string="Desactivar" states="inactivo,activo"  type="object" class="oe_highlight" groups="base.group_system"/>
+                        <field name="state" widget="statusbar" statusbar_visible="inactivo,activo"/>
+                    </header>
+                    <sheet>
+                        <header>
+                            <h2 style="color:#7C7BAD"><center>Asignatura</center></h2>
+                        </header>
+                        <group>
+                            <field name="asignatura"/>
+                        </group>
+                        <field name="id" invisible="True"/>
+                        <group col="4">
+                            <field name="codigo_asignatura" />
+                            <field name="unidad_credito" />
+                            <field name="hora_teorica" />
+                            <field name="hora_practica"/>
+                            <field name="hora_laboratorio"/>
+                            <field name="reparacion"/>
+                            <field name="active"/>
+                        </group>
+                        <notebook>
+                            <page string="Prelaciones">
+                                <field name="asignaturas_ids" domain="[('id','!=',[id])]"/>
+                            </page>
+                        </notebook>
+<!--
+                        <notebook>
+                            <page string="Pensum">
+                                <field name="carrera_ids"/>
+                            </page>
+                        </notebook>
+-->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_asignatura_tree">
+        <field name="name">unefa_asignatura.tree</field>
+        <field name="model">unefa.asignatura</field>
+        <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Asignaturas">
+                    <field name="asignatura"/>
+                    <field name="codigo_asignatura" />
+                    <field name="unidad_credito" />
+                    <field name="hora_teorica" />
+                    <field name="hora_practica"/>
+                    <field name="hora_laboratorio"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_unefa_asignatura">
+            <field name="name">Registro de asignaturas</field>
+            <field name="res_model">unefa.asignatura</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Aquí se registran las asignaturas
+                </p>
+            </field>
+        </record>
+        
+        <menuitem name="Asignatura" id="unefa_asignatura" parent="unefa_configuracion.unefa_asignatura_configuracion" action="action_unefa_asignatura" sequence="10" groups="base.group_system"/>
+        
+    </data>
+</openerp>

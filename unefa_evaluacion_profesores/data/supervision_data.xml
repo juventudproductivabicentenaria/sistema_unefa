@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        
+        <record id="planif_act_academicas" model="unefa.items.planif.registro_control">
+            <field name="item_evaluacion">Presenta la planificación de las actividades académicas.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="planif_entrega_coor" model="unefa.items.planif.registro_control">
+            <field name="item_evaluacion">Existe correspondencia entre la planificación entregada a la coordinación y la sesión de clase evaluada.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="acta_plan_eval" model="unefa.items.planif.registro_control">
+            <field name="item_evaluacion">Posee el acta de acuerdos del plan de evaluación.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="control_asist_est" model="unefa.items.planif.registro_control">
+            <field name="item_evaluacion">Registra el control de asistencia de los estudiantes.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="asist_puntual_clase" model="unefa.items.asistencia.puntualidad">
+            <field name="item_evaluacion">Asiste puntualmente a la clase el día de hoy.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="ceremonial_aula" model="unefa.items.asistencia.puntualidad">
+            <field name="item_evaluacion">Fomenta el cumplimiento del ceremonial de aula.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="concluye_clase" model="unefa.items.asistencia.puntualidad">
+            <field name="item_evaluacion">Concluye la clase a la hora establecida.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="continuidad_contenido" model="unefa.items.inicio.clase">
+            <field name="item_evaluacion">Establece continuidad con los contenidos vistos en la clase anterior.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="contenido_obj" model="unefa.items.inicio.clase">
+            <field name="item_evaluacion">Enuncia el contenido del objetivo, explicando claramente las actividades a realizar durante la clase.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="fomenta_interes" model="unefa.items.inicio.clase">
+            <field name="item_evaluacion">Fomenta el interés de los estudiantes en el objetivo a desarrollar en clases.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="orden_contenido" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Ordena y sistematiza el contenido presentado en clase.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="vocabulario_tec" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Utiliza un vocabulario explícito y técnico de acuerdo con el contenido de la asignatura.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="aplica_cont" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Señala la aplicabilidad del contenido.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="analisis_cont" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Propicia el análisis del contenido desde enfoques teóricos-científicos.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="desarrolla_cont" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Desarrolla el contenido de forma actualizada (últimos avances, investigaciones, normativa legal vigente) de acuerdo con el perfil de la carrera.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="responde_preg" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Responde con precisión y seguridad a las preguntas formuladas por los estudiantes.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="conoce_asig" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Demuestra conocimiento de la asignatura.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="import_aprender" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Señala al estudiante la importancia de aprender y comprender el contenido.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="teoria_practica" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Integra teoría y práctica en sus clases.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="participa_alum" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Propicia la participación de los alumnos en clases (preguntas, actividades prácticas, dinámicas, talleres, entre otras).</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="comprenden_desa" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Verifica durante la clase si los estudiantes comprenden lo desarrollado.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="atento_desem" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Está atento al desempeño (conducta y comportamiento) de todos los estudiantes durante la clase.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="voz_clara" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Se expresa con voz clara (velocidad, entonación y pronunciación adecuada).</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="difer_enfoque" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Promueve el uso de diferentes enfoques (criterios) ante una situación planteada.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="dispon_preg" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Muestra buena disposición ante las preguntas realizadas por los estudiantes.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="actitud_cordial" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Mantiene una actitud cordial y respetuosa hacia los estudiantes.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="disciplina_curso" model="unefa.items.desarrollo.clase">
+            <field name="item_evaluacion">Promueve la disciplina en el curso.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="recurso_ense" model="unefa.items.recursos.didacticos">
+            <field name="item_evaluacion">Utiliza algún recurso para la enseñanza (pizarrón, retroproyector, rotafolio, laptop, videobeam, internet, entre otros) o material de apoyo (gráficos, láminas, mapas, transparencias, diapositivas, películas, fotografías, grabaciones, guías, problemarios, lecturas, carteleras, entre otros).</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="uso_recursos" model="unefa.items.recursos.didacticos">
+            <field name="item_evaluacion">Hace uso correcto de los recursos para la enseñanza o del material de apoyo.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="cont_ilustrado" model="unefa.items.recursos.didacticos">
+            <field name="item_evaluacion">El contenido ilustrado a través de los recursos, o del material de apoyo presenta una secuencia organizada.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="aplica_normas" model="unefa.items.recursos.didacticos">
+            <field name="item_evaluacion">Aplica correctamente las normas de ortografía y acentuación.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="ideas_princi" model="unefa.items.cierre.clase">
+            <field name="item_evaluacion">Destaca y refuerza las ideas principales del contenido.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="puntos_tratar" model="unefa.items.cierre.clase">
+            <field name="item_evaluacion">Indica brevemente los puntos a tratar en la próxima clase.</field>
+            <field name="activo">True</field>
+        </record>
+        <record id="observo_planif" model="unefa.items.cierre.clase">
+            <field name="item_evaluacion">Se observó planificación de la clase.</field>
+            <field name="activo">True</field>
+        </record>
+        
+
+    </data>
+</openerp>

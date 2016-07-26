@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+    <openerp>
+        <data>
+            <template id="unefa_gestion_semestre.consultar_acta_notas" name="Template para la consulta de actas de notas">
+                <div>
+                    <a t-att-href="'/actas/editar/%d' % (acta_data['id'])">
+                        <button type="button"  t-attf-class="btn btn-info glyphicon glyphicon-folder-open" > Editar</button>
+                    </a>   
+                    <br/>
+                    <br/>
+                    <t t-foreach="acta_data" t-as="acta">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Datos Académicos</div>
+                            <div class="panel-body">
+                                <div class="col-md-12">
+                                    <input type="text"  class="hidden" name="id" t-att-value="'%s' % (acta['id'])"></input>
+                                    <div class="col-md-4">
+                                        <label for="carrera">CODIGO</label>
+                                        <p><t t-esc="'%s' % (acta['gestion_semestre_id']['asignatura_id']['codigo_asignatura'])"/></p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="carrera">ASIGNATURA</label>
+                                        <p><t t-esc="'%s' % (acta['gestion_semestre_id']['asignatura_id']['asignatura'])"/></p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="carrera">CREDITOS</label>
+                                        <p><t t-esc="'%s' % (acta['gestion_semestre_id']['asignatura_id']['unidad_credito'])"/></p>  
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-4">
+                                        <label for="carrera">PERÍODO</label>
+                                        <p><t t-esc="'%s' % (acta['gestion_semestre_id']['periodo_id']['periodo_academico'])"/></p> 
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="carrera">SEMESTRE</label>
+                                        <p><t t-esc="'%s' % (acta['gestion_semestre_id']['seccion_id']['oferta_semestre_id']['semestre_id']['semestre'])"/></p> 
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="carrera">CARRERA</label>
+                                        <p><t t-esc="'%s' % (acta['gestion_semestre_id']['carrera_id']['nombre'])"/></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-4">
+                                        <label for="carrera">SECCIÓN</label>
+                                        <p><t t-esc="'%s' % (acta['gestion_semestre_id']['seccion_id']['seccion'])"/></p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="carrera">PROFESOR</label>
+                                        <p><t t-esc="'%s' % (acta['gestion_semestre_id']['profesor_id']['nombre_completo'])"/></p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="carrera">CEDULA</label>
+                                        <p><t t-esc="'%s' % (acta['gestion_semestre_id']['profesor_id']['cedula'])"/></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-4">
+                                        <label for="carrera">TURNO</label>
+                                        <t t-if="acta['gestion_semestre_id']['turno']=='nocturno'">
+                                            NOCTURNO
+                                        </t>
+                                        <t t-if="acta['gestion_semestre_id']['turno']=='diurno'">
+                                            DIURNO
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">ACTA DE NOTAS</div>
+                        <div class="panel-body">
+                            <table colspan="16" class="table table-condensed table-bordered" style="border: 1px solid black;text-align:center" >
+                                <thead>
+                                    <tr>
+                                        <th colspan="1" class="fondoactas" style="font-size: 10px; text-align:center"><strong>N°</strong></th>
+                                        <th colspan="1" class="fondoactas" style="font-size: 10px; text-align:center"><strong>CEDULA</strong></th>
+                                        <th colspan="3" class="fondoactas" style="font-size: 10px; text-align:center"><strong>APELLIDOS, NOMBRES</strong></th>
+                                        <th colspan="1" class="fondoactas" style="font-size: 10px; text-align:center"><strong>EP1</strong></th>
+                                        <th colspan="1" class="fondoactas" style="font-size: 10px; text-align:center"><strong>25%</strong></th>
+                                        <th colspan="1" class="fondoactas" style="font-size: 10px; text-align:center"><strong>EP2</strong></th>
+                                        <th colspan="1" class="fondoactas" style="font-size: 10px; text-align:center"><strong>25%</strong></th>
+                                        <th colspan="1" class="fondoactas" style="font-size: 10px; text-align:center"><strong>EP3</strong></th>
+                                        <th colspan="1" class="fondoactas" style="font-size: 10px; text-align:center"><strong>25%</strong></th>
+                                        <th colspan="1" class="fondoactas" style="font-size: 10px; text-align:center"><strong>EP4</strong></th>
+                                        <th colspan="1" class="fondoactas" style="font-size: 10px; text-align:center"><strong>25%</strong></th>
+                                        <th colspan="1" class="fondoactas" style="font-size: 10px; text-align:center"><strong>DEF</strong></th>
+                                        <th colspan="2" class="fondoactas" style="font-size: 10px; text-align:center"><strong>LETRAS</strong></th>
+                                    </tr>
+                                </thead>
+                                <body>
+                                    <t t-set="cont1" t-value="1"/>
+                                    <t t-foreach="usuario_estudiante_data" t-as="estudiante">
+                                        <t t-if="estudiante.id in lista_estudiantes">
+                                            <t t-foreach="acta_data['notas_ids']" t-as="notas">
+                                                <t t-if="estudiante.id==notas.estudiante_id.id">
+                                                    <tr>
+                                                        <td colspan="1" class="" style="font-size: 10px"><t t-esc="cont1"/></td>
+                                                        <td colspan="1" class="" style="font-size: 10px">
+                                                            <p><t t-esc="'%s' % (notas['estudiante_id']['cedula'])"/></p>
+                                                        </td>
+                                                        <td colspan="3" class="" style="font-size: 10px">
+                                                            <p><t t-esc="'%s' % (notas['estudiante_id']['nombre_completo'])"/></p>
+                                                        </td>
+                                                        
+                                                        <td colspan="1" class="" style="font-size: 10px">
+                                                            <p><t t-esc="'%s' % (notas['primer_cohorte'])"/></p>
+                                                        </td>
+                                                        
+                                                        <td colspan="1" class="fondoactas alineacion" style="font-size: 10px">
+                                                            <p><t t-esc="'%s' % (notas['primer_cohorte_parcial'])"/></p>
+                                                        </td>
+                                                        
+                                                        <td colspan="1" class="" style="font-size: 10px">
+                                                            <p><t t-esc="'%s' % (notas['segundo_cohorte'])"/></p>
+                                                        </td>
+                                                        
+                                                        <td colspan="1" class="fondoactas" style="font-size: 10px">
+                                                            <p><t t-esc="'%s' % (notas['segundo_cohorte_parcial'])"/></p>
+                                                        </td>
+                                                        
+                                                        <td colspan="1" class="" style="font-size: 10px">
+                                                            <p><t t-esc="'%s' % (notas['tercer_cohorte'])"/></p>
+                                                        </td>
+                                                        
+                                                        <td colspan="1" class="fondoactas" style="font-size: 10px">
+                                                            <p><t t-esc="'%s' % (notas['tercer_cohorte_parcial'])"/></p>
+                                                        </td>
+                                                        
+                                                        <td colspan="1" class="alineacion" style="font-size: 10px">
+                                                            <p><t t-esc="'%s' % (notas['cuarto_cohorte'])"/></p>
+                                                        </td>
+                                                        
+                                                        <td colspan="1" class="fondoactas" style="font-size: 10px">
+                                                            <p><t t-esc="'%s' % (notas['cuarto_cohorte_parcial'])"/></p>
+                                                        </td>
+                                                        
+                                                        <td colspan="1" class="alineacion" style="font-size: 10px">
+                                                            <p><t t-esc="'%s' % (notas['definitiva'])"/></p>
+                                                        </td>
+                                                        
+                                                        <td colspan="2" class="alineacion" style="font-size: 10px">
+                                                            <p><t t-esc="'%s' % (notas['definitiva_letras'])"/></p>
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                </t>
+                                            </t>
+                                        </t>
+                                        <t t-if="estudiante.id not in lista_estudiantes">
+                                            <tr>
+                                                <td colspan="1" class="" style="font-size: 10px"><t t-esc="cont1"/></td>
+                                                <td colspan="1" class="" style="font-size: 10px">
+                                                    <p><t t-esc="'%s' % (estudiante['cedula'])"/></p>
+                                                </td>
+                                                <td colspan="3" class="" style="font-size: 10px">
+                                                    <p><t t-esc="'%s' % (estudiante['nombre_completo'])"/></p>
+                                                </td>
+                                                
+                                                <td colspan="1" class="" style="font-size: 10px">
+                                                    <p>0</p>
+                                                </td>
+                                                
+                                                <td colspan="1" class="fondoactas alineacion" style="font-size: 10px">
+                                                    <p>0</p>
+                                                </td>
+                                                
+                                                <td colspan="1" class="" style="font-size: 10px">
+                                                    <p>0</p>
+                                                </td>
+                                                
+                                                <td colspan="1" class="fondoactas" style="font-size: 10px">
+                                                    <p>0</p>
+                                                </td>
+                                                
+                                                <td colspan="1" class="" style="font-size: 10px">
+                                                    <p>0</p>
+                                                </td>
+                                                
+                                                <td colspan="1" class="fondoactas" style="font-size: 10px">
+                                                    <p>0</p>
+                                                </td>
+                                                
+                                                <td colspan="1" class="alineacion" style="font-size: 10px">
+                                                    <p>0</p>
+                                                </td>
+                                                
+                                                <td colspan="1" class="fondoactas" style="font-size: 10px">
+                                                    <p>0</p>
+                                                </td>
+                                                
+                                                <td colspan="1" class="alineacion" style="font-size: 10px">
+                                                    <p>0</p>
+                                                </td>
+                                                
+                                                <td colspan="2" class="alineacion" style="font-size: 10px">
+                                                    <p>Cero</p>
+                                                </td>
+                                                
+                                            </tr>
+                                        </t>
+                                        <t t-set="cont1" t-value="cont1+1"/>
+                                    </t>
+                                </body>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </template>
+    </data>
+</openerp>
+
+

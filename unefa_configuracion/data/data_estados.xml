@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="1">
+	  
+    <record id="geo_est_DTO" model="unefa.estados">
+		<field name="redi_id" ref="geo_redi_ZC"/>
+		<field name="codigo">01</field>
+		<field name="estado">Distrito Capital</field>
+	</record>
+    
+	<record id="geo_est_AMA" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_GUA"/>
+		<field name="codigo">02</field>
+		<field name="estado">Amazonas</field>
+	</record>
+
+	<record id="geo_est_ANZ" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_ORI"/>
+		<field name="codigo">03</field>
+		<field name="estado">Anzoátegui</field>
+	</record>
+	
+	<record id="geo_est_APU" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_LLL"/>
+		<field name="codigo">04</field>
+		<field name="estado">Apure</field>
+	</record>
+	
+	<record id="geo_est_ARA" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_ZC"/>
+		<field name="codigo">05</field>
+		<field name="estado">Aragua</field>
+	</record>
+	
+	<record id="geo_est_BAR" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_LLL"/>
+		<field name="codigo">06</field>
+		<field name="estado">Barinas</field>
+	</record>
+
+	<record id="geo_est_BOL" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_GUA"/>
+		<field name="codigo">07</field>
+		<field name="estado">Bolívar</field>
+	</record>
+	
+	<record id="geo_est_CAR" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_ZC"/>
+		<field name="codigo">08</field>
+		<field name="estado">Carabobo</field>
+	</record>
+	
+	<record id="geo_est_COJ" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_LLL"/>
+		<field name="codigo">09</field>
+		<field name="estado">Cojedes</field>
+	</record>
+	
+	<record id="geo_est_DEA" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_GUA"/>
+		<field name="codigo">10</field>
+		<field name="estado">Delta Amacuro</field>
+	</record>
+
+	<record id="geo_est_FAL" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_OCC"/>
+		<field name="codigo">11</field>
+		<field name="estado">Falcón</field>
+	</record>
+
+	<record id="geo_est_GUA" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_LLL"/>
+		<field name="codigo">12</field>
+		<field name="estado">Guárico</field>
+	</record>
+
+	<record id="geo_est_LAR" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_OCC"/>
+		<field name="codigo">13</field>
+		<field name="estado">Lara</field>
+	</record>
+
+	<record id="geo_est_MER" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_AND"/>
+		<field name="codigo">14</field>
+		<field name="estado">Mérida</field>
+	</record>
+	
+	<record id="geo_est_MIR" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_ZC"/>
+		<field name="codigo">15</field>
+		<field name="estado">Miranda</field>
+	</record>
+
+	<record id="geo_est_MON" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_ORI"/>
+		<field name="codigo">16</field>
+		<field name="estado">Monagas</field>
+	</record>
+
+	<record id="geo_est_NVA" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_RMI"/>
+		<field name="codigo">17</field>
+		<field name="estado">Nueva Esparta</field>
+	</record>
+
+	<record id="geo_est_POR" model="unefa.estados">
+		<field name="codigo">18</field>
+        <field name="redi_id" ref="geo_redi_LLL"/>
+		<field name="estado">Portuguesa</field>
+	</record>
+
+	<record id="geo_est_SUC" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_ORI"/>
+		<field name="codigo">19</field>
+		<field name="estado">Sucre</field>
+	</record>
+
+	<record id="geo_est_TAC" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_AND"/>
+		<field name="codigo">20</field>
+		<field name="estado">Táchira</field>
+	</record>
+
+	<record id="geo_est_TRU" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_AND"/>
+		<field name="codigo">21</field>
+		<field name="estado">Trujillo</field>
+	</record>
+
+	<record id="geo_est_YAR" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_OCC"/>
+		<field name="codigo">22</field>
+		<field name="estado">Yaracuy</field>
+	</record>
+
+	<record id="geo_est_ZUL" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_OCC"/>
+		<field name="codigo">23</field>
+		<field name="estado">Zulia</field>
+	</record>
+
+    <record id="geo_est_VAR" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_ZC"/>
+		<field name="codigo">24</field>
+		<field name="estado">Vargas</field>
+	</record>
+    
+    <record id="geo_est_DFD" model="unefa.estados">
+        <field name="redi_id" ref="geo_redi_RMI"/>
+		<field name="codigo">25</field>
+		<field name="estado">Dependencias Federales</field>
+	</record>
+    
+    <!-- Regiones Estartegicas de Defensa Integral -->
+	
+	<!-- Redi zona Central: Distrito Capital, Miranda, Aragua y Carabobo, Vargas -->
+	<record id="rgn_dfs_int_ZC" model="unefa.region_defensa_integral">
+		<field name="region_defensa_integral">REDI Central</field>
+		<field name="codigo">RZC</field>
+        <field eval="[(6, 0, [ref('geo_est_ARA'), ref('geo_est_CAR'),ref('geo_est_MIR'),ref('geo_est_VAR'),ref('geo_est_DTO')])]" name="estados_ids"/>
+	</record>
+    <!-- Redi Oriental: Anzoátegui, Nueva Esparta, Monagas y Sucre -->
+	<record id="rgn_dfs_int_ORI" model="unefa.region_defensa_integral">
+		<field name="region_defensa_integral">REDI Oriental</field>
+        <field eval="[(6, 0, [ref('geo_est_ANZ'),ref('geo_est_SUC'),ref('geo_est_MON')])]" name="estados_ids"/>  
+        <field name="codigo">ROR</field>
+    </record>
+        <!-- Redi Marítima: Territorios Insulares -->
+	<record id="rgn_dfs_int_RMI" model="unefa.region_defensa_integral">
+		<field name="region_defensa_integral">REDI Marítima e Insular</field>
+        <field name="codigo">RMI</field>
+        <field eval="[(6, 0, [ref('geo_est_NVA'),ref('geo_est_DFD')])]" name="estados_ids"/>  
+	</record>
+	
+	<!-- Redi Occidente: Falcón, Lara, Yaracuy y Zulia. -->
+	<record id="rgn_dfs_int_OCC" model="unefa.region_defensa_integral">
+		<field name="region_defensa_integral">REDI Occidental</field>
+        <field eval="[(6, 0, [ref('geo_est_ZUL'),ref('geo_est_FAL'),ref('geo_est_LAR'),ref('geo_est_YAR')])]" name="estados_ids"/>  
+		<field name="codigo">ROC</field>
+	</record>
+	<!-- Redi Los Llanos: Apure, Portuguesa, Barinas, Cojedes y Guárico -->
+	<record id="rgn_dfs_int_LLL" model="unefa.region_defensa_integral">
+		<field name="region_defensa_integral">REDI Los LLanos</field>
+        <field eval="[(6, 0, [ref('geo_est_GUA'),ref('geo_est_BAR'),ref('geo_est_APU'),ref('geo_est_POR'),ref('geo_est_COJ')])]" name="estados_ids"/>  
+        <field name="codigo">RLL</field>
+	</record>
+	
+	
+	<!-- Redi Guayana: Bolívar, Delta Amacuro y Amazonas. -->
+	<record id="rgn_dfs_int_GUA" model="unefa.region_defensa_integral">
+		<field name="region_defensa_integral">REDI Guayana</field>
+        <field eval="[(6, 0, [ref('geo_est_AMA'), ref('geo_est_BOL'), ref('geo_est_DEA')])]" name="estados_ids"/>  
+        <field name="codigo">RGU</field>
+	</record>
+	<!-- Redi Andina: Trujillo, Táchira y Mérida -->
+	<record id="rgn_dfs_int_AND" model="unefa.region_defensa_integral">
+		<field name="region_defensa_integral">REDI Los Andes</field>
+        <field name="codigo">RAN</field>
+        <field eval="[(6, 0, [ref('geo_est_MER'),ref('geo_est_TRU'),ref('geo_est_TAC')])]" name="estados_ids"/>  
+	</record>
+
+	</data>
+</openerp>
+    

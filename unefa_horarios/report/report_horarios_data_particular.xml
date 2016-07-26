@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<report id="id_horarios_particular"
+			string="Horarios"
+			model="unefa.horarios_seccion"
+			report_type="qweb-pdf"
+			file="unefa_horarios.horarios_particular"
+            name="unefa_horarios.horarios_particular"
+            menu="True"/>
+            
+        
+        
+        <record id="paperformat_horarios_particular" model="report.paperformat">
+            <field name="name">Horarios</field>
+            <field name="default" eval="True"/>
+            <field name="format">Legal</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">3</field>
+            <field name="margin_bottom">3</field>
+            <field name="margin_left">3</field>
+            <field name="margin_right">3</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">3</field>
+            <field name="dpi">80</field>
+        </record>
+        <record id="id_horarios_particular" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="paperformat_horarios_particular"/>
+        </record>    
+        
+	</data>
+</openerp>

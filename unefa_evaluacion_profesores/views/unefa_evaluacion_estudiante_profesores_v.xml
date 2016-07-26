@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <openerp>
+     <data>
+         
+<!--
+         vista formulario evaluacion estudiante-docente
+-->
+         
+     <record model="ir.ui.view" id="view_unefa_evaluacion_estudiante_docente_form">
+        <field name="name">unefa.evaluacion_estudiante.form</field>
+        <field name="model">unefa.evaluacion_estudiante</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Evaluacion estudiante-Docente">
+                <header>
+                    <button name="aprobar_evaluacion" string="Aprobar" states="espera" type="object" class="oe_highlight" groups="unefa_configuracion.group_unefa_estudiantes"/>
+                    <field name="state" widget="statusbar" statusbar_visible="borrador,aprobado"/>
+                </header>
+                <sheet>
+                    <h1>
+                        <label string="Evaluación"/>
+                        <field name="name" class="oe_inline" readonly="1"/>
+                    </h1><br/>
+                    <h2 style="color: #7c7bad">Datos Generales</h2>
+                    <group col="4" colums="4">
+                        <group>
+                            <field name="periodo_id"/>
+                            <field name="carrera_id"/>
+                        </group>
+                        <group>
+                            <field name="create_date" string="Fecha" readonly="True"/>
+                        </group>
+                    </group>
+                   <group col="4" colums="4">
+                        <field name="semestre_id"/>
+                        <field name="materia_id"/>
+                        <field name="seccion_id"/>
+                        <field name="profesor_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Competencia Profesional">
+                            <field name="competencia_profesional_ids">
+                                <form string="competencia profesional">
+                                    <field name="item_evaluar" />
+                                    <field name="apreciacion_id" attrs="{'required': [('state','=','espera')]}" />
+                                    <field name="state" invisible="1"/>
+                                </form>
+                                <tree string="competencia profesional" editable="bottom" create="0" delete="0">
+                                    <field name="item_evaluar"/>
+                                    <field name="apreciacion_id" attrs="{'required': [('state','=','espera')]}"/>
+                                    <field name="state" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Interacción Docente-Estudiante">
+                            <field name="interaccion_docente_estudiante_ids">
+                                <form string="Interacción Docente-Estudiante">
+                                    <field name="item_evaluar" />
+                                    <field name="apreciacion_id" attrs="{'required': [('state','=','espera')]}"/>
+                                    <field name="state" invisible="1"/>
+                                </form>
+                                <tree string="Interacción Docente-Estudiante" editable="bottom" create="0" delete="0">
+                                    <field name="item_evaluar"/>
+                                    <field name="apreciacion_id" attrs="{'required': [('state','=','espera')]}"/>
+                                    <field name="state" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Estrategias de Enseñanza">
+                            <field name="estrategia_ensenanza_ids">
+                                <form string="Estrategias de Enseñanza">
+                                    <field name="item_evaluar" />
+                                    <field name="apreciacion_id" attrs="{'required': [('state','=','espera')]}"/>
+                                    <field name="state" invisible="1"/>
+                                </form>
+                                <tree string="Estrategias de Enseñanza" editable="bottom" create="0" delete="0">
+                                    <field name="item_evaluar"/>
+                                    <field name="apreciacion_id" attrs="{'required': [('state','=','espera')]}"/>
+                                    <field name="state" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Recursos Instruccionales">
+                            <field name="recursos_ids">
+                                <form string="Recursos Instruccionales">
+                                    <field name="item_evaluar" />
+                                    <field name="apreciacion_id" attrs="{'required': [('state','=','espera')]}"/>
+                                    <field name="state" invisible="1"/>
+                                </form>
+                                <tree string="Recursos Instruccionales" editable="bottom" create="0" delete="0">
+                                    <field name="item_evaluar"/>
+                                    <field name="apreciacion_id" attrs="{'required': [('state','=','espera')]}"/>
+                                    <field name="state" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Evaluación de los Aprendizajes">
+                            <field name="evaluacion_aprendizaje_ids">
+                                <form string="Evaluación de los Aprendizajes">
+                                    <field name="item_evaluar" />
+                                    <field name="apreciacion_id" attrs="{'required': [('state','=','espera')]}"/>
+                                    <field name="state" invisible="1"/>
+                                </form>
+                                <tree string="Evaluación de los Aprendizajes" editable="bottom" create="0" delete="0">
+                                    <field name="item_evaluar"/>
+                                    <field name="apreciacion_id" attrs="{'required': [('state','=','espera')]}"/>
+                                    <field name="state" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook> 
+                    <notebook>
+                        <page string="Aspectos Positivos">
+                            <field name="aspecto_positivo" />
+                        </page>
+                        
+                        <page string="Aspectos Mejorables">
+                            <field name="aspecto_mejorable" />
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread" readonly="1" />
+                </div>
+            </form>
+        </field>
+    </record>
+     
+<!--
+     vista lista evaluacion estudiante-docente
+-->
+     
+     <record model="ir.ui.view" id="view_unefa_evaluacion_estudiante_docente_tree">
+        <field name="name">unefa.evaluacion_estudiante.form</field>
+        <field name="model">unefa.evaluacion_estudiante</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Evaluación Estudiante-Docente" colors="red:state=='espera';green:state =='aprobado'">
+                <field name="periodo_id"/>
+                <field name="carrera_id"/>
+                <field name="profesor_id"/>
+                <field name="create_date" string="Fecha de Creación"/>
+                <field name="state"/>
+            </tree>
+        </field>
+     </record>
+    
+<!--
+    actions evaluacion estudiante-docente
+-->
+    
+    <record model="ir.actions.act_window" id="action_unefa_evaluacion_estudiante_docente">
+        <field name="name">Evaluación Estudiante-Docente</field>
+        <field name="res_model">unefa.evaluacion_estudiante</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+<!--
+         vista formulario competencia profesional
+-->
+         
+     <record model="ir.ui.view" id="view_unefa_items_competencia_profesional_form">
+        <field name="name">unefa.items_competencia_profesional.form</field>
+        <field name="model">unefa.items_competencia_profesional</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Items Competencia Profesional">
+                <sheet>
+                    <group col="4" colums="4">
+                        <field name="item_evaluacion"/>
+                        <field name="item_activo"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+     
+<!--
+     vista lista competencia profesional
+-->
+     
+     <record model="ir.ui.view" id="view_unefa_items_competencia_profesional_tree">
+        <field name="name">unefa.items_competencia_profesional.form</field>
+        <field name="model">unefa.items_competencia_profesional</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Items Competencia Profesional">
+                <field name="item_evaluacion"/>
+                    <field name="item_activo"/>
+            </tree>
+        </field>
+     </record>
+    
+<!--
+     actions competencia profesional
+-->
+    
+    <record model="ir.actions.act_window" id="action_unefa_items_competencia_profesional">
+        <field name="name">Items Competencia Profesional</field>
+        <field name="res_model">unefa.items_competencia_profesional</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    
+<!--
+         vista formulario Interacción Docente-Estudiante
+-->
+         
+     <record model="ir.ui.view" id="view_unefa_items_interaccion_docente_estudiante_2_form">
+        <field name="name">unefa.items_interaccion_docente_estudiante.form</field>
+        <field name="model">unefa.items_interaccion_docente_estudiante_2</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Items Interacción docente-estudiante">
+                <sheet>
+                    <group col="4" colums="4">
+                        <field name="item_evaluacion"/>
+                        <field name="item_activo"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+     
+<!--
+     vista lista Interacción Docente-Estudiante
+-->
+     
+     <record model="ir.ui.view" id="view_unefa_items_interaccion_docente_estudiante_2_tree">
+        <field name="name">unefa.items_interaccion_docente_estudiante.form</field>
+        <field name="model">unefa.items_interaccion_docente_estudiante_2</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Items Interacción docente-estudiante">
+                <field name="item_evaluacion"/>
+                    <field name="item_activo"/>
+            </tree>
+        </field>
+     </record>
+    
+<!--
+     actions Interacción Docente-Estudiante
+-->
+    
+    <record model="ir.actions.act_window" id="action_unefa_items_interaccion_docente_estudiante_2">
+        <field name="name">Items Interacción Docente-Estudiante</field>
+        <field name="res_model">unefa.items_interaccion_docente_estudiante_2</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    
+    
+<!--
+         vista formulario estrategia enseñanza
+-->
+         
+     <record model="ir.ui.view" id="view_unefa_items_estrategia_ensenanza_2_form">
+        <field name="name">unefa.items_estrategia_ensenanza_2.form</field>
+        <field name="model">unefa.items_estrategia_ensenanza_2</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Items Interacción docente-estudiante">
+                <sheet>
+                    <group col="4" colums="4">
+                        <field name="item_evaluacion"/>
+                        <field name="item_activo"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+     
+<!--
+     vista lista estrategia enseñanza
+-->
+     
+     <record model="ir.ui.view" id="view_unefa_items_estrategia_ensenanza_2_tree">
+        <field name="name">unefa.items_estrategia_ensenanza_2.form</field>
+        <field name="model">unefa.items_estrategia_ensenanza_2</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Items Interacción docente-estudiante">
+                <field name="item_evaluacion"/>
+                    <field name="item_activo"/>
+            </tree>
+        </field>
+     </record>
+    
+<!--
+     actions estrategia enseñanza
+-->
+    
+    <record model="ir.actions.act_window" id="action_unefa_items_estrategia_ensenanza_2">
+        <field name="name">Items Estrategias de Enseñanza</field>
+        <field name="res_model">unefa.items_estrategia_ensenanza_2</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    
+    
+    
+<!--
+         vista formulario recursos instruccionales
+-->
+         
+     <record model="ir.ui.view" id="view_unefa_items_recursos_form">
+        <field name="name">unefa.items_recursos.form</field>
+        <field name="model">unefa.items_recursos</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Items Recursos Instruccionales">
+                <sheet>
+                    <group col="4" colums="4">
+                        <field name="item_evaluacion"/>
+                        <field name="item_activo"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+     
+<!--
+     vista lista recursos instruccionales
+-->
+     
+     <record model="ir.ui.view" id="view_unefa_items_recursos_tree">
+        <field name="name">unefa.items_recursos.form</field>
+        <field name="model">unefa.items_recursos</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Items Recursos Instruccionales">
+                <field name="item_evaluacion"/>
+                    <field name="item_activo"/>
+            </tree>
+        </field>
+     </record>
+    
+<!--
+     actions recursos instruccionales
+-->
+    
+    <record model="ir.actions.act_window" id="action_unefa_items_recursos">
+        <field name="name">Items Recursos Instruccionales</field>
+        <field name="res_model">unefa.items_recursos</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    
+    
+<!--
+         vista formulario aprendizaje
+-->
+         
+     <record model="ir.ui.view" id="view_unefa_items_aprendizajes_2_form">
+        <field name="name">unefa.items_aprendizajes_2.form</field>
+        <field name="model">unefa.items_aprendizajes_2</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Items Evaluación de los Aprendizajes">
+                <sheet>
+                    <group col="4" colums="4">
+                        <field name="item_evaluacion"/>
+                        <field name="item_activo"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+     
+<!--
+     vista lista aprendizaje
+-->
+     
+     <record model="ir.ui.view" id="view_unefa_items_aprendizajes_2_tree">
+        <field name="name">unefa.items_aprendizajes_2.form</field>
+        <field name="model">unefa.items_aprendizajes_2</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Items Evaluación de los Aprendizajes">
+                <field name="item_evaluacion"/>
+                    <field name="item_activo"/>
+            </tree>
+        </field>
+     </record>
+    
+<!--
+     actions aprendizaje
+-->
+    
+    <record model="ir.actions.act_window" id="action_unefa_items_aprendizajes_2">
+        <field name="name">Items Evaluación de los Aprendizajes</field>
+        <field name="res_model">unefa.items_aprendizajes_2</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    
+    
+    
+<!--
+    vistas para configurar el valor de las opciones en la evaluación del estudiante al profesor
+-->
+
+<!--
+         vista formulario aprendizaje
+-->
+         
+     <record model="ir.ui.view" id="view_unefa_evaluacion_apreciacion_form">
+        <field name="name">unefa_evaluacion_apreciacion.form</field>
+        <field name="model">unefa.evaluacion_apreciacion</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Valores de Evaluación">
+                <sheet>
+                    <group col="4" colums="4">
+                        <field name="nombre_aprec"/>
+                        <field name="valor_apreci"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+     
+<!--
+     vista lista aprendizaje
+-->
+     
+     <record model="ir.ui.view" id="view_unefa_evaluacion_apreciacion_tree">
+        <field name="name">unefa_evaluacion_apreciacion.form</field>
+        <field name="model">unefa.evaluacion_apreciacion</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Valores de Evaluación">
+                <field name="nombre_aprec"/>
+                <field name="valor_apreci"/>
+            </tree>
+        </field>
+     </record>
+    
+<!--
+     actions aprendizaje
+-->
+    
+    <record model="ir.actions.act_window" id="action_unefa_evaluacion_apreciacion">
+        <field name="name">Valores de la evaluación de Estudiante-Profesor</field>
+        <field name="res_model">unefa.evaluacion_apreciacion</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    
+    
+    
+    
+<!--
+    menus del modulo de evaluacion estudiante-profesor
+-->
+
+<menuitem name="Evaluación Estudiante-Docente" id="menu_evaluacion_estudiante_docente" parent="inicio_unefa_supervision_clase" action="action_unefa_evaluacion_estudiante_docente" sequence="30" groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_estudiantes"/>
+
+<menuitem name="Evaluación Estudiante-Docente" id="menu_config_evaluacion_estudiante_docente" parent="configuracion_items" sequence="30"/>
+<menuitem name="Competencia Profesional" id="menu_items_competencia_profesional" parent="menu_config_evaluacion_estudiante_docente" action="action_unefa_items_competencia_profesional" sequence="10"/>
+<menuitem name="Interacción Docente-Estudiante" id="menu_items_interac_docente_estudiante" parent="menu_config_evaluacion_estudiante_docente" action="action_unefa_items_interaccion_docente_estudiante_2" sequence="20"/>
+<menuitem name="Estrategias de Enseñanza" id="menu_items_estrategia_ensenanza" parent="menu_config_evaluacion_estudiante_docente" action="action_unefa_items_estrategia_ensenanza_2" sequence="30"/>
+<menuitem name="Recursos Instruccionales" id="menu_items_recursos" parent="menu_config_evaluacion_estudiante_docente" action="action_unefa_items_recursos" sequence="40"/>
+<menuitem name="Evaluación de los Aprendizajes" id="menu_items_evaluacion_aprendizaje" parent="menu_config_evaluacion_estudiante_docente" action="action_unefa_items_aprendizajes_2" sequence="50"/>
+
+
+<menuitem name="Evaluación Estudiante-Docente" id="menu_config_valores_estudiante_docente" parent="inicio_unefa_configuracion_valores" sequence="20"/>
+<menuitem name="Apreciación Estudiante-Docente" id="menu_apreciacion_estudiante_docente" parent="menu_config_valores_estudiante_docente" action="action_unefa_evaluacion_apreciacion" sequence="10"/>
+
+
+</data>
+</openerp>
+     

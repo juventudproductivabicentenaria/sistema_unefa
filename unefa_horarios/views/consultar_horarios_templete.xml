@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+    <openerp>
+        <data>
+            
+            <template id="website_horarios" inherit_id="website.assets_frontend" name="website_apiform" >
+                <xpath expr="/t" position="inside">
+                    <link rel="stylesheet" href="/unefa_horarios/static/src/css/style_horarios.css"/>
+                </xpath>
+            </template>
+
+            <template id="unefa_horarios.consultar_horarios" name="Template para la edición de horarios">
+                
+                <div>
+                    
+                    <a t-att-href="'/horarios/editar/%d' % (horarios_data['id'])">
+                            <button type="button"  t-attf-class="btn btn-info glyphicon glyphicon-folder-open" > Editar</button>
+                    </a>   
+                    <br/>
+                    <br/>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">DATOS ACADÉMICOS</div>
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <label for="carrera">Carrera</label>
+                                    <p><t t-esc="'%s' % (horarios_data['horario_id']['carrera_id']['nombre'])"/></p>
+                                    
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="turno">Turno</label>
+                                    <t t-if="horarios_data['horario_id']['turno']=='nocturno'">
+                                        <p>NOCTURNO</p>
+                                    </t>
+                                    <t t-if="horarios_data['horario_id']['turno']=='diurno'">
+                                        <p>DIURNO</p>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <label for="pensum">Pensum</label>
+                                    <p><t t-esc="'%s' % (horarios_data['horario_id']['pensum_id']['pensum'])"/></p>
+                                </div>
+                                <div class="col-md-6">
+                                   <label for="periodo_academico">Período Académico</label>
+                                   <p><t t-esc="'%s' % (horarios_data['horario_id']['periodo_id']['periodo_academico'])"/></p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                     <label for="seccion">Sección</label>
+                                     <p><t t-esc="'%s' % (horarios_data['seccion_id']['seccion'])"/></p>
+                                </div>
+                                <div class="col-md-6">
+                                     <label for="aula">Aula</label>
+                                     <p><t t-esc="'%s' % (horarios_data['aula_id']['numero'])"/></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">HORARIOS</div>
+                        <div class="panel-body">
+                            <div class="row container-fluid">
+                                <div class="col-md-2 centrar horas bordersup panel-body fondoho" style="border:1px solid">HORAS
+                                    <t t-foreach="relacion_hora_turno_data['horas_ids']" t-as="horas">
+                                        <div class="row bordersup fondoho2 panel-body"><t t-esc="'%s' % (horas.hora_completo)"/></div>
+                                    </t>
+                                </div>
+                                <div class="col-md-2 centrar panel-body horas fondoho" style="border:1px solid">LUNES
+                                    <t t-set="asig" value=""/>
+                                    <t t-foreach="relacion_hora_turno_data['horas_ids']" t-as="horas">
+                                        <t t-foreach="horarios_data['datos_ids']" t-as="datos">
+                                            <t t-if="'Lunes' == datos.dia_id.dia">
+                                                <t t-if="datos.hora_id.id == horas.id">
+                                                    <t t-if="not datos.asignatura_id == asig"> 
+                                                        <div t-attf-class="row fondoho2 centrar bordersup panel-body #{buscar_clase(datos.asignatura_id,'Lunes',horarios_data['id'],datos.hora_id.id)}">
+                                                            <t t-if="datos['asignatura_id']['asignatura']!=False">
+                                                                <h6><t t-esc="'%s' % (datos['asignatura_id']['asignatura'])"/></h6>
+                                                            </t>
+                                                            <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                               <h6></h6>
+                                                            </t>
+                                                        </div>
+                                                        <t t-set="asig" t-value="datos.asignatura_id"/>
+                                                        <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                            <t t-set="asig" value="1"/>
+                                                        </t>
+                                                    </t>
+                                                </t>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </div>
+                                <div class="col-md-2 centrar panel-body horas fondoho" style="border:1px solid">MARTES
+                                    <t t-set="asig" value=""/>
+                                    <t t-foreach="relacion_hora_turno_data['horas_ids']" t-as="horas">
+                                        <t t-foreach="horarios_data['datos_ids']" t-as="datos">
+                                            <t t-if="'Martes' == datos.dia_id.dia">
+                                                <t t-if="datos.hora_id.id == horas.id">
+                                                    <t t-if="not datos.asignatura_id == asig"> 
+                                                        <div t-attf-class="row fondoho2 centrar bordersup panel-body #{buscar_clase(datos.asignatura_id,'Martes',horarios_data['id'],datos.hora_id.id)}">
+                                                            <t t-if="datos['asignatura_id']['asignatura']!=False">
+                                                               <h6><t t-esc="'%s' % (datos['asignatura_id']['asignatura'])"/></h6>
+                                                            </t>
+                                                            <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                               <h6></h6>
+                                                            </t>
+                                                        </div>
+                                                        <t t-set="asig" t-value="datos.asignatura_id"/>
+                                                        <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                            <t t-set="asig" value="1"/>
+                                                        </t>
+                                                    </t>
+                                                </t>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </div>
+                                <div class="col-md-2 centrar panel-body horas fondoho" style="border:1px solid">MIERCOLES
+                                    <t t-set="asig" value=""/>
+                                    <t t-foreach="relacion_hora_turno_data['horas_ids']" t-as="horas">
+                                        <t t-foreach="horarios_data['datos_ids']" t-as="datos">
+                                            <t t-if="'Miercoles' == datos.dia_id.dia">
+                                                <t t-if="datos.hora_id.id == horas.id">
+                                                    <t t-if="not datos.asignatura_id == asig"> 
+                                                        <div t-attf-class="row fondoho2 centrar bordersup panel-body #{buscar_clase(datos.asignatura_id,'Miercoles',horarios_data['id'],datos.hora_id.id)}">
+                                                            <t t-if="datos['asignatura_id']['asignatura']!=False">
+                                                                <h6><t t-esc="'%s' % (datos['asignatura_id']['asignatura'])"/></h6>
+                                                            </t>
+                                                            <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                               <h6></h6>
+                                                            </t>
+                                                        </div>
+                                                        <t t-set="asig" t-value="datos.asignatura_id"/>
+                                                        <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                            <t t-set="asig" value="1"/>
+                                                        </t>
+                                                    </t>
+                                                </t>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </div>
+                                <div class="col-md-2 centrar panel-body horas fondoho" style="border:1px solid">JUEVES
+                                    <t t-set="asig" value=""/>
+                                    <t t-foreach="relacion_hora_turno_data['horas_ids']" t-as="horas">
+                                        <t t-foreach="horarios_data['datos_ids']" t-as="datos">
+                                            <t t-if="'Jueves' == datos.dia_id.dia">
+                                                <t t-if="datos.hora_id.id == horas.id">
+                                                    <t t-if="not datos.asignatura_id == asig"> 
+                                                        <div t-attf-class="row fondoho2 centrar bordersup panel-body #{buscar_clase(datos.asignatura_id,'Jueves',horarios_data['id'],datos.hora_id.id)}">
+                                                            <t t-if="datos['asignatura_id']['asignatura']!=False">
+                                                                <h6><t t-esc="'%s' % (datos['asignatura_id']['asignatura'])"/></h6>
+                                                            </t>
+                                                            <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                               <h6></h6>
+                                                            </t>
+                                                        </div>
+                                                        <t t-set="asig" t-value="datos.asignatura_id"/>
+                                                        <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                            <t t-set="asig" value="1"/>
+                                                        </t>
+                                                    </t>
+                                                </t>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </div>
+                                <div class="col-md-2 centrar panel-body horas fondoho" style="border:1px solid">VIERNES
+                                    <t t-set="asig" value=""/>
+                                    <t t-foreach="relacion_hora_turno_data['horas_ids']" t-as="horas">
+                                        <t t-foreach="horarios_data['datos_ids']" t-as="datos">
+                                            <t t-if="'Viernes' == datos.dia_id.dia">
+                                                <t t-if="datos.hora_id.id == horas.id">
+                                                    <t t-if="not datos.asignatura_id == asig"> 
+                                                        <div t-attf-class="row fondoho2 centrar bordersup borderright panel-body #{buscar_clase(datos.asignatura_id,'Viernes',horarios_data['id'],datos.hora_id.id)}">
+                                                            <t t-if="datos['asignatura_id']['asignatura']!=False">
+                                                                <h6><t t-esc="'%s' % (datos['asignatura_id']['asignatura'])"/></h6>
+                                                            </t>
+                                                            <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                               <h6></h6>
+                                                            </t>
+                                                        </div>
+                                                        <t t-set="asig" t-value="datos.asignatura_id"/>
+                                                        <t t-if="datos['asignatura_id']['asignatura']==False">
+                                                            <t t-set="asig" value="1"/>
+                                                        </t>
+                                                    </t>
+                                                </t>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">HORARIOS SABADOS</div>
+                        <div class="panel-body">
+                            <div class="row container-fluid">
+                                <div class="col-md-2 centrar horassa bordersup panel-body fondoho" style="border:1px solid">HORAS
+                                    <t t-foreach="relacion_hora_sabado_data['horas_ids']" t-as="horassa">
+                                        <div class="row bordersup fondoho2 panel-body"><t t-esc="'%s' % (horassa.hora_completo)"/></div>
+                                    </t>
+                                </div>
+                                <div class="col-md-2 centrar panel-body horassa fondoho" style="border:1px solid">SABADO
+                                    <t t-set="asig" value=""/>
+                                        <t t-foreach="relacion_hora_sabado_data['horas_ids']" t-as="horassa">
+                                            <t t-foreach="horarios_data['datos_ids']" t-as="datosa">
+                                                <t t-if="'Sabado' == datosa.dia_id.dia">
+                                                    <t t-if="datosa.hora_id.id == horassa.id">
+                                                        <t t-if="not datosa.asignatura_id == asig"> 
+                                                            <div t-attf-class="row fondoho2 centrar borderright bordersup panel-body #{buscar_clase(datosa.asignatura_id,'Sabado',horarios_data['id'],datosa.hora_id.id)}">
+                                                                <t t-if="datosa['asignatura_id']['asignatura']!=False">
+                                                                    <h6><t t-esc="'%s' % (datosa['asignatura_id']['asignatura'])"/></h6>
+                                                                </t>
+                                                                <t t-if="datosa['asignatura_id']['asignatura']==False">
+                                                                   <h6></h6>
+                                                                </t>
+                                                            </div>
+                                                            <t t-set="asig" t-value="datosa.asignatura_id"/>
+                                                            <t t-if="datosa['asignatura_id']['asignatura']==False">
+                                                                <t t-set="asig" value="1"/>
+                                                            </t>
+                                                        </t>
+                                                    </t>
+                                                </t>
+                                            </t>
+                                        </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">ASIGNATURAS Y PROFESORES</div>
+                        <div class="panel-body">
+                            <table colspan="24" class="table table-bordered table-striped mt32 centrar" id="horarios">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center" colspan="2">CÓDIGO</th>
+                                        <th style="text-align:center" colspan="5">ASIGNATURA</th>
+                                        <th style="text-align:center" colspan="1">T</th>
+                                        <th style="text-align:center" colspan="1">P</th>
+                                        <th style="text-align:center" colspan="1">L</th>
+                                        <th style="text-align:center" colspan="1">UC</th>
+                                        <th style="text-align:center" colspan="3">PRELACIÓN</th>
+                                        <th style="text-align:center" colspan="7">PROFESOR</th>
+                                        <th style="text-align:center" colspan="3">N° DE CEDULA</th>
+                                    </tr>
+                                </thead>
+                                <body>
+                                    <t t-set="prelaciones" value=""/>
+                                    <t t-foreach="asignatura_seccion_data" t-as="asignatura">
+                                        <tr>
+                                            <td colspan="2"><t t-esc="asignatura['asignatura_id']['codigo_asignatura']"/></td>
+                                            <td colspan="5"><t t-esc="asignatura['asignatura_id']['asignatura']"/></td>
+                                            <td colspan="1"><t t-esc="asignatura['asignatura_id']['hora_teorica']"/></td>
+                                            <td colspan="1"><t t-esc="asignatura['asignatura_id']['hora_practica']"/></td>
+                                            <td colspan="1"><t t-esc="asignatura['asignatura_id']['hora_laboratorio']"/></td>
+                                            <td colspan="1"><t t-esc="asignatura['asignatura_id']['unidad_credito']"/></td>
+                                            <td colspan="3"><t t-esc="dic_prelacion[asignatura.id]"/></td>
+                                            <td colspan="7"><t t-esc="asignatura['profesor_id']['nombre_completo']"/></td>
+                                            <td colspan="3"><t t-esc="asignatura['profesor_id']['cedula']"/></td>
+                                        </tr>
+                                    </t>
+                                </body>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </template>
+    </data>
+</openerp>

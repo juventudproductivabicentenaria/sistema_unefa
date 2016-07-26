@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+
+
+<template id="ficha_estudiantes_qweb">
+    <style type="text/css">.fondoho{background-color: rgb(208, 236, 248);}</style>
+    <style type="text/css">.letrapequeña {font-size: 10px}</style>
+	<t t-call="unefa_usuarios.header_documentos_unefa"/>
+        <div class="page">
+            <table colspan="6" class="table table-condensed table-bordered" style="border: 1px solid black" >
+                <tr>
+                    <td colspan="8" style="border: 1px solid black;color: black;text-align: center" class="fondoho letrapequeña"><strong>FICHA DE ESTUDIANTE</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="border: 1px solid black;color: black;text-align: center" class="letrapequeña"><strong>FECHA DE INGRESO:</strong> <t t-esc="data['estudiante_data']['fecha_ingreso']"/></td>
+                </tr>
+                
+                <tr>
+                    <td 
+                        style="border: 1px solid black;color: black;text-align: left" class="letrapequeña"
+                        colspan="4"><strong>APELLIDOS</strong></td>
+                    <td 
+                        style="border: 1px solid black;color: black;text-align: left" class="letrapequeña"
+                        colspan="4"><strong>NOMBRES</strong></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;color: black" class="letrapequeña"
+                        colspan="4"><t t-esc="data['estudiante_data']['primer_apellido']"/> <t t-esc="data['estudiante_data']['segundo_apellido']"/></td>
+                    <td style="border: 1px solid black;color: black" class="letrapequeña"
+                    colspan="4"><t t-esc="data['estudiante_data']['name']"/> <t t-esc="data['estudiante_data']['segundo_nombre']"/></td>
+                </tr>
+                    <tr>
+                        <td colspan="2" style="border: 1px solid black;color: black" class="letrapequeña"><strong>NACIONALIDAD</strong></td>
+                        <td colspan="2" style="border: 1px solid black;color: black" class="letrapequeña"><strong>CÉDULA DE IDENTIDAD</strong></td>
+                        <td colspan="2" style="border: 1px solid black;color: black" class="letrapequeña"><strong>FECHA DE NACIMIENTO</strong></td>
+                        <td colspan="2" style="border: 1px solid black;color: black" class="letrapequeña"><strong>SEXO</strong></td>
+                    </tr>
+                    <tr>
+                        <t t-if="data['estudiante_data']['nacionalidad']=='venezolano'">
+                            <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black">VENEZOLANO</td>
+                        </t>
+                        <t t-if="data['estudiante_data']['nacionalidad']=='extranjero'">
+                            <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black">EXTRANJERO</td>
+                        </t>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><t t-esc="data['estudiante_data']['cedula']"/></td>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><t t-esc="data['estudiante_data']['fecha_nacimiento']"/></td>
+                        <t t-if="data['estudiante_data']['sexo']=='femenino'">
+                            <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black">FEMENINO</td>
+                        </t>
+                        <t t-if="data['estudiante_data']['sexo']=='masculino'">
+                            <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black">MASCULINO</td>
+                        </t>
+                    </tr>
+                    <t t-if="data['estudiante_data']['condicion']=='civil'">
+                        <tr>
+                            <td colspan="4" class="letrapequeña" style="border: 1px solid black;color: black"><strong>CONDICIÓN</strong></td>
+                            <td colspan="4" class="letrapequeña" style="border: 1px solid black;color: black"><strong>ESTADO CIVIL</strong></td>
+                        </tr>
+                        <tr>
+                            <t t-if="data['estudiante_data']['condicion']=='civil'">
+                                <td colspan="4" class="letrapequeña" style="border: 1px solid black;color: black">CIVIL</td>
+                            </t>
+                            <t t-if="data['estudiante_data']['estado_civil']=='soltero'">
+                                <td colspan="4" class="letrapequeña" style="border: 1px solid black;color: black">SOLTERO</td>
+                            </t>
+                            <t t-if="data['estudiante_data']['estado_civil']=='casado'">
+                                <td colspan="4" class="letrapequeña" style="border: 1px solid black;color: black">CASADO</td>
+                            </t>
+                            <t t-if="data['estudiante_data']['estado_civil']=='divorsiado'">
+                                <td colspan="4" class="letrapequeña" style="border: 1px solid black;color: black">DIVORSIADO</td>
+                            </t>
+                            <t t-if="data['estudiante_data']['estado_civil']=='viudo'">
+                                <td colspan="4" class="letrapequeña" style="border: 1px solid black;color: black">VIUDO</td>
+                            </t>
+                        </tr>
+                    </t>
+                    <t t-if="data['estudiante_data']['condicion']=='militar'">
+                        <tr>
+                            <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><strong>CONDICIÓN</strong></td>
+                            <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><strong>GRADO</strong></td>
+                            <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><strong>FUERZA</strong></td>
+                            <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><strong>ESTADO CIVIL</strong></td>
+                        </tr>
+                        <tr>
+                            <t t-if="data['estudiante_data']['condicion']=='militar'">
+                                <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black">MILITAR</td>
+                            </t>
+                            <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><t t-esc="data['estudiante_data']['grado_id']['grado']"/></td>
+                            <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><t t-esc="data['estudiante_data']['fuerza_id']['fuerza']"/></td>
+                            <t t-if="data['estudiante_data']['estado_civil']=='soltero'">
+                                <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black">SOLTERO</td>
+                            </t>
+                            <t t-if="data['estudiante_data']['estado_civil']=='casado'">
+                                <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black">CASADO</td>
+                            </t>
+                            <t t-if="data['estudiante_data']['estado_civil']=='divorsiado'">
+                                <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black">DIVORSIADO</td>
+                            </t>
+                            <t t-if="data['estudiante_data']['estado_civil']=='viudo'">
+                                <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black">VIUDO</td>
+                            </t>
+                        </tr>
+                    </t>
+                    <tr>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><strong>TELÉFONO CELULAR</strong></td>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><strong>TELÉFONO LOCAL</strong></td>
+                        <td colspan="4" class="letrapequeña" style="border: 1px solid black;color: black"><strong>CORREO ELECTRÓNICO</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><t t-esc="data['estudiante_data']['telefono']"/></td>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><t t-esc="data['estudiante_data']['telefono_local']"/></td>
+                        <td colspan="4" class="letrapequeña" style="border: 1px solid black;color: black"><t t-esc="data['estudiante_data']['email']"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="8" class="letrapequeña" style="border: 1px solid black;color: black;text-align: center"><strong>DIRECCIÓN DE HABITACIÓN</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><strong>ESTADO</strong></td>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><strong>MUNICIPIO</strong></td>
+                        <td colspan="4" class="letrapequeña" style="border: 1px solid black;color: black"><strong>PARROQUIA</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><t t-esc="data['estudiante_data']['estado_id']['estado']"/></td>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><t t-esc="data['estudiante_data']['municipio_id']['municipio']"/></td>
+                        <td colspan="4" class="letrapequeña" style="border: 1px solid black;color: black"><t t-esc="data['estudiante_data']['parroquia_id']['parroquia']"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><strong>SECTOR</strong></td>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><strong>CALLE / AVENIDA</strong></td>
+                        <td colspan="4" class="letrapequeña" style="border: 1px solid black;color: black"><strong>CASA / EDIFICIO</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><t t-esc="data['estudiante_data']['sector']"/></td>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><t t-esc="data['estudiante_data']['calle_avenida']"/></td>
+                        <td colspan="4" class="letrapequeña" style="border: 1px solid black;color: black"><t t-esc="data['estudiante_data']['casa_apto']"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="8" class="letrapequeña" style="border: 1px solid black;color: black;text-align: center"><strong>DATOS ACADÉMICOS</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="letrapequeña" style="border: 1px solid black;color: black"><strong>CARRERA</strong></td>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><strong>RÉGIMEN</strong></td>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><strong>PENSUM</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="letrapequeña" style="border: 1px solid black;color: black"><t t-esc="data['estudiante_data']['carrera_id']['nombre']"/></td>
+                        <t t-if="data['estudiante_data']['regimen']=='diurno'">
+                            <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black">DIURNO</td>
+                        </t>
+                        <t t-if="data['estudiante_data']['regimen']=='nocturno'">
+                            <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black">NOCTURNO</td>
+                        </t>
+                        <td colspan="2" class="letrapequeña" style="border: 1px solid black;color: black"><t t-esc="data['estudiante_data']['pensum_id']['pensum']"/></td>
+                    </tr>
+                
+            </table>
+        </div>
+</template>
+
+<template id="unefa_usuarios.header_documentos_unefa">
+    <div class="header">
+        <div class="contains" >
+			<div class="row">
+				<div style="text-align: center">
+					<div class="col-xs-1">
+						<img class="img-responsive" src="/unefa_oferta_academica/static/img/logo_unefa.png"/>
+					</div>
+					<div class="col-xs-10" style="font-size: 10px;">
+							REPÚBLICA BOLIVARIANA DE VENEZUELA<br/>
+							MINISTERIO DEL PODER POPULAR PARA LA DEFENSA<br/>
+							UNIVERSIDAD NACIONAL EXPERIMENTAL POLITECNICA DE LA FUERZA ARMADA<br/>
+							<t t-if="data['sede_data']['tipo_sede'] == 'nucleo'">NÚCLEO</t><t t-if="data['sede_data']['tipo_sede'] == 'extension'">EXTENCIÓN</t><t t-if="data['sede_data']['tipo_sede'] == 'ampliacion'">AMPLIACIÓN</t> <t t-esc="data['sede_data']['nombre']"/><br/>
+							<t t-esc="data['coordinacion_data']['nombre']"/><br/>
+							REGÍMEN <t t-if="data['coordinacion_data']['regimen'] == 'nocturno'">NOCTURNO</t><t t-if="data['coordinacion_data']['regimen']  == 'diurno'">DIURNO</t>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+</template>
+
+
+</data>
+</openerp>

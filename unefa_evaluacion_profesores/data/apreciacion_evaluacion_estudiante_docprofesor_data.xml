@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="apreciacion_nunca" model="unefa.evaluacion_apreciacion">
+            <field name="nombre_aprec">Nunca</field>
+            <field name="valor_apreci">1</field>
+        </record>
+        <record id="apreciacion_algunas_veces" model="unefa.evaluacion_apreciacion">
+            <field name="nombre_aprec">Algunas veces</field>
+            <field name="valor_apreci">2</field>
+        </record>
+        <record id="apreciacion_casi_siempre" model="unefa.evaluacion_apreciacion">
+            <field name="nombre_aprec">Casi siempre</field>
+            <field name="valor_apreci">3</field>
+        </record>
+        <record id="apreciacion_siempre" model="unefa.evaluacion_apreciacion">
+            <field name="nombre_aprec">Siempre</field>
+            <field name="valor_apreci">4</field>
+        </record>
+    </data>
+</openerp>

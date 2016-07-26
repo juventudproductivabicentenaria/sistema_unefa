@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <openerp>
+     <data>
+         <!-- Seleccionar semestre a generar en lista -->
+        <record id="unefa_generar_lista_semestre_wizard_view" model="ir.ui.view">
+            <field name="name">Seleccione semestres para generar listas</field>
+            <field name="model">unefa.generar_lista_semestre</field>
+            <field name="arch" type="xml">
+                <form string="Generar Listas">
+					<separator string="Carrera" colspan="4"/>
+                    <field name="carrera_id" on_change="carrera_turno_default()" />
+                    <separator string="Turno" colspan="4"/>
+                    <field name="turno" />
+                    <separator string="Período" colspan="4"/>
+                    <field name="periodo_id" options="{'no_create':True,}"/>
+                    <separator string="Pensum" />
+                    <field name="pensum_id" on_change="domain_semestre_ofertados(carrera_id,turno,pensum_id,periodo_id)" domain="[('carrera_id','=',carrera_id),('turno','=',turno)]" options="{'no_create':True,}"/>
+                    <separator string="Semestres" colspan="4"/>
+                    <field name="semestre_ids" options="{'no_create':True}">
+                        <tree>
+                            <field  name="semestre" />
+                        </tree>
+                    </field>
+                    <footer>
+                        <button string="Generar Lista" type="object"  name="generar_listas_semestres" class="oe_highlight" />
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+         <record model="ir.actions.act_window" id="action_generar_listas_semestres_wizard">
+            <field name="name">Generar Listas Semestre</field>
+            <field name="res_model">unefa.generar_lista_semestre</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="unefa_generar_lista_semestre_wizard_view"/>
+            <field name="target">new</field>
+        </record>
+    
+        <menuitem name="Generar Listas Semestre" 
+                id="menu_unefa_generar_lista_semestre_wizard_view" 
+                action="action_generar_listas_semestres_wizard" 
+                parent="unefa_gestion_semestre_inicio" 
+                sequence="20"
+                groups="unefa_configuracion.group_unefa_coordinador,unefa_configuracion.group_unefa_asistente"/>
+    </data>
+</openerp>

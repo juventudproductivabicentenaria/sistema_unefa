@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="unefa_cp_coordinador_asistente" model="ir.rule">
+            <field name="name">Contenido programatico que puede ver el coordinador y el asistente</field>
+            <field name="model_id" ref="model_unefa_contenido_programatico"/>
+            <field name="domain_force">[('carrera_id','=',user.carrera_id.id),('turno','=',user.coordinacion_id.regimen)]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='True'/>
+            <field name="perm_create" eval='True'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('unefa_configuracion.group_unefa_coordinador')),
+                                        (4,ref('unefa_configuracion.group_unefa_asistente'))]"/>
+        </record>
+        
+        <record id="unefa_cp_profesor_estudiante" model="ir.rule">
+            <field name="name">Pensum que puede ver el Profesor y el Estudiante</field>
+            <field name="model_id" ref="model_unefa_contenido_programatico"/>
+            <field name="domain_force">[('carrera_id','=',user.carrera_id.id),('turno','=',user.regimen),('state','=','activo')]</field>
+            <field name="perm_read" eval='True'/>
+            <field name="perm_write" eval='False'/>
+            <field name="perm_create" eval='False'/>
+            <field name="perm_unlink" eval='False'/>
+            <field name="groups" eval="[(4,ref('unefa_configuracion.group_unefa_profesores')),
+                                        (4,ref('unefa_configuracion.group_unefa_estudiantes'))]"/>
+        </record>
+        
+    </data>
+</openerp>

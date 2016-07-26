@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        
+        <record id="eval_planif_si" model="unefa.eval.planif.registro_control">
+            <field name="evaluacion">SI</field>
+            <field name="valor_opcion">3</field>
+        </record>
+        
+        <record id="eval_planif_no" model="unefa.eval.planif.registro_control">
+            <field name="evaluacion">NO</field>
+            <field name="valor_opcion">0</field>
+        </record>
+        
+        <record id="eval_planif_no_observo" model="unefa.eval.planif.registro_control">
+            <field name="evaluacion">NO SE OBSERVO</field>
+            <field name="valor_opcion">0</field>
+        </record>
+        
+        
+        <record id="eval_asistencia_si" model="unefa.eval.asistencia.puntualidad">
+            <field name="evaluacion">SI</field>
+            <field name="valor_opcion">1</field>
+        </record>
+        
+        <record id="eval_asistencia_no" model="unefa.eval.asistencia.puntualidad">
+            <field name="evaluacion">NO</field>
+            <field name="valor_opcion">0</field>
+        </record>
+        
+        <record id="eval_asistencia_no_observo" model="unefa.eval.asistencia.puntualidad">
+            <field name="evaluacion">NO SE OBSERVO</field>
+            <field name="valor_opcion">0</field>
+        </record>
+        
+        
+        <record id="eval_inicio_si" model="unefa.eval.inicio.clase">
+            <field name="evaluacion">SI</field>
+            <field name="valor_opcion">1</field>
+        </record>
+        
+        <record id="eval_inicio_no" model="unefa.eval.inicio.clase">
+            <field name="evaluacion">NO</field>
+            <field name="valor_opcion">0</field>
+        </record>
+        
+        <record id="eval_inicio_no_observo" model="unefa.eval.inicio.clase">
+            <field name="evaluacion">NO SE OBSERBO</field>
+            <field name="valor_opcion">0</field>
+        </record>
+        
+        
+        
+        <record id="eval_desarrollo_si" model="unefa.eval.desarrollo.clase">
+            <field name="evaluacion">SI</field>
+            <field name="valor_opcion">4</field>
+        </record>
+        
+        <record id="eval_desarrollo_no" model="unefa.eval.desarrollo.clase">
+            <field name="evaluacion">NO</field>
+            <field name="valor_opcion">0</field>
+        </record>
+        
+        <record id="eval_desarrollo_no_observo" model="unefa.eval.desarrollo.clase">
+            <field name="evaluacion">NO SE OBSERVO</field>
+            <field name="valor_opcion">0</field>
+        </record>
+        
+        
+        <record id="eval_recursos_si" model="unefa.eval.recursos.didacticos">
+            <field name="evaluacion">SI</field>
+            <field name="valor_opcion">2</field>
+        </record>
+        
+        <record id="eval_recursos_no" model="unefa.eval.recursos.didacticos">
+            <field name="evaluacion">NO</field>
+            <field name="valor_opcion">0</field>
+        </record>
+        
+        <record id="eval_recursos_no_observo" model="unefa.eval.recursos.didacticos">
+            <field name="evaluacion">NO SE OBSERVO</field>
+            <field name="valor_opcion">0</field>
+        </record>
+            
+        <record id="eval_cierre_si" model="unefa.eval.cierre.clase">
+            <field name="evaluacion">SI</field>
+            <field name="valor_opcion">2</field>
+        </record>
+        
+        <record id="eval_cierre_no" model="unefa.eval.cierre.clase">
+            <field name="evaluacion">NO</field>
+            <field name="valor_opcion">0</field>
+        </record>
+        
+        <record id="eval_cierre_no_observo" model="unefa.eval.cierre.clase">
+            <field name="evaluacion">NO SE OBSERVO</field>
+            <field name="valor_opcion">0</field>
+        </record>
+
+    </data>
+</openerp>

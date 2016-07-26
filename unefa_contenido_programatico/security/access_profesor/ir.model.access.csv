@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_unefa_contenido_programatico_profesor,unefa.contenido_programatico,model_unefa_contenido_programatico,unefa_configuracion.group_unefa_profesores,1,0,0,0
+access_unefa_contenido_unidad_profesor,unefa.contenido_unidad,model_unefa_contenido_unidad,unefa_configuracion.group_unefa_profesores,1,0,0,0
+access_unefa_contenido_objetivo_profesor,unefa.contenido_objetivo,model_unefa_contenido_objetivo,unefa_configuracion.group_unefa_profesores,1,0,0,0

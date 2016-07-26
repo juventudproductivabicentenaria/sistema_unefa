@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+<!--
+        vista form y tree para el registro de la fuerza militar
+-->
+        
+        <record model="ir.ui.view" id="view_unefa_fuerza_form">
+            <field name="name">unefa_fuerza_militar_form</field>
+            <field name="model">unefa.fuerza_militar</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Componente de la Fuerza Armada">
+                    <sheet>
+                        <header>
+                            <h2 style="color:#7C7BAD"><center>Componente de la Fuerza Armada</center></h2>
+                        </header>
+                        <group>
+                            <field name="fuerza"/>
+                            <field name="active"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_fuerza_tree">
+            <field name="name">unefa.fuerza_militar_tree</field>
+            <field name="model">unefa.fuerza_militar</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Componente de la Fuerza Armada">
+                    <field name="fuerza"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_unefa_fuerza_militar">
+            <field name="name">Componente de la Fuerza Armada</field>
+            <field name="res_model">unefa.fuerza_militar</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+            Aqui se registran los Componentes de la Fuerza Armada
+            </p>
+            </field>
+        </record>
+        
+        <menuitem name="Componente Fuerza Armada" id="menu_componente_fuerza_armada"  action="action_unefa_fuerza_militar" parent="unefa_menu_fuerza_grado_militar_configuracion" sequence="10"/>
+       
+<!--
+        vista form y tree para el registro del grado militar
+-->
+        
+        <record model="ir.ui.view" id="view_unefa_grado_form">
+            <field name="name">unefa_fuerza_grado_form</field>
+            <field name="model">unefa.grado_militar</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Grado Militar">
+                    <sheet>
+                        <header>
+                            <h2 style="color:#7C7BAD"><center>Grado Militar</center></h2>
+                        </header>
+                        <group>
+                            <field name="grado"/>
+                            <field name="active"/>
+                            <field name="fuerza_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_grado_tree">
+            <field name="name">unefa.grado_militar_tree</field>
+            <field name="model">unefa.grado_militar</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Grado Militar">
+                    <field name="fuerza_id"/>
+                    <field name="grado"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_unefa_grado_militar">
+            <field name="name">Grado Militar</field>
+            <field name="res_model">unefa.grado_militar</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+            Aqui se registran los Grados Militares
+            </p>
+            </field>
+        </record>
+        
+        <menuitem name="Grado Militar" id="menu_grado_militar"  action="action_unefa_grado_militar" parent="unefa_menu_fuerza_grado_militar_configuracion" sequence="20" groups="base.group_system"/>
+
+    </data>
+</openerp>

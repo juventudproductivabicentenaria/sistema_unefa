@@ -1,0 +1,1599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        
+<!--
+        ASIGNATURAS DE INGENIERÍA DE SISTEMAS RÉGIMEN NOCTURNO PENSUM 2010
+        
+                            SEMESTRE 1
+-->
+        <record id="asignatura_ADG_25132" model="unefa.asignatura">
+            <field name="codigo_asignatura">ADG-25132</field>
+            <field name="asignatura">EDUCACIÓN AMBIENTAL</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">1</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">2</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_ADG_25123" model="unefa.asignatura">
+            <field name="codigo_asignatura">ADG-25123</field>
+            <field name="asignatura">HOMBRE, SOCIEDAD, CIENCIA Y TECNOLOGÍA</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_IDM_24113" model="unefa.asignatura">
+            <field name="codigo_asignatura">IDM-24113</field>
+            <field name="asignatura">INGLES I</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_MAT_21212" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-21212</field>
+            <field name="asignatura">DIBUJO</field>
+            <field name="hora_teorica">1</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">2</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_MAT_21215" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-21215</field>
+            <field name="asignatura">MATEMÁTICA I</field>
+            <field name="hora_teorica">4</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">5</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_MAT_21524" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-21524</field>
+            <field name="asignatura">GEOMETRÍA ANALÍTICA</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_DIN_21113" model="unefa.asignatura">
+            <field name="codigo_asignatura">DIN-21113</field>
+            <field name="asignatura">DEFENSA INTEGRAL DE LA NACIÓN I</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_DEPORTE_I" model="unefa.asignatura">
+            <field name="codigo_asignatura">DEPORTE-I</field>
+            <field name="asignatura">DEPORTE I</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_CULTURA_I" model="unefa.asignatura">
+            <field name="codigo_asignatura">CULTURA-I</field>
+            <field name="asignatura">CULTURA I</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+        </record>
+        
+<!--
+        SEMESTRE 2
+-->
+        <record id="asignatura_ADG_25131" model="unefa.asignatura">
+            <field name="codigo_asignatura">ADG-25131</field>
+            <field name="asignatura">SEMINARIO I</field>
+            <field name="hora_teorica">1</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">1</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_IDM_24123" model="unefa.asignatura">
+            <field name="codigo_asignatura">IDM-24123</field>
+            <field name="asignatura">INGLÉS II</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IDM_24113')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_QUF_22014" model="unefa.asignatura">
+            <field name="codigo_asignatura">QUF-22014</field>
+            <field name="asignatura">QUÍMICA GENERAL</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+            
+        <record id="asignatura_QUF_23015" model="unefa.asignatura">
+            <field name="codigo_asignatura">QUF-23015</field>
+            <field name="asignatura">FÍSICA I</field>
+            <field name="hora_teorica">4</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">2</field>
+            <field name="unidad_credito">5</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21215'),ref('asignatura_MAT_21524')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_MAT_21225" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-21225</field>
+            <field name="asignatura">MATEMÁTICA II</field>
+            <field name="hora_teorica">4</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">2</field>
+            <field name="unidad_credito">5</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21215'),ref('asignatura_MAT_21524')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_MAT_21114" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-21114</field>
+            <field name="asignatura">ÁLGEBRA LINEAL</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">4</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21215'),ref('asignatura_MAT_21524')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_DIN_21123" model="unefa.asignatura">
+            <field name="codigo_asignatura">DIN-21123</field>
+            <field name="asignatura">DEFENSA INTEGRAL DE LA NACIÓN II</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">True</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_DIN_21113')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_DEPORTE_II" model="unefa.asignatura">
+            <field name="codigo_asignatura">DEPORTE-II</field>
+            <field name="asignatura">DEPORTE II</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_CULTURA_II" model="unefa.asignatura">
+            <field name="codigo_asignatura">CULTURA-II</field>
+            <field name="asignatura">CULTURA II</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+        </record>
+        
+<!--
+                            SEMESTRE 3
+-->
+        
+        <record id="asignatura_ADG_25141" model="unefa.asignatura">
+            <field name="codigo_asignatura">ADG-25141</field>
+            <field name="asignatura">SEMINARIO II</field>
+            <field name="hora_teorica">1</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">1</field>
+            <field name="reparacion">True</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_ADG_25131')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_QUF_23025" model="unefa.asignatura">
+            <field name="codigo_asignatura">QUF-23025</field>
+            <field name="asignatura">FÍSICA II</field>
+            <field name="hora_teorica">4</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">2</field>
+            <field name="unidad_credito">5</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_QUF_23015'),ref('asignatura_MAT_21225')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_MAT_21235" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-21235</field>
+            <field name="asignatura">MATEMÁTICA III</field>
+            <field name="hora_teorica">4</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">5</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21225')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_MAT_21414" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-21414</field>
+            <field name="asignatura">PROBABILIDADES Y ESTADÍSTICA</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">4</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21225')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_SYC_22113" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-22113</field>
+            <field name="asignatura">PROGRAMACIÓN</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">3</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21114')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_DIN_21133" model="unefa.asignatura">
+            <field name="codigo_asignatura">DIN-21133</field>
+            <field name="asignatura">DEFENSA INTEGRAL DE LA NACIÓN III</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">True</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_DIN_21123')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+<!--
+                        SEMESTRE 4
+-->
+        
+        <record id="asignatura_AGG_22313" model="unefa.asignatura">
+            <field name="codigo_asignatura">AGG-22313</field>
+            <field name="asignatura">SISTEMAS ADMINISTRATIVOS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_SYC_32114" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-32114</field>
+            <field name="asignatura">TEORÍA DE LOS SISTEMAS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_MAT_31214" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-31214</field>
+            <field name="asignatura">LÓGICA MATEMÁTICA</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21114')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_SYC_32225" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-32225</field>
+            <field name="asignatura">LENGUAJES DE PROGRAMACIÓN I</field>
+            <field name="hora_teorica">4</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">3</field>
+            <field name="unidad_credito">5</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_22113')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_DIN_31143" model="unefa.asignatura">
+            <field name="codigo_asignatura">DIN_31143</field>
+            <field name="asignatura">DEFENSA INTEGRAL DE LA NACIÓN IV</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">True</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_DIN_21133')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+<!--
+                    SEMESTRE 5
+-->
+        
+        <record id="asignatura_AGL_30214" model="unefa.asignatura">
+            <field name="codigo_asignatura">AGL-30214</field>
+            <field name="asignatura">SISTEMAS DE PRODUCCIÓN</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_AGG_22313')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_SYC_32414" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-32414</field>
+            <field name="asignatura">PROCESAMIENTO DE DATOS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">3</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_22113')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_MAT_31714" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-31714</field>
+            <field name="asignatura">CÁLCULO NUMÉRICO</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21235')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_MAT_31114" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-31114</field>
+            <field name="asignatura">TEORÍA DE GRAFOS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21414')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_SYC_32235" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-32235</field>
+            <field name="asignatura">LENGUAJES DE PROGRAMACIÓN II</field>
+            <field name="hora_teorica">4</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">3</field>
+            <field name="unidad_credito">5</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32225')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_DIN_31153" model="unefa.asignatura">
+            <field name="codigo_asignatura">DIN-31153</field>
+            <field name="asignatura">DEFENSA INTEGRAL DE LA NACIÓN V</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">True</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_DIN_31143')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_ADG_10820" model="unefa.asignatura">
+            <field name="codigo_asignatura">ADG-10820</field>
+            <field name="asignatura">CÁTEDRA BOLIVARIANA I</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+        </record>
+        
+<!--
+                            SEMESTRE 6
+-->
+        
+        <record id="asignatura_MAT_30925" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-30925</field>
+            <field name="asignatura">INVESTIGACIÓN DE OPERACIONES</field>
+            <field name="hora_teorica">4</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">5</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_31714')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        
+        <record id="asignatura_SYC_32514" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-32514</field>
+            <field name="asignatura">ANÁLISIS DE SISTEMAS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32114')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_SYC_32614" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-32614</field>
+            <field name="asignatura">BASES DE DATOS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">3</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32414')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_ELN_30514" model="unefa.asignatura">
+            <field name="codigo_asignatura">ELN-30514</field>
+            <field name="asignatura">CIRCUITOS LÓGICOS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_31214')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_SYC_32245" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC_32245</field>
+            <field name="asignatura">LENGUAJES DE PROGRAMACIÓN III</field>
+            <field name="hora_teorica">4</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">3</field>
+            <field name="unidad_credito">5</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32235')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_DIN_31163" model="unefa.asignatura">
+            <field name="codigo_asignatura">DIN-31163</field>
+            <field name="asignatura">DEFENSA INTEGRAL DE LA NACIÓN VI</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">True</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_DIN_31153')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_ADG_10821" model="unefa.asignatura">
+            <field name="codigo_asignatura">ADG-10821</field>
+            <field name="asignatura">CÁTEDRA BOLIVARIANA II</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">True</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_ADG_10820')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+<!--
+                    7° SEMESTRE
+-->
+        <record id="asignatura_MAT_30935" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-30935</field>
+            <field name="asignatura">OPTIMIZACIÓN NO LINEAL</field>
+            <field name="hora_teorica">4</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">5</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_30925')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_MAT_31414" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-31414</field>
+            <field name="asignatura">PROCESOS ESTOCÁSTICOS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_30925'),ref('asignatura_MAT_31114')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_SYC_30525" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-30525</field>
+            <field name="asignatura">ARQUITECTURA DEL COMPUTADOR</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_ELN_30514')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_SYC_32524" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-32524</field>
+            <field name="asignatura">DISEÑO DE SISTEMAS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32514')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_SYC_30834" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-30834</field>
+            <field name="asignatura">SISTEMAS OPERATIVOS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">3</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32514')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_DIN_31173" model="unefa.asignatura">
+            <field name="codigo_asignatura">DIN-31173</field>
+            <field name="asignatura">DEFENSA INTEGRAL DE LA NACIÓN VII</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">True</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_DIN_31163')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+<!--
+                8° SEMESTRE
+-->
+        
+        <record id="asignatura_SYC_32714" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-32714</field>
+            <field name="asignatura">IMPLANTACIÓN DE SISTEMAS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32524')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_ADG_30214" model="unefa.asignatura">
+            <field name="codigo_asignatura">ADG-30214</field>
+            <field name="asignatura">METODOLOGÍA DE LA INVESTIGACIÓN</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_MAT_30945" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-30945</field>
+            <field name="asignatura">SIMULACIÓN Y MODELOS</field>
+            <field name="hora_teorica">4</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">3</field>
+            <field name="unidad_credito">5</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_30935'),ref('asignatura_MAT_31414')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_SYC_31644" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-31644</field>
+            <field name="asignatura">REDES</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">3</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_30834')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_DIN_31183" model="unefa.asignatura">
+            <field name="codigo_asignatura">DIN-31183</field>
+            <field name="asignatura">DEFENSA INTEGRAL DE LA NACIÓN VIII</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">True</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_DIN_31163')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+<!--
+                        9° SEMESTRE
+-->
+        
+        <record id="asignatura_MAT_31314" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-31314</field>
+            <field name="asignatura">TEORÍA DE DECISIONES</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_30945')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_SYC_32814" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-32814</field>
+            <field name="asignatura">AUDITORÍA DE SISTEMAS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32714')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_ELECTIVA_TECNICA_NOV" model="unefa.asignatura">
+            <field name="codigo_asignatura">ELC-TEC</field>  
+            <field name="asignatura">ELECTIVA TÉCNICA I</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_ELECTIVA_NO_TECNICA_NOV" model="unefa.asignatura">
+            <field name="codigo_asignatura">ELC-N-TEC</field>  
+            <field name="asignatura">ELECTIVA NO TÉCNICA I</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+        </record>
+        
+<!--
+                10° SEMESTRE
+-->
+        
+        <record id="asignatura_CJU_37314" model="unefa.asignatura">
+            <field name="codigo_asignatura">CJU-37314</field>
+            <field name="asignatura">MARCO LEGAL PARA EL EJERCICIO DE LA INGENIERÍA</field>
+            <field name="hora_teorica">4</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_TTC_31154" model="unefa.asignatura">
+            <field name="codigo_asignatura">TTC-31154</field>  
+            <field name="asignatura">TELEPROCESOS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_31644')])]"/>  
+            <field name="state">activo</field>
+        </record>
+        
+        
+        <record id="asignatura_ELECTIVA_TECNICA_DEC" model="unefa.asignatura">
+            <field name="codigo_asignatura">ELC-TEC-DEC</field>  
+            <field name="asignatura">ELECTIVA TÉCNICA II</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_ELECTIVA_NO_TECNICA_DEC" model="unefa.asignatura">
+            <field name="codigo_asignatura">ELC-N-TEC-DEC</field>  
+            <field name="asignatura">ELECTIVA NO TÉCNICA II</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+        </record>
+
+
+<!--
+        ASIGNATURAS DE INGENIERÍA DE SISTEMAS RÉGIMEN NOCTURNO PENSUM 2007
+        
+                            SEMESTRE 1
+-->
+
+        <record id="asignatura_ADG_17112" model="unefa.asignatura">
+            <field name="codigo_asignatura">ADG-17112</field>
+            <field name="asignatura">AUTOGESTIÓN DEL APRENDIZAJE</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+
+        <record id="asignatura_MAT_10114" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-10114</field>
+            <field name="asignatura">FUNDAMENTOS DE MATEMÁTICA</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+
+        <record id="asignatura_SYC_10113" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-10113</field>
+            <field name="asignatura">INTRODUCCIÓN A LA INFORMÁTICA</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+
+        <record id="asignatura_ADG_11113" model="unefa.asignatura">
+            <field name="codigo_asignatura">ADG-11113</field>
+            <field name="asignatura">RAZONAMIENTO VERBAL</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+
+        <record id="asignatura_MAT_25212" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-25212</field>
+            <field name="asignatura">RAZONAMIENTO LÓGICO</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">4</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+
+        <record id="asignatura_IMI_21110" model="unefa.asignatura">
+            <field name="codigo_asignatura">IMI-21110</field>
+            <field name="asignatura">INSTRUCCIÓN MILITAR I</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+        
+<!--
+                    2° SEMESTRE
+-->
+        
+        <record id="asignatura_MAT_21214" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-21214</field>
+            <field name="asignatura">MATEMÁTICA I</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_10114')])]"/>  
+        </record>
+
+        <record id="asignatura_MAT_21524" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-21524</field>
+            <field name="asignatura">GEOMATRÍA ANALÍTICA</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_10114')])]"/>  
+        </record>
+
+        <record id="asignatura_ADG_25122" model="unefa.asignatura">
+            <field name="codigo_asignatura">ADG-25122</field>
+            <field name="asignatura">HOMBRE Y SOCIEDAD</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">2</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_IDM_24112" model="unefa.asignatura">
+            <field name="codigo_asignatura">IDM-24112</field>
+            <field name="asignatura">INGLÉS I</field>
+            <field name="hora_teorica">1</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">2</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+
+        <record id="asignatura_IDM_24112" model="unefa.asignatura">
+            <field name="codigo_asignatura">IDM-24112</field>
+            <field name="asignatura">EDUCACIÓN AMBIENTAL</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">1</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">2</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+
+        <record id="asignatura_IMI_21120" model="unefa.asignatura">
+            <field name="codigo_asignatura">IMI-21120</field>
+            <field name="asignatura">INSTRUCCIÓN MILITAR II</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_21110')])]"/>
+        </record>
+        
+<!--
+                    3° SEMESTRE 
+-->
+        
+<!--
+        DIBUJO YA CREADA  ->    asignatura_MAT_21212
+-->
+        
+        <record id="asignatura_QUF_23014" model="unefa.asignatura">
+            <field name="codigo_asignatura">QUF-23014</field>
+            <field name="asignatura">FÍSICA I</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">2</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('unefa_pensum.asignatura_MAT_21214'),ref('unefa_pensum.asignatura_MAT_21524')])]"/> 
+        </record>
+
+        <record id="asignatura_MAT_21224" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-21224</field>
+            <field name="asignatura">MATEMÁTICA II</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21214'),ref('asignatura_MAT_21524')])]"/> 
+        </record>
+
+        <record id="asignatura_MAT_21113" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-21113</field>
+            <field name="asignatura">ÁLGEBRA LINEAL</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21214'),ref('asignatura_MAT_21524')])]"/> 
+        </record>
+
+        <record id="asignatura_IDM_24122" model="unefa.asignatura">
+            <field name="codigo_asignatura">IDM-24122</field>
+            <field name="asignatura">INGLÉS II</field>
+            <field name="hora_teorica">1</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">2</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21214'),ref('asignatura_MAT_21524')])]"/> 
+        </record>
+
+        <record id="asignatura_ADG_25130" model="unefa.asignatura">
+            <field name="codigo_asignatura">ADG-25130</field>
+            <field name="asignatura">SEMINARIO I</field>
+            <field name="hora_teorica">1</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_IMI_21130" model="unefa.asignatura">
+            <field name="codigo_asignatura">IMI-21130</field>
+            <field name="asignatura">INSTRUCCIÓN MILITAR III</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_21120')])]"/> 
+        </record>
+        
+<!--
+                            4° SEMESTRE 
+-->
+        
+        <record id="asignatura_IDM_24212" model="unefa.asignatura">
+            <field name="codigo_asignatura">IDM-24212</field>
+            <field name="asignatura">INGLÉS TÉNICO</field>
+            <field name="hora_teorica">1</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">2</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IDM_24122')])]"/> 
+        </record>
+
+        <record id="asignatura_QUF_23025" model="unefa.asignatura">
+            <field name="codigo_asignatura">QUF-23025</field>
+            <field name="asignatura">FÍSICA II</field>
+            <field name="hora_teorica">4</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">2</field>
+            <field name="unidad_credito">5</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_QUF_23014'),ref('asignatura_MAT_21224')])]"/> 
+        </record>
+        
+        <record id="asignatura_MAT_21235" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-21235</field>
+            <field name="asignatura">MATEMÁTICA III</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">5</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">5</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21113'),ref('asignatura_MAT_21224')])]"/> 
+        </record>
+
+        <record id="asignatura_MAT_21413" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-21413</field>
+            <field name="asignatura">PROBABILIDADES ESTADÍSTICAS</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21224')])]"/> 
+        </record>
+
+        <record id="asignatura_SYC_22112" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-22112</field>
+            <field name="asignatura">PROGRAMACIÓN</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">2</field>
+            <field name="unidad_credito">2</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+
+        <record id="asignatura_QUF_22013" model="unefa.asignatura">
+            <field name="codigo_asignatura">QUF-22013</field>
+            <field name="asignatura">QUÍMICA GENERAL</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">2</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+
+<!--
+
+
+
+                SEMINARIO II YA CREADA ID,EXTERNO -> asignatura_ADG_25141
+-->
+
+        <record id="asignatura_IMI_21140" model="unefa.asignatura">
+            <field name="codigo_asignatura">IMI-21140</field>
+            <field name="asignatura">INSTRUCCIÓN MILITAR IV</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_21130')])]"/> 
+        </record>
+
+<!--
+                        5° SEMESTRE
+-->
+
+        <record id="asignatura_AGG_32314" model="unefa.asignatura">
+            <field name="codigo_asignatura">AGG-32314</field>
+            <field name="asignatura">SISTEMAS ADMINISTRATIVOS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+<!--
+
+        <record id="asignatura_SYC_32114" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-32114</field>
+            <field name="asignatura">TEORÍA DE LOS SISTEMAS</field>         YA CREADA
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+-->
+
+        <record id="asignatura_MAT_31713" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-31713</field>
+            <field name="asignatura">CÁLCULO NUMÉRICO</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21235')])]"/> 
+        </record>
+
+        <record id="asignatura_MAT_31213" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-31213</field>
+            <field name="asignatura">LÓGICA MATEMÁTICA</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">3</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_21113')])]"/> 
+        </record>
+
+        <record id="asignatura_SYC_32224" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-32224</field>
+            <field name="asignatura">LENGUAJES DE PROGRAMACIÓN I</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">3</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_22112')])]"/> 
+        </record>
+
+
+
+
+
+<!--
+        <record id="asignatura_SYC_32414" model="unefa.asignatura">    YA CREADA
+            <field name="codigo_asignatura">SYC-32414</field>
+            <field name="asignatura">PROCESAMIENTOS DE DTOS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">3</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_22112')])]"/> 
+        </record>
+-->
+
+    
+<!--
+        <record id="asignatura_AGL_30214" model="unefa.asignatura">
+            <field name="codigo_asignatura">AGL-30214</field>
+            <field name="asignatura">SISTEMAS DE PRODUCCIÓN </field>       YA CREADA
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">3</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_22112')])]"/> 
+        </record>
+-->
+    
+    
+        <record id="asignatura_IMI_31150" model="unefa.asignatura">
+            <field name="codigo_asignatura">IMI-31150</field>
+            <field name="asignatura">INSTRUCCIÓN MILITAR V</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_21140')])]"/> 
+        </record>
+
+<!--
+                    6°  SEMESTRE
+-->
+        
+<!--
+        <record id="asignatura_MAT_31114" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-31114</field>
+            <field name="asignatura">TEORÍA DE GRAFOS</field>            YA CREADA
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_21140')])]"/> 
+        </record>
+-->
+        
+<!--
+        <record id="asignatura_SYC_32235" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-32235</field>
+            <field name="asignatura">LENGUAJES DE PROGRAMACIÓN II</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>                               YA CREADA
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_21140')])]"/> 
+        </record>
+        
+-->
+<!--
+        <record id="asignatura_MAT_30925" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT-30925</field>
+            <field name="asignatura">INVESTIGACIÓN DE OPERACIONES</field>                   YA CREADA
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_21140')])]"/> 
+        </record>
+-->
+
+<!--
+        <record id="asignatura_ELN_30514" model="unefa.asignatura">
+            <field name="codigo_asignatura">ELN-30514</field>
+            <field name="asignatura">CIRCUITOS LÓGICOS</field>                                      YA CRREADA
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_21140')])]"/> 
+        </record>
+-->
+        
+<!--
+        <record id="asignatura_SYC_32514" model="unefa.asignatura">                                 YA  CREADA
+            <field name="codigo_asignatura">SYC-32514</field>
+            <field name="asignatura">ANÁLISIS DE SISTEMAS</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_21140')])]"/> 
+        </record>
+-->
+        
+<!--
+        <record id="asignatura_SYC_32614" model="unefa.asignatura">                         YA CREADA
+            <field name="codigo_asignatura">SYC-32614</field>
+            <field name="asignatura">BASES DE DATOS</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_21140')])]"/> 
+        </record>
+-->
+
+        <record id="asignatura_IMI_31160" model="unefa.asignatura">
+            <field name="codigo_asignatura">IMI-31160</field>
+            <field name="asignatura">INSTRUCCIÓN MILITAR VI</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_31150')])]"/> 
+        </record>
+        
+<!--
+                    7°      SEMESTRE
+                    7°      SEMESTRE
+                    7°      SEMESTRE
+                    7°      SEMESTRE
+-->
+        
+<!--
+        <record id="asignatura_IMI_31160" model="unefa.asignatura">                         YA CREADA
+            <field name="codigo_asignatura">MAT-30935</field>
+            <field name="asignatura">OPTIMIZACIÓN NO LINEAL</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_31150')])]"/> 
+        </record>
+-->
+        <record id="asignatura_SYC_32245" model="unefa.asignatura">
+            <field name="codigo_asignatura">SYC-32245</field>
+            <field name="asignatura">LENGUAJES DE PROGRAMACIÓN III</field>
+            <field name="hora_teorica">4</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">3</field>
+            <field name="unidad_credito">5</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32235')])]"/> 
+        </record>
+        
+<!--
+        <record id="asignatura_MAT_31414" model="unefa.asignatura">                                          ya creada
+            <field name="codigo_asignatura">MAT-31414</field>
+            <field name="asignatura">PROCESOS ESTOCÁSTICOS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32235')])]"/> 
+        </record>
+-->
+        
+<!--
+        <record id="asignatura_SYC_30525" model="unefa.asignatura">                   ya creada 
+            <field name="codigo_asignatura">SYC-30525</field>
+            <field name="asignatura">ARQUITECTURA DEL COMPUTADOR</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32235')])]"/> 
+        </record>
+-->
+        
+<!--
+        <record id="asignatura_SYC_32524" model="unefa.asignatura">                                          YA CREADA
+            <field name="codigo_asignatura">SYC-32524</field>
+            <field name="asignatura">DISEÑO DE SISTEMAS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32235')])]"/> 
+        </record>
+-->
+
+<!--
+        <record id="asignatura_SYC_30834" model="unefa.asignatura">                                          YA CREADA
+            <field name="codigo_asignatura">SYC-30834</field>
+            <field name="asignatura">SISTEMAS OPERATIVOS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">3</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32235')])]"/> 
+        </record>
+        
+-->
+    
+        <record id="asignatura_IMI_31170" model="unefa.asignatura">
+            <field name="codigo_asignatura">IMI-31170</field>
+            <field name="asignatura">INSTRUCCIÓN MILITAR VII</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_31160')])]"/> 
+        </record>
+        
+<!--
+                    8° SEMESTRE
+                    8° SEMESTRE
+                    8° SEMESTRE
+                    8° SEMESTRE
+-->
+        
+<!--
+        <record id="asignatura_SYC_32714" model="unefa.asignatura">                                          YA CREADA
+            <field name="codigo_asignatura">SYC-32714</field>
+            <field name="asignatura">IMPLANTACIÓN DE SISTEMAS</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32235')])]"/> 
+        </record>
+-->
+        
+<!--
+        <record id="asignatura_ADG_30214" model="unefa.asignatura">                                          YA CREADA
+            <field name="codigo_asignatura">ADG-30214</field>
+            <field name="asignatura">METODOLOGIA  DE LA INVESTIGACION</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32235')])]"/> 
+        </record>
+-->
+        
+<!--
+        <record id="asignatura_MAT_30945" model="unefa.asignatura">                                          YA CREADA
+            <field name="codigo_asignatura">MAT-30945</field>
+            <field name="asignatura">SIMULACIÓN Y MODELOS</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32235')])]"/> 
+-->
+<!--
+        </record>
+-->
+        
+<!--
+        <record id="asignatura_SYC_31644" model="unefa.asignatura">                                          YA CREADA
+            <field name="codigo_asignatura">SYC-31644</field>
+            <field name="asignatura">REDES</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_SYC_32235')])]"/> 
+        </record>
+        
+-->
+        <record id="asignatura_ADG_30224" model="unefa.asignatura">
+            <field name="codigo_asignatura">ADG-30224</field>
+            <field name="asignatura">GERENCIA DE LA INFORMÁTICA</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+        </record>
+        
+<!--
+        ELECTIVA TÉCNICA
+        ELECTIVA NO TÉCNICA
+-->
+        
+        <record id="asignatura_IMI_31180" model="unefa.asignatura">
+            <field name="codigo_asignatura">IMI-31180</field>
+            <field name="asignatura">INSTRUCCIÓN MILITAR VIII</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_31170')])]"/> 
+        </record>
+        
+<!--
+                    9° SEMESTRE
+                    9° SEMESTRE
+                    9° SEMESTRE
+                    9° SEMESTRE
+                    9° SEMESTRE
+-->
+        
+        <record id="asignatura_MAT_31314" model="unefa.asignatura">
+            <field name="codigo_asignatura">MAT_31314</field>
+            <field name="asignatura">TEORÍA DE DECISIONES</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_30945')])]"/> 
+        </record>
+        
+<!--
+        <record id="asignatura_SYC_32814" model="unefa.asignatura">                          YA CREADA
+            <field name="codigo_asignatura">SYC-32814</field>
+            <field name="asignatura">AUDITORÍA DE SISTEMAS</field>
+            <field name="hora_teorica">3</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_30945')])]"/> 
+        </record>
+-->
+        
+<!--
+        <record id="asignatura_CJU_37314" model="unefa.asignatura">  Y                                          YA CREADA
+            <field name="codigo_asignatura">CJU-37314</field>
+            <field name="asignatura">MARCO LEGAL PARA EL EJERCICIO DE LA INGENIERÍA</field>
+            <field name="hora_teorica">4</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">4</field>
+            <field name="reparacion">False</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_MAT_30945')])]"/> 
+        </record>
+        
+-->
+        
+        
+<!--
+        <record id="asignatura_TTC_31154" model="unefa.asignatura">                 YA CREADA
+            <field name="codigo_asignatura">TTC-31154</field>
+            <field name="asignatura">TELEPROCESOS</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_31170')])]"/> 
+        </record>
+-->
+        
+<!--
+                        ELECTIVA TÉCNICA
+                        ELECTIVA NO TÉCNICA
+
+-->
+        
+        
+        <record id="asignatura_IMI_31190" model="unefa.asignatura">
+            <field name="codigo_asignatura">IMI_31190</field>
+            <field name="asignatura">INSTRUCCIÓN MILITAR IV</field>
+            <field name="hora_teorica">2</field>
+            <field name="hora_practica">2</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">0</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+            <field name="asignaturas_ids" eval="[(6, 0, [ref('asignatura_IMI_31180')])]"/> 
+        </record>
+        
+        <record id="asignatura_TGR_30010" model="unefa.asignatura">
+            <field name="codigo_asignatura">TGR-30010</field>
+            <field name="asignatura">TRABAJO ESPECIAL DE GRADO</field>
+            <field name="hora_teorica">1</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">10</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+        </record>
+        
+        <record id="asignatura_PSI_30010" model="unefa.asignatura">
+            <field name="codigo_asignatura">PSI-30010</field>
+            <field name="asignatura">PRÁCTICAS PROFESIONALES</field>
+            <field name="hora_teorica">1</field>
+            <field name="hora_practica">0</field>
+            <field name="hora_laboratorio">0</field>
+            <field name="unidad_credito">10</field>
+            <field name="reparacion">True</field>
+            <field name="state">activo</field>
+        </record>
+        
+        
+        
+        
+    </data>
+</openerp>

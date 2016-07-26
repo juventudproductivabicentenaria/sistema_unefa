@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+
+
+<template id="unefa_usuarios.historial_notas_qweb">
+    <t t-call="unefa_usuarios.header_documentos_unefa"/>
+        <div class="page">
+            <t t-foreach="data['estudiante_data']" t-as="estudiante">
+                <div style="text-align: left" class="col-xs-12">
+                        <div class="col-xs-4" style="font-size: 10px">
+                            <strong>Nombre y apellido: </strong><t t-esc="estudiante['nombre_completo']"/>
+                        </div>
+                        <div class="col-xs-4" style="font-size: 10px">
+                            <strong>Cedula: </strong><t t-esc="estudiante['cedula']"/>
+                        </div>
+                        <div class="col-xs-4" style="font-size: 10px">
+                            <strong>Carrera: </strong><t t-esc="estudiante['carrera_id']['nombre']"/>
+                        </div>
+                </div>
+                <div style="text-align: left" class="col-xs-12">
+                        <div class="col-xs-4" style="font-size: 10px">
+                            <strong>Pensum: </strong><t t-esc="estudiante['pensum_id']['pensum']"/>
+                        </div>
+                        <div class="col-xs-4" style="font-size: 10px">
+                            <strong>Fecha de Ingreso: </strong><t t-esc="estudiante['fecha_ingreso']"/>
+                        </div>
+                        <div class="col-xs-4" style="font-size: 10px">
+                            <strong>Fecha Actual: </strong><t t-esc="data['hoy']"/>
+                        </div>
+                </div>
+                <br/>
+                <br/>
+                <table colspan="12" class="table table-condensed table-bordered" style="border: 1px solid black" >
+                    <thead>
+                        <tr>
+                            <th colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>N°</strong></th>
+                            <th colspan="2" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>ASIGNATURA</strong></th>
+                            <th colspan="4" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>CALIFICACION</strong></th>
+                        </tr>
+                    </thead>
+                    <body>
+                        <t t-set="cont1" t-value="1"/>
+                        <t t-foreach="data['list_nota_asignatura']" t-as="registro">
+                            <tr>
+                                <td colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="cont1"/></td>
+                                <td colspan="2" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="registro['asignatura']"/></td>
+                                <td colspan="4" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="registro['definitiva']"/></td>
+                            </tr>
+                            
+                            <t t-if="'asignaturar' in registro.keys()">
+                                <t t-set="cont1" t-value="cont1+1"/>
+                                <tr>
+                                <td colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="cont1"/></td>
+                                <td colspan="2" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="registro['asignaturar']"/> (Recuperación)</td>
+                                <td colspan="4" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="registro['calificacion']"/></td>
+                            </tr>
+                            </t>
+                            <t t-set="cont1" t-value="cont1+1"/>
+                        </t>
+                    </body>
+                </table>
+            </t>
+        </div>
+</template>
+</data>
+</openerp>
+    

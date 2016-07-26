@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<report id="id_ficha_estudiantes"
+			string="Ficha de Estudiante"
+			model="unefa.usuario_estudiante"
+			report_type="qweb-pdf"
+			file="unefa_usuarios.ficha_estudiantes_qweb"
+            name="unefa_usuarios.ficha_estudiantes_qweb"
+            menu="True"/>
+	</data>
+</openerp>

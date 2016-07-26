@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        
+<!--
+    coordinaciones ubicadas en el Núcleo Caracas
+-->
+        
+    <record id="unefa_coordinacion_ing_civil_diurno" model="unefa.coordinacion">
+        <field name="nombre">Coordinación Ingeniería Civil</field>
+        <field name="sede_id" ref="unefa_configuracion.unefa_nucleo_caracas"/>
+        <field name="carrera_id" ref="unefa_configuracion.carrera_ING_CIV"/>
+        <field name="regimen">diurno</field>
+        <field name="ubicacion">Piso 11, Oficina 1101</field>
+        <field name="telefono">0212-1234567</field>
+        <field name="email">coordinaciondedecivildiurno@gmail.com</field>
+        <field name="state">activo</field>
+        <field name="descripcion">Coordinación Encargada de la Carrera Ingeniería Civil.</field>
+    </record>
+
+    <record id="coordinacion_carrera_ADM_DST_GEST" model="unefa.coordinacion">
+        <field name="nombre">Coordinación Administración de Desastres y Gestión de Riesgos</field>
+        <field name="sede_id" ref="unefa_configuracion.unefa_nucleo_caracas"/>
+        <field name="carrera_id" ref="unefa_configuracion.carrera_ING_CIV"/>
+        <field name="regimen">diurno</field>
+        <field name="ubicacion">Piso 2, Oficina 0201</field>
+        <field name="telefono">0212-1234007</field>
+        <field name="email">coordinaciondeadmdesastres@gmail.com</field>
+        <field name="state">activo</field>
+        <field name="descripcion">Coordinación Encargada de la Carrera Licenciatura en Administración de Desastres y Gestión de Riesgos.</field>
+    </record>
+    
+    <record id="coordinacion_carrera_LIC_CON_PUB" model="unefa.coordinacion">
+        <field name="nombre">Coordinación Contaduría Pública</field>
+        <field name="sede_id" ref="unefa_configuracion.unefa_nucleo_caracas"/>
+        <field name="carrera_id" ref="unefa_configuracion.carrera_ING_CIV"/>
+        <field name="regimen">diurno</field>
+        <field name="ubicacion">Piso 11, Oficina 1102</field>
+        <field name="telefono">0212-1234007</field>
+        <field name="email">coordinacioncontaduriapublica@gmail.com</field>
+        <field name="state">activo</field>
+        <field name="descripcion">Coordinación Encargada de la Carrera Licenciatura Contaduría Pública.</field>
+    </record>
+    
+    <record id="unefa_coordinacion_ing_sistemas_nocturno" model="unefa.coordinacion">
+        <field name="nombre">Coordinación Ingeniería de Sistemas Nocturno</field>
+        <field name="sede_id" ref="unefa_configuracion.unefa_nucleo_caracas"/>
+        <field name="carrera_id" ref="unefa_configuracion.carrera_ING_SIS"/>
+        <field name="regimen">nocturno</field>
+        <field name="ubicacion">Piso 10, Oficina 1009</field>
+        <field name="telefono">0212-9936754</field>
+        <field name="email">coordinaciondesistemasnocturno@gmail.com</field>
+        <field name="state">activo</field>
+        <field name="descripcion">Coordinación Encargada de la Carrera Ingeniería de Sistemas, Liderada por el Coronel Luis Molner Silva.</field>
+    </record>
+    
+    <record id="unefa_coordinacion_ing_sistemas_diurno" model="unefa.coordinacion">
+        <field name="nombre">Coordinación Ingeniería de Sistemas Diurno</field>
+        <field name="sede_id" ref="unefa_configuracion.unefa_nucleo_caracas"/>
+        <field name="carrera_id" ref="unefa_configuracion.carrera_ING_SIS"/>
+        <field name="regimen">diurno</field>
+        <field name="ubicacion">Piso 10, Oficina 1008</field>
+        <field name="telefono">0212-1234567</field>
+        <field name="email">coordinaciondesistemasdiurno@gmail.com</field>
+        <field name="state">activo</field>
+        <field name="descripcion">Coordinación Encargada de la Carrera Ingeniería de Sistemas.</field>
+    </record>
+
+<!--
+                Pisos de ubicación de las Coordinaciones
+-->
+
+    <record id="unefa_pisos_10" model="unefa.pisos">
+        <field name="numero">10</field>
+        <field name="cant_banios">2</field>
+        <field name="cant_filtros">2</field>
+        <field name="state">activo</field>
+        <field name="coordinaciones_ids" eval="[(6, 0, [ref('unefa_coordinacion_ing_sistemas_nocturno'),ref('unefa_coordinacion_ing_sistemas_diurno')])]"/>  
+    </record>
+    
+    <record id="unefa_pisos_11" model="unefa.pisos">
+        <field name="numero">11</field>
+        <field name="cant_banios">2</field>
+        <field name="cant_filtros">2</field>
+        <field name="state">activo</field>
+        <field name="coordinaciones_ids" eval="[(6, 0, [ref('unefa_coordinacion_ing_civil_diurno'),ref('coordinacion_carrera_LIC_CON_PUB')])]"/>  
+    </record>
+    
+    <record id="unefa_pisos_02" model="unefa.pisos">
+        <field name="numero">02</field>
+        <field name="cant_banios">2</field>
+        <field name="cant_filtros">2</field>
+        <field name="state">activo</field>
+        <field name="coordinaciones_ids" eval="[(6, 0, [ref('coordinacion_carrera_ADM_DST_GEST')])]"/>  
+    </record>
+    
+    <record id="unefa_aula_1001" model="unefa.aulas">
+        <field name="numero">1001</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="state">activo</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+    </record>
+    
+    <record id="unefa_aula_1002" model="unefa.aulas">
+        <field name="numero">1002</field>
+        <field name="tipo">conferencia</field>
+        <field name="cant_pupitres">35</field>
+        <field name="cant_pizarras">2</field>
+        <field name="state">activo</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+    </record>
+    
+    <record id="unefa_aula_1003" model="unefa.aulas">
+        <field name="numero">1003</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="state">activo</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+    </record>
+    <record id="unefa_aula_1004" model="unefa.aulas">
+        <field name="numero">1004</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="state">activo</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+    </record>
+    <record id="unefa_aula_1005" model="unefa.aulas">
+        <field name="numero">1005</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+        <field name="state">activo</field>
+    </record>
+    <record id="unefa_aula_1006" model="unefa.aulas">
+        <field name="numero">1006</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+        <field name="state">activo</field>
+    </record>
+    <record id="unefa_aula_1007" model="unefa.aulas">
+        <field name="numero">1007</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+        <field name="state">activo</field>
+    </record>
+    <record id="unefa_aula_1008" model="unefa.aulas">
+        <field name="numero">1008</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="state">activo</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+        <field name="state">activo</field>
+    </record>
+    <record id="unefa_aula_1009" model="unefa.aulas">
+        <field name="numero">1009</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="state">activo</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+    </record>
+    <record id="unefa_aula_1010" model="unefa.aulas">
+        <field name="numero">1010</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+        <field name="state">activo</field>
+    </record>
+    <record id="unefa_aula_1011" model="unefa.aulas">
+        <field name="numero">1011</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+        <field name="state">activo</field>
+    </record>
+    <record id="unefa_aula_1012" model="unefa.aulas">
+        <field name="numero">1012</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="state">activo</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+    </record>
+    <record id="unefa_aula_1013" model="unefa.aulas">
+        <field name="numero">1013</field>
+        <field name="state">activo</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+    </record>
+    <record id="unefa_aula_1014" model="unefa.aulas">
+        <field name="numero">1014</field>
+        <field name="state">activo</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+    </record>
+    <record id="unefa_aula_1015" model="unefa.aulas">
+        <field name="numero">1015</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="state">activo</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+    </record>
+    <record id="unefa_aula_1016" model="unefa.aulas">
+        <field name="numero">1016</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="state">activo</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+    </record>
+    <record id="unefa_aula_1017" model="unefa.aulas">
+        <field name="numero">1017</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="state">activo</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+    </record>
+    <record id="unefa_aula_1018" model="unefa.aulas">
+        <field name="numero">1018</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+        <field name="state">activo</field>
+    </record>
+    <record id="unefa_aula_1019" model="unefa.aulas">
+        <field name="numero">1019</field>
+        <field name="tipo">normal</field>
+        <field name="cant_pupitres">40</field>
+        <field name="cant_pizarras">2</field>
+        <field name="piso_id" ref="unefa_pisos_10"/>
+        <field name="state">activo</field>
+    </record>
+    </data>
+</openerp>

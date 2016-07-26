@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <template id="unefa_gestion_semestre.listas_estudiantes_qweb">
+        <t t-call="unefa_usuarios.header_documentos_unefa"/>
+         <div class="page">
+            <t t-foreach="data['gestion_semestre_data']" t-as="gestion">
+                <div style="text-align: left" class="col-xs-12">
+                    <div class="col-xs-6" style="font-size: 10px">
+                        <strong>ASIGNATURA: </strong> <t t-esc="gestion['asignatura_id']['asignatura']"/>
+                    </div>
+                    <div class="col-xs-3" style="font-size: 10px">
+                        <strong>CODIGO: </strong><t t-esc="gestion['asignatura_id']['codigo_asignatura']"/>
+                    </div>
+                    <div class="col-xs-3" style="font-size: 10px">
+                        <strong>SEMESTRE: </strong><t t-esc="gestion['seccion_id']['oferta_semestre_id']['semestre_id']['semestre']"/>
+                    </div>
+                </div>
+                <div style="text-align: left" class="col-xs-12">
+                    <div class="col-xs-6" style="font-size: 10px">
+                        <strong>PENSUM: </strong><t t-esc="gestion['pensum_id']['pensum']"/>
+                    </div>
+                    <div class="col-xs-3" style="font-size: 10px"><strong>REGÍMEN:</strong>
+                        <t t-if="gestion['turno'] == 'nocturno'">
+                            NOCTURNO
+                        </t>
+                        <t t-if="gestion['turno'] == 'diurno'">
+                            DIURNO
+                        </t>
+                    </div>
+                    <div class="col-xs-3" style="font-size: 10px">
+                        <strong>SECCIÓN: </strong><t t-esc="gestion['seccion_id']['seccion']"/>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <table colspan="12" class="table table-condensed table-bordered" style="border: 1px solid black" >
+                    <thead>
+                        <tr>
+                            <th colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>N°</strong></th>
+                            <th colspan="2" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>CEDULA</strong></th>
+                            <th colspan="4" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>APELLIDOS Y NOMBRES</strong></th>
+                            <th colspan="4" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>CORREO ELECTRÓNICO</strong></th>
+                            <th colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>TELEFONO</strong></th>
+                        </tr>
+                    </thead>
+                    <body>
+                        <t t-set="cont1" t-value="1"/>
+                        <t t-foreach="data['usuario_estudiante_data']" t-as="estudiante">
+                            <tr>
+                                <td colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="cont1"/></td>
+                                <td colspan="2" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="estudiante['cedula']"/></td>
+                                <td colspan="4" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="estudiante['nombre_completo']"/></td>
+                                <td colspan="4" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="estudiante['login']"/></td>
+                                <td colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="estudiante['telefono']"/></td>
+                            </tr>
+                            <t t-set="cont1" t-value="cont1+1"/>
+                        </t>
+                    </body>
+                </table>
+                
+            </t>
+        </div>
+    </template>
+</data>
+</openerp>

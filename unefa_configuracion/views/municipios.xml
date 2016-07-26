@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <openerp>
+     <data>
+    <!--REGISTRO DE MUNICIPIOS-->
+    
+    <record model="ir.ui.view" id="view_unefa_municipios_form">
+        <field name="name">unefa_municipios.form</field>
+        <field name="model">unefa.municipios</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Dirección de Municipios">
+                <sheet>
+                    <header>
+                            <h2 style="color:#7C7BAD"><center>Municipio</center></h2>
+                        </header>
+                    <group>
+                        <field name="estado_id" on_change="cp_limpiar_campos('municipio')" widget="selection"/>
+                        <field name="municipio" on_change="cp_limpiar_campos('codigo')"/>
+                        <field name="codigo" />
+                        <field name="active" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_ept_ent_municipios_tree">
+        <field name="name">unefa_municipios.tree</field>
+        <field name="model">unefa.municipios</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Dirección de Municipios">
+                <field name="municipio"/>
+                <field name="estado_id"/>
+                <field name="codigo"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_unefa_municipios">
+        <field name="name">Municipios</field>
+        <field name="res_model">unefa.municipios</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Aquí se registran las asignaturas
+            </p>
+        </field>
+    </record>
+    
+
+    
+    <menuitem name="Municipios" id="menu_res_municipios" parent="unefa_menu_direccion_configuracion" action="action_unefa_municipios" sequence="15" groups="base.group_system"/>
+
+    </data>
+</openerp>

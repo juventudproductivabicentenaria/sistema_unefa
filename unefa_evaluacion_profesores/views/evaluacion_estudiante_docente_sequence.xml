@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<openerp>
+<data noupdate="1">
+
+	<record model="ir.sequence.type" id="seq_type_evaluacion_estudiante_docente">
+		<field name="name">unefa.evaluacion_estudiante</field>
+		<field name="code">unefa.evaluacion_estudiante</field>
+	</record>
+	<record model="ir.sequence" id="seq_evaluacion_estudiante_docente">
+		<field name="name">unefa.evaluacion_estudiante</field>
+		<field name="code">unefa.evaluacion_estudiante</field>
+		<field name="prefix">N°</field>
+		<field name="padding">6</field>
+	</record>
+</data>
+</openerp>

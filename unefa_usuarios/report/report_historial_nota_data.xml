@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<report id="id_historial_notas"
+			string="Historial de Notas"
+			model="unefa.usuario_estudiante"
+			report_type="qweb-pdf"
+			file="unefa_usuarios.historial_notas_qweb"
+            name="unefa_usuarios.historial_notas_qweb"
+            menu="True"/>
+	</data>
+</openerp>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <template id="unefa_gestion_semestre.contrato_aprendizaje_qweb">
+        <style type="text/css">#cajon9{float:left;}</style>
+        <style type="text/css">#cajon10{float:left;}</style>
+        <t t-call="unefa_usuarios.header_documentos_unefa"/>
+         <div class="page">
+             <div style="text-align: center" class="col-xs-12">
+                <h5>ACTA DE CONTRATO DE APRENDIZAJE</h5>
+             </div>
+            <t t-foreach="data['gestion_semestre_data']" t-as="gestion">
+                <div style="text-align: justify;" class="col-xs-12">
+                    Yo, <t t-esc="gestion['profesor_id']['nombre_completo']"/> C.I. <t t-if="gestion['profesor_id']['nacionalidad']=='venezolano'"> 
+                        V-</t><t t-if="gestion['profesor_id']['nacionalidad']=='extrangero'"> E-</t> <t t-esc="gestion['profesor_id']['cedula']"/> 
+                        en mi carácter de Profesor(a) de la asignatura <t t-esc="gestion['asignatura_id']['asignatura']"/> de la Carrera <t t-esc="gestion['carrera_id']['nombre']"/>,
+                         reunidos el día ______ del mes de <t t-esc="data['mes']"/> del año <t t-esc="data['anio']"/> a las ______ horas, con los estudiantes de la sección No. <t t-esc="gestion['seccion_id']['seccion']"/> 
+                        en el aula <t t-esc="data['horario_seccion_data']['aula_id']['numero']"/> del piso <t t-esc="data['horario_seccion_data']['piso_id']['numero']"/>, 
+                        en la sede <t t-if="data['sede_data']['tipo_sede'] == 'nucleo'">NÚCLEO</t><t t-if="data['sede_data']['tipo_sede'] == 'extension'">EXTENCIÓN</t><t t-if="data['sede_data']['tipo_sede'] == 'ampliacion'">AMPLIACIÓN</t> <t t-esc="data['sede_data']['nombre']"/>,
+                         de la Universidad Nacional Experimental Politécnica de la Fuerza Armada (UNEFA), hemos discutido, acordado y firmado el PLAN DE EVALUACIÓN a aplicar en el transcurso del 
+                         Semestre <t t-esc="gestion['seccion_id']['oferta_semestre_id']['semestre_id']['semestre']"/> , estructurado en cuatro (4) cortes de calificaciones, debidamente aprobado por el 
+                         Coordinador de la Carrera: Profesor(a) <t t-esc="data['coordinador_data']['nombre_completo']"/>, el cual anexamos a la presente acta. 
+                         Es importante destacar que ninguna actividad evaluativa excede del 25% en cada corte de calificaciones. En caso de existir cualquier modificación en las actividades de evaluación 
+                         o en la ponderación de las mismas, sólo se podrán llevar a cabo previa autorización escrita por parte del Coordinador(a) de la Carrera. 
+                         A continuación firman los estudiantes presentes en el aula el día de hoy,quienes corresponden como mínimo al 75% de los alumnos inscritos en la sección.
+                </div>
+            </t>     
+            <br/>
+            <h6 style="color: white">Firmantes</h6>
+            <br/>
+            <table colspan="12" class="table table-condensed table-bordered" style="border: 1px solid black" >
+                <thead>
+                    <tr>
+                        <th colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>N°</strong></th>
+                        <th colspan="2" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>CEDULA</strong></th>
+                        <th colspan="4" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>APELLIDOS Y NOMBRES</strong></th>
+                        <th colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><strong>FIRMA</strong></th>
+                    </tr>
+                </thead>
+                <body>
+                    <t t-set="cont1" t-value="1"/>
+                    <t t-foreach="data['usuario_estudiante_data']" t-as="estudiante">
+                        <tr>
+                            <td colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="cont1"/></td>
+                            <td colspan="2" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="estudiante['cedula']"/></td>
+                            <td colspan="4" class="" style="border: 1px solid black;color: black;font-size: 10px"><t t-esc="estudiante['nombre_completo']"/></td>
+                            <td colspan="1" class="" style="border: 1px solid black;color: black;font-size: 10px"></td>
+                        </tr>
+                        <t t-set="cont1" t-value="cont1+1"/>
+                    </t>
+                </body>
+            </table>
+                
+                
+            <div style="text-align: center" class="col-xs-12">
+                <div id="cajon9" style="margin: 10px;padding: 5px; text-align: center;font-size: 10px">
+                    <h6>______________________________________</h6>
+                    <h6><t t-esc="data['coordinador_data']['nombre_completo']"/></h6>
+                    <h6> COORDINADOR DE CARRERA</h6>
+                    <h6> FECHA: </h6>
+                </div>
+                <div id="cajon10" style="margin: 10px;padding: 5px; text-align: center;font-size: 10px">
+                    <h6>______________________________________</h6>
+                    <h6><t t-esc="data['gestion_semestre_data']['profesor_id']['nombre_completo']"/></h6>
+                    <h6> PROFESOR</h6>
+                    <h6> FECHA: </h6>
+                </div>
+            </div>
+                
+        </div>
+    </template>
+</data>
+</openerp>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <openerp>
+     <data>
+    <record model="ir.ui.view" id="view_unefa_cantidad_estudiantes_form">
+        <field name="name">unefa_cantidad_estudiantes.form</field>
+        <field name="model">unefa.cantidad_estudiantes</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Cantidad de estudiantes">
+                <sheet>
+                    <group col = "4">
+                        <field name="carrera_id" />
+                        <field name="turno" />
+                        <field name="cantidad_minima" data-inputmask="'mask': '99'"/>
+                        <field name="cantidad_maxima" data-inputmask="'mask': '99'"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="view_unefa_cantidad_estudiantes_tree">
+        <field name="name">unefa_cantidad_estudiantes.tree</field>
+        <field name="model">unefa.cantidad_estudiantes</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Cantidad estudiantes">
+                <field name="carrera_id" />
+                <field name="turno" />
+                <field name="cantidad_minima"/>
+                <field name="cantidad_maxima"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="action_unefa_cantidad_estudiantes">
+        <field name="name">Cantidad estudiantes</field>
+        <field name="res_model">unefa.cantidad_estudiantes</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+
+    
+    <menuitem name="Cantidad estudiantes por sección" id="menu_unefa_cantidad_estudiantes" parent="unefa_menu_configuracion" sequence="61" groups="base.group_system"/>
+    <menuitem name="Cantidad estudiantes" id="cantidad_estudiantes_id" parent="menu_unefa_cantidad_estudiantes" action="action_unefa_cantidad_estudiantes" sequence="10" groups="base.group_system"/>
+
+    </data>
+</openerp>

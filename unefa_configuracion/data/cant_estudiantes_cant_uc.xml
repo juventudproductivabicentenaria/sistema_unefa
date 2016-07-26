@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        
+<!--
+                CANTIDAD DE ESTUDIANTES POR SECCIÓN
+-->                                          
+    
+    <record id="cantidad_estudiantes_carrera_ING_SIS" model="unefa.cantidad_estudiantes">
+        <field name="carrera_id" ref="carrera_ING_SIS"/>
+        <field name="turno">nocturno</field>
+        <field name="cantidad_minima">15</field>
+        <field name="cantidad_maxima">40</field>
+    </record>
+    
+<!--
+        CANTIDAD MÁXIMA DE UNIDADES DE CRÉDITO 
+--> 
+    
+    <record id="unidades_credito_carrera_ING_SIS" model="unefa.cantidad_unidades_credito">
+        <field name="carrera_id" ref="carrera_ING_SIS"/>
+        <field name="turno">nocturno</field>
+        <field name="cantidad_uc">30</field>
+    </record>
+    
+    
+    
+    
+    
+    
+    </data>
+</openerp>
+    

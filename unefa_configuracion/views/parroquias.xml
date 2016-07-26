@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+   <openerp>
+     <data>
+    <!--REGISTRO DE PARROQUIAS-->
+        
+    <record model="ir.ui.view" id="view_unefa_parroquias_form">
+        <field name="name">unefa_parroquias.form</field>
+        <field name="model">unefa.parroquias</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Dirección de Parroquias">
+                <sheet>
+                    <header>
+                            <h2 style="color:#7C7BAD"><center>Parroquia</center></h2>
+                        </header>
+                    <group>
+                        <field name="municipio_id" on_change="cp_limpiar_campos('parroquia')" widget="selection"/>
+                        <field name="parroquia"  on_change="cp_limpiar_campos('codigo')"/>
+                        <field name="codigo" />
+                        <field name="active" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_unefa_parroquias_tree">
+        <field name="name">unefa_parroquias.tree</field>
+        <field name="model">unefa.parroquias</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Dirección de Parroquias">
+                <field name="parroquia"/>
+                <field name="municipio_id"/>
+                <field name="codigo"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_unefa_parroquias">
+        <field name="name">Parroquias</field>
+        <field name="res_model">unefa.parroquias</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Aquí se registran las asignaturas
+                </p>
+            </field>
+    </record>
+
+    
+    <menuitem name="Parroquias" id="menu_res_parroquias" parent="unefa_menu_direccion_configuracion" action="action_unefa_parroquias" sequence="20" groups="base.group_system"/>
+
+    </data>
+</openerp>

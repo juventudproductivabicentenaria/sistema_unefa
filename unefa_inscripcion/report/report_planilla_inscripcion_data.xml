@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<report id="id_planilla_inscripcion"
+			string="Planilla de inscripción"
+			model="unefa.inscripcion_asignatura"
+			report_type="qweb-pdf"
+			file="unefa_inscripcion.planilla_inscripcion_qweb"
+            name="unefa_inscripcion.planilla_inscripcion_qweb"
+            menu="True"/>
+	</data>
+</openerp>

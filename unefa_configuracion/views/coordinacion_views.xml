@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_unefa_coordinacion_form">
+            <field name="name">Unefa_coordinacion_form</field>
+            <field name="model">unefa.coordinacion</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Coordinación">
+                    <header>
+                        <button name="crear_lista_general_coordinacion" string="Lista Estudiantes"  type="object" class="oe_highlight" groups="base.group_system,unefa_configuracion.group_unefa_coordinador"/>
+                        <button name="activar_coordinacion" string="Activar"  states="inactivo,activo" type="object" class="oe_highlight" groups="base.group_system"/>
+                        <button name="desactivar_coordinacion" string="Desactivar" states="activo,inactivo"  type="object" class="oe_highlight" groups="base.group_system"/>
+                        <field name="state" widget="statusbar" statusbar_visible="inactivo,activo"/>
+                    </header>
+                    
+                    <sheet>
+                        <header>
+                        <h2 style="color:#7C7BAD"><center>Coordinación</center></h2>
+                        </header>
+                    <group>
+                    
+                        <field name="nombre"/>
+                        <field name="sede_id" style="width:35%" />
+                        <field name="carrera_id" style="width:35%" widget="selection" domain="[('state','=','activo')]"/>
+                        <field name="regimen" style="width:35%" />
+                        <field name="ubicacion" style="width:35%"/>
+                        <field name="telefono" style="width:35%" placeholder="Por ejemplo 0212-1234567" data-inputmask="'mask': '9999-9999999'"/>
+                        <field name="email" style="width:35%"/>
+                        <field name="descripcion"/>
+                        <field name="active" invisible="1"/>
+                    </group>
+                    </sheet>
+                </form>
+            
+            </field>
+        
+        </record>
+        
+        <record model="ir.ui.view" id="view_unefa_coordinacion_tree">
+            <field name="name">Unefa_coordinacion_tree</field>
+            <field name="model">unefa.coordinacion</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Coordinacion">
+                    <field name="nombre"/>
+                    <field name="carrera_id"/>
+                    <field name="regimen"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_unefa_coordinacion">
+            <field name="name">Coordinaciones de la UNEFA</field>
+            <field name="res_model">unefa.coordinacion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Aquí se registran las Coordinaciones.
+            </p>
+        </field>
+        </record>
+        
+        
+        <menuitem name="Coordinación" id="unefa_submenu_coordinacion_inicio" parent="unefa_menu_principal_gestion" action="action_unefa_coordinacion" sequence="5"/>
+        <menuitem name="Coordinación" id="unefa_submenu_coordinacion_desplegable" parent="unefa_submenu_coordinacion_inicio" action="action_unefa_coordinacion" sequence="10"/>
+        <menuitem name="Coordinación" id="unefa_submenu_coordinacion" parent="unefa_submenu_coordinacion_desplegable" action="action_unefa_coordinacion" sequence="10"/>
+        
+    </data>
+</openerp>
